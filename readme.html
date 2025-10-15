@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>ArmA Library Documentation</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 2em;
+			background: #f9f9f9;
+		}
+
+		h1,
+		h2 {
+			color: #2c3e50;
+		}
+
+		.collapsible-content ul {
+			list-style: none;
+			padding-left: 0;
+			margin-bottom: 1.2em;
+			margin-top: 0.2em;
+			max-height: 2000px;
+		}
+		.category {
+			margin-bottom: 2em;
+		}
+
+		.function-list {
+			margin-left: 1em;
+		}
+
+		.function {
+			margin-bottom: 1em;
+		}
+
+		code {
+			background: #eee;
+			padding: 2px 6px;
+			border-radius: 4px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="flex-container">
+		<nav class="side-menu">
+			<div style="display: flex; justify-content: center; align-items: center; margin-bottom: 1em;">
+				<input type="text" id="menuSearch" placeholder="Search..."
+					style="width: 70%; padding: 0.3em 0.7em; font-size: 0.95em; border: 1px solid #ccc; border-radius: 4px; text-align: center;">
+			</div>
+			<div class="collapsible section-header" style="margin-top:0;">
+				<span>Библиотека</span>
+				<span class="arrow">&#9660;</span>
+			</div>
+			<div class="collapsible-content">
+				<h3 style="font-size:1em; margin-top:1em;">Функции</h3>
+				<ul style="list-style:none; padding-left:0;">
+					<li><a href="#EP_fnc_addHoldAction">EP_fnc_addHoldAction</a></li>
+					<li><a href="#EP_fnc_showSubs">EP_fnc_showSubs</a></li>
+					<li><a href="#EP_fnc_conversation">EP_fnc_conversation</a></li>
+					<li><a href="#EP_fnc_fadeIn">EP_fnc_fadeIn</a></li>
+					<li><a href="#EP_fnc_fadeOut">EP_fnc_fadeOut</a></li>
+					<li><a href="#EP_fnc_showHideUnits">EP_fnc_showHideUnits</a></li>
+					<li><a href="#EP_fnc_doArtilleryFire">EP_fnc_doArtilleryFire</a></li>
+					<li><a href="#EP_fnc_addWaypoint">EP_fnc_addWaypoint</a></li>
+					<li><a href="#EP_fnc_clearWaypoints">EP_fnc_clearWaypoints</a></li>
+					<li><a href="#EP_fnc_createUnits">EP_fnc_createUnits</a></li>
+					<li><a href="#EP_fnc_handleTasks">EP_fnc_handleTasks</a></li>
+				</ul>
+				<h3 style="font-size:1em; margin-top:1em;">Системы</h3>
+				<ul style="list-style:none; padding-left:0;">
+					<li><a href="#EP_applySystem_OneManTank">EP_applySystem_OneManTank</a></li>
+					<li><a href="#EP_applySystem_CasualHealth">EP_applySystem_CasualHealth</a></li>
+					<li><a href="#EP_applySystem_HealthBar">EP_applySystem_HealthBar</a></li>
+					<li><a href="#EP_applySystem_SimpleConvoy">EP_applySystem_SimpleConvoy</a></li>
+					<li><a href="#EP_applySystem_RandomRadio">EP_applySystem_RandomRadio</a></li>
+				</ul>
+				<h3 style="font-size:1em; margin-top:1em;">FSM</h3>
+				<ul style="list-style:none; padding-left:0;">
+					<li><a href="#EP_fsm_createStateMachine">EP_fsm_createStateMachine</a></li>
+					<li><a href="#EP_fsm_addState">EP_fsm_addState</a></li>
+					<li><a href="#EP_fsm_getState">EP_fsm_getState</a></li>
+					<li><a href="#EP_fsm_handleUpdate">EP_fsm_handleUpdate</a></li>
+					<li><a href="#EP_fsm_setState">EP_fsm_setState</a></li>
+					<li><a href="#EP_fsm_startStateMachine">EP_fsm_startStateMachine</a></li>
+				</ul>
+			</div>
+			<div class="collapsible section-header">
+				<span>BIS</span>
+				<span class="arrow">&#9660;</span>
+			</div>
+			<div class="collapsible-content">
+				<ul style="list-style:none; padding-left:0;">
+				<li><a href="https://community.bistudio.com/wiki/BIS_fnc_addCommMenuItem" target="_blank">BIS_fnc_addCommMenuItem</a></li>
+				<li><a href="https://community.bistudio.com/wiki/BIS_fnc_removeCommMenuItem" target="_blank">BIS_fnc_removeCommMenuItem</a></li>
+				<li><a href="https://community.bistudio.com/wiki/BIS_fnc_advHint" target="_blank">BIS_fnc_advHint</a></li>
+				<li><a href="https://community.bistudio.com/wiki/BIS_fnc_ambientAnim" target="_blank">BIS_fnc_ambientAnim</a></li>
+				<li><a href="https://community.bistudio.com/wiki/BIS_fnc_ambientFlyby" target="_blank">BIS_fnc_ambientFlyby</a></li>
+				<li><a href="https://community.bistudio.com/wiki/BIS_fnc_attachToRelative" target="_blank">BIS_fnc_attachToRelative</a></li>
+				<li><a href="https://community.bistudio.com/wiki/BIS_fnc_blackIn" target="_blank">BIS_fnc_blackIn</a></li>
+				<li><a href="https://community.bistudio.com/wiki/BIS_fnc_blackOut" target="_blank">BIS_fnc_blackOut</a></li>
+				<li><a href="https://community.bistudio.com/wiki/BIS_fnc_cinemaBorder" target="_blank">BIS_fnc_cinemaBorder</a></li>
+				<li><a href="https://community.bistudio.com/wiki/BIS_fnc_dynamicText" target="_blank">BIS_fnc_dynamicText</a></li>
+				<li><a href="https://community.bistudio.com/wiki/BIS_fnc_earthquake" target="_blank">BIS_fnc_earthquake</a></li>
+				<li><a href="https://community.bistudio.com/wiki/BIS_fnc_enemyDetected" target="_blank">BIS_fnc_enemyDetected</a></li>
+				<li><a href="https://community.bistudio.com/wiki/BIS_fnc_establishingShot" target="_blank">BIS_fnc_establishingShot</a></li>
+				<li><a href="https://community.bistudio.com/wiki/BIS_fnc_fireSupport" target="_blank">BIS_fnc_fireSupport</a></li>
+				<li><a href="https://community.bistudio.com/wiki/BIS_fnc_fireSupportVirtual" target="_blank">BIS_fnc_fireSupportVirtual</a></li>
+				<li><a href="https://community.bistudio.com/wiki/BIS_fnc_fireSupportCluster" target="_blank">BIS_fnc_fireSupportCluster</a></li>
+				<li><a href="https://community.bistudio.com/wiki/BIS_fnc_getArea" target="_blank">BIS_fnc_getArea</a></li>
+				<li><a href="https://community.bistudio.com/wiki/BIS_fnc_holdActionAdd" target="_blank">BIS_fnc_holdActionAdd</a></li>
+				<li><a href="https://community.bistudio.com/wiki/BIS_fnc_holdActionRemove" target="_blank">BIS_fnc_holdActionRemove</a></li>
+				<li><a href="https://community.bistudio.com/wiki/BIS_fnc_moveIn" target="_blank">BIS_fnc_moveIn</a></li>
+				<li><a href="https://community.bistudio.com/wiki/BIS_fnc_jukebox" target="_blank">BIS_fnc_jukebox</a></li>
+				<li><a href="https://community.bistudio.com/wiki/BIS_fnc_infoText" target="_blank">BIS_fnc_infoText</a></li>
+				<li><a href="https://community.bistudio.com/wiki/BIS_fnc_lookAtArray" target="_blank">BIS_fnc_lookAtArray</a></li>
+				<li><a href="https://community.bistudio.com/wiki/BIS_fnc_randomPos" target="_blank">BIS_fnc_randomPos</a></li>
+				<li><a href="https://community.bistudio.com/wiki/BIS_fnc_findSafePos" target="_blank">BIS_fnc_findSafePos</a></li>
+				<li><a href="https://community.bistudio.com/wiki/BIS_fnc_randomPosTrigger" target="_blank">BIS_fnc_randomPosTrigger</a></li>
+				<li><a href="https://community.bistudio.com/wiki/BIS_fnc_showSubtitle" target="_blank">BIS_fnc_showSubtitle</a></li>
+				<li><a href="https://community.bistudio.com/wiki/BIS_fnc_spawnCrew" target="_blank">BIS_fnc_spawnCrew</a></li>
+				<li><a href="https://community.bistudio.com/wiki/BIS_fnc_spawnEnemy" target="_blank">BIS_fnc_spawnEnemy</a></li>
+				<li><a href="https://community.bistudio.com/wiki/BIS_fnc_spawnGroup" target="_blank">BIS_fnc_spawnGroup</a></li>
+				<li><a href="https://community.bistudio.com/wiki/BIS_fnc_spawnObjects" target="_blank">BIS_fnc_spawnObjects</a></li>
+				<li><a href="https://community.bistudio.com/wiki/BIS_fnc_spawnVehicle" target="_blank">BIS_fnc_spawnVehicle</a></li>
+				<li><a href="https://community.bistudio.com/wiki/BIS_fnc_spotter" target="_blank">BIS_fnc_spotter</a></li>
+				<li><a href="https://community.bistudio.com/wiki/BIS_fnc_stalk" target="_blank">BIS_fnc_stalk</a></li>
+				<li><a href="https://community.bistudio.com/wiki/BIS_fnc_taskDefend" target="_blank">BIS_fnc_taskDefend</a></li>
+				<li><a href="https://community.bistudio.com/wiki/BIS_fnc_taskPatrol" target="_blank">BIS_fnc_taskPatrol</a></li>
+				<li><a href="https://community.bistudio.com/wiki/BIS_fnc_taskAttack" target="_blank">BIS_fnc_taskAttack</a></li>
+				<li><a href="https://community.bistudio.com/wiki/BIS_fnc_textTiles" target="_blank">BIS_fnc_textTiles</a></li>
+				<li><a href="https://community.bistudio.com/wiki/BIS_fnc_typeText" target="_blank">BIS_fnc_typeText</a></li>
+				<li><a href="https://community.bistudio.com/wiki/BIS_fnc_typeText2" target="_blank">BIS_fnc_typeText2</a></li>
+				<li><a href="https://community.bistudio.com/wiki/BIS_fnc_fadeEffect" target="_blank">BIS_fnc_fadeEffect</a></li>
+				<li><a href="https://community.bistudio.com/wiki/BIS_fnc_EXP_camp_SITREP" target="_blank">BIS_fnc_EXP_camp_SITREP</a></li>
+			</ul>
+		</div>
+			<div class="collapsible section-header"">
+				<span>CBA</span>
+				<span class="arrow">&#9660;</span>
+			</div>
+			<div class="collapsible-content">
+			<h3 style="font-size:1em; margin-top:1em;">AI</h3>
+			<ul style="list-style:none; padding-left:0;">
+				<li><a href="https://cbateam.github.io/CBA_A3/docs/files/ai/fnc_clearWaypoints-sqf.html" target="_blank">CBA_fnc_clearWaypoints</a></li>
+				<li><a href="https://cbateam.github.io/CBA_A3/docs/files/ai/fnc_addWaypoint-sqf.html" target="_blank">CBA_fnc_addWaypoint</a></li>
+				<li><a href="https://cbateam.github.io/CBA_A3/docs/files/ai/fnc_buildingPositions-sqf.html" target="_blank">CBA_fnc_buildingPositions</a></li>
+				<li><a href="https://cbateam.github.io/CBA_A3/docs/files/ai/fnc_taskSearchArea-sqf.html" target="_blank">CBA_fnc_taskSearchArea</a></li>
+				<li><a href="https://cbateam.github.io/CBA_A3/docs/files/ai/fnc_waypointGarrison-sqf.html" target="_blank">fnc_waypointGarrison</a></li>
+				<li><a href="https://cbateam.github.io/CBA_A3/docs/files/ai/fnc_searchNearby-sqf.html" target="_blank">CBA_fnc_searchNearby</a></li>
+				<li><a href="https://cbateam.github.io/CBA_A3/docs/files/ai/fnc_taskAttack-sqf.html" target="_blank">CBA_fnc_taskAttack</a></li>
+				<li><a href="https://cbateam.github.io/CBA_A3/docs/files/ai/fnc_taskDefend-sqf.html" target="_blank">CBA_fnc_taskDefend</a></li>
+				<li><a href="https://cbateam.github.io/CBA_A3/docs/files/ai/fnc_taskPatrol-sqf.html" target="_blank">CBA_fnc_taskPatrol</a></li>
+			</ul>
+			<h3 style="font-size:1em; margin-top:1em;">Common</h3>
+			<ul style="list-style:none; padding-left:0;">
+				<li><a href="https://cbateam.github.io/CBA_A3/docs/files/common/fnc_currentUnit-sqf.html" target="_blank">CBA_fnc_currentUnit</a></li>
+				<li><a href="https://cbateam.github.io/CBA_A3/docs/files/common/fnc_deleteEntity-sqf.html" target="_blank">CBA_fnc_deleteEntity</a></li>
+				<li><a href="https://cbateam.github.io/CBA_A3/docs/files/common/fnc_nearPlayer-sqf.html" target="_blank">CBA_fnc_nearPlayer</a></li>
+				<li><a href="https://cbateam.github.io/CBA_A3/docs/files/common/fnc_randPos-sqf.html" target="_blank">CBA_fnc_randPos</a></li>
+				<li><a href="https://cbateam.github.io/CBA_A3/docs/files/common/fnc_randPosArea-sqf.html" target="_blank">CBA_fnc_randPosArea</a></li>
+				<li><a href="https://cbateam.github.io/CBA_A3/docs/files/common/fnc_switchPlayer-sqf.html" target="_blank">CBA_fnc_switchPlayer</a></li>
+			 </ul>
+			</div>
+		</nav>
+		<main class="main-content">
+			<h1>ArmA Library Documentation</h1>
+			<div class="function-list">
+				<!-- Library Functions -->
+				<div class="function-block" id="EP_fnc_addHoldAction">
+					<h3><code>EP_fnc_addHoldAction</code></h3>
+					<div>Добавляет HoldAction юниту</div>
+					<strong>Parameters:</strong>
+					<ul>
+						<li>_attachTo</li>
+						<li>_title</li>
+						<li>_codeFinish</li>
+						<li>_iconStart</li>
+						<li>_duration (default: 3)</li>
+						<li>_conditionToShow (default: "true")</li>
+						<li>_arguments (default: [])</li>
+						<li>_removeCompleted (default: true)</li>
+						<li>_priority (default: 1000)</li>
+						<li>_iconProgress (default: objNull)</li>
+						<li>_conditionToProgress (default: "true")</li>
+						<li>_codeStart (default: {})</li>
+					</ul>
+					<div class="returns"><strong>Returns:</strong> None</div><br>
+					<div class="example"><strong><button class="copy-btn" data-target="example-EP_fnc_addHoldAction">Copy</button> Example:</strong><br><br>
+						<code id="example-EP_fnc_addHoldAction">[_attachTo, _title, _codeFinish, _iconStart, _duration*, _conditionToShow*, _arguments*, _removeCompleted*, _priority*, _iconProgress*, _conditionToProgress*, _codeStart*] call EP_fnc_addHoldAction;</code>
+					</div>
+				</div>
+				<div class="function-block" id="EP_fnc_showSubs">
+					<h3><code>EP_fnc_showSubs</code></h3>
+					<div>Показывает субтитры</div>
+					<strong>Parameters:</strong>
+					<ul>
+						<li>_title</li>
+						<li>_subtitles</li>
+						<li>_duration (default: 0.5)</li>
+						<li>_chatType (default: 2)</li>
+						<li>_toUpper (default: true)</li>
+					</ul>
+					<div class="returns"><strong>Returns:</strong> None</div><br>
+					<div class="example"><strong><button class="copy-btn" data-target="example-EP_fnc_showSubs">Copy</button> Example:</strong><br><br>
+						<code id="example-EP_fnc_showSubs">[_title, _subtitles, _duration*, _chatType*, _toUpper*] call EP_fnc_showSubs;</code>
+					</div>
+				</div>
+				<div class="function-block" id="EP_fnc_conversation">
+					<h3><code>EP_fnc_conversation</code></h3>
+					<div>Показывает субтитры со звуком рации \ бипом</div>
+					<strong>Parameters:</strong>
+					<ul>
+						<li>_title</li>
+						<li>_subtitles</li>
+						<li>_duration (default: 0.5)</li>
+						<li>_isRadio (default: true)</li>
+						<li>_radioSoundIn (default: "myin1")</li>
+						<li>_radioSoundOut (default: "myin4")</li>
+						<li>_chatType (default: 2)</li>
+						<li>_toUpper (default: true)</li>
+					</ul>
+					<div class="returns"><strong>Returns:</strong> None</div><br>
+					<div class="example"><strong><button class="copy-btn" data-target="example-EP_fnc_conversation">Copy</button> Example:</strong><br><br>
+						<code id="example-EP_fnc_conversation">[_title, _subtitles, _duration*, _isRadio*, _radioSoundIn*, _radioSoundOut*, _chatType*, _toUpper*] call EP_fnc_conversation;</code>
+					</div>
+				</div>
+				<div class="function-block" id="EP_fnc_fadeIn">
+					<h3><code>EP_fnc_fadeIn</code></h3>
+					<div>Эффект проявления экрана</div>
+					<strong>Parameters:</strong>
+					<ul>
+						<li>_duration (default: 5)</li>
+						<li>_color (default: "BLACK")</li>
+						<li>_blur (default: 0)</li>
+					</ul>
+					<div class="returns"><strong>Returns:</strong> _duration</div><br>
+					<div class="example"><strong><button class="copy-btn" data-target="example-EP_fnc_fadeIn">Copy</button> Example:</strong><br><br>
+						<code id="example-EP_fnc_fadeIn">[_duration*, _color*, _blur*] call EP_fnc_fadeIn;</code>
+					</div>
+				</div>
+				<div class="function-block" id="EP_fnc_fadeOut">
+					<h3><code>EP_fnc_fadeOut</code></h3>
+					<div>Эффект затухания экрана</div>
+					<strong>Parameters:</strong>
+					<ul>
+						<li>_duration (default: 5)</li>
+						<li>_color (default: "BLACK")</li>
+						<li>_blur (default: 0)</li>
+					</ul>
+					<div class="returns"><strong>Returns:</strong> _duration</div><br>
+					<div class="example"><strong><button class="copy-btn" data-target="example-EP_fnc_fadeOut">Copy</button> Example:</strong><br><br>
+						<code id="example-EP_fnc_fadeOut">[_duration*, _color*, _blur*] call EP_fnc_fadeOut;</code>
+					</div>
+				</div>
+				<div class="function-block" id="EP_fnc_showHideUnits">
+					<h3><code>EP_fnc_showHideUnits</code></h3>
+					<div>Скрывает \ Возвращает юнитов</div>
+					<strong>Parameters:</strong>
+					<ul>
+						<li>_units</li>
+						<li>_toHide (default: true)</li>
+					</ul>
+					<div class="returns"><strong>Returns:</strong> _units</div><br>
+					<div class="example"><strong><button class="copy-btn" data-target="example-EP_fnc_showHideUnits">Copy</button> Example:</strong><br><br>
+						<code id="example-EP_fnc_showHideUnits">[_units, _toHide*] call EP_fnc_showHideUnits;</code>
+					</div>
+				</div>
+				<div class="function-block" id="EP_fnc_doArtilleryFire">
+					<h3><code>EP_fnc_doArtilleryFire</code></h3>
+					<div>Залп артиллерией по позиции</div>
+					<strong>Parameters:</strong>
+					<ul>
+						<li>_artillery</li>
+						<li>_targetPosition</li>
+						<li>_roundsNumber</li>
+						<li>_magazineType (default: objNull)</li>
+						<li>_sleepRange (default: [0.5, 1, 1.5])</li>
+					</ul>
+					<div class="returns"><strong>Returns:</strong> _artillery</div><br>
+					<div class="example"><strong><button class="copy-btn" data-target="example-EP_fnc_doArtilleryFire">Copy</button> Example:</strong><br><br>
+						<code id="example-EP_fnc_doArtilleryFire">[_artillery, _targetPosition, _roundsNumber, _magazineType*, _sleepRange*] call EP_fnc_doArtilleryFire;</code>
+					</div>
+				</div>
+				<div class="function-block" id="EP_fnc_addWaypoint">
+					<h3><code>EP_fnc_addWaypoint</code></h3>
+					<div>Добавить вейпоинт группе</div>
+					<strong>Parameters:</strong>
+					<ul>
+						<li>_group</li>
+						<li>_position</li>
+						<li>_wpParams (default: [])</li>
+						<li>_setCurrent (default: false)</li>
+						<li>_syncWaypoints (default: []])</li>
+					</ul>
+					<div class="returns"><strong>Returns:</strong> _waypoint</div><br>
+					<div class="example"><strong><button class="copy-btn" data-target="example-EP_fnc_addWaypoint">Copy</button> Example:</strong><br><br>
+						<code id="example-EP_fnc_addWaypoint">[_group, _position, _wpParams*, _setCurrent*, _syncWaypoints*] call EP_fnc_addWaypoint;</code>
+					</div>
+				</div>
+				<div class="function-block" id="EP_fnc_clearWaypoints">
+					<h3><code>EP_fnc_clearWaypoints</code></h3>
+					<div>Удалить все вейпоинты группы</div>
+					<strong>Parameters:</strong>
+					<ul>
+						<li>_group</li>
+					</ul>
+					<div class="returns"><strong>Returns:</strong> None</div><br>
+					<div class="example"><strong><button class="copy-btn" data-target="example-EP_fnc_clearWaypoints">Copy</button> Example:</strong><br><br>
+						<code id="example-EP_fnc_clearWaypoints">[_group] call EP_fnc_clearWaypoints;</code>
+					</div>
+				</div>
+				<div class="function-block" id="EP_fnc_createUnits">
+					<h3><code>EP_fnc_createUnits</code></h3>
+					<div>Создать группу с техникой</div>
+					<strong>Parameters:</strong>
+					<ul>
+						<li>_spawnPosition</li>
+						<li>_sideOrGroup</li>
+						<li>_units</li>
+						<li>_vehicles (default: [])</li>
+						<li>direction (default: -1)</li>
+						<li>_relPositions (default: []; format: [distance, direction])</li>
+						<li>_createCrewForVehicles (default: true)</li>
+						<li>_deleteGroupWhenEmpty (default: true)</li>
+						<li>_vehicleSpecialParam (default: "NONE")</li>
+					</ul>
+					<div class="returns"><strong>Returns:</strong> _group</div><br>
+					<div class="example"><strong><button class="copy-btn" data-target="example-EP_fnc_createUnits">Copy</button> Example:</strong><br><br>
+						<code id="example-EP_fnc_createUnits">[_spawnPosition, _sideOrGroup, _units, _vehicles*, direction*, _relPositions*, _createCrewForVehicles*, _deleteGroupWhenEmpty*, _vehicleSpecialParam* ] call EP_fnc_createUnits;</code>
+					</div>
+				</div>
+				<div class="function-block" id="EP_fnc_handleTasks">
+					<h3><code>EP_fnc_handleTasks</code></h3>
+					<div>Процесс задачи. Задачи перечисляются в переменной EP_tasks.</div>
+          <div>EP_tasks = createHashMapFromArray [
+          [ "TaskCaptureCity_1", [ player, "TaskCaptureCity_1",
+            ["Join an attack on position <marker name='o_1'>Alpha</marker> and secure the area.", "Position Alpha"],
+            markerPos "o_1", true, -1, true, "a", false]
+          ],
+
+          [ "TaskCaptureCity_2", [ player, "TaskCaptureCity_2",
+            ["Keep advancing and capture position <marker name='o_2'>Beta</marker>.", "Position Beta"],
+            markerPos "o_2", true, -1, true, "b", false]
+          ],
+
+          [ "TaskCaptureCity_3", [ player, "TaskCaptureCity_3",
+            ["It's time to end thid. Knock out the enemy from his last line of defence at position <marker name='o_3'>Gamma</marker>.", "Gamma"],
+            markerPos "o_3", true, -1, true, "g", false]
+          ]
+        ];
+          </div>
+					<strong>Parameters:</strong>
+					<ul>
+						<li>_taskId</li>
+						<li>_newState (default: "SUCCEEDED")</li>
+						<li>_showHint (default: true)</li>
+					</ul>
+					<div class="returns"><strong>Returns:</strong> _taskId</div><br>
+					<div class="example"><strong><button class="copy-btn" data-target="example-EP_fnc_handleTasks">Copy</button> Example:</strong><br><br>
+						<code id="example-EP_fnc_handleTasks">[_taskId, _newState*, _showHint*] call EP_fnc_handleTasks;</code>
+					</div>
+				</div>
+				<div class="function-block" id="EP_fsm_createStateMachine">
+					<h3><code>EP_fsm_createStateMachine</code></h3>
+					<div>Создать FSM</div>
+					<strong>Parameters:</strong>
+					<ul>
+						<li>None</li>
+					</ul>
+					<div class="returns"><strong>Returns:</strong> _sm</div><br>
+					<div class="example"><strong><button class="copy-btn" data-target="example-EP_fsm_createStateMachine">Copy</button> Example:</strong><br><br>
+						<code id="example-EP_fsm_createStateMachine">[] call EP_fsm_createStateMachine;</code>
+					</div>
+				</div>
+				<div class="function-block" id="EP_fsm_addState">
+					<h3><code>EP_fsm_addState</code></h3>
+					<div>Добавить в FSM новый State</div>
+					<strong>Parameters:</strong>
+					<ul>
+						<li>_sm</li>
+						<li>_name</li>
+						<li>_onEnter</li>
+						<li>_transitions</li>
+					</ul>
+					<div class="returns"><strong>Returns:</strong> None</div><br>
+					<div class="example"><strong><button class="copy-btn" data-target="example-EP_fsm_addState">Copy</button> Example:</strong><br><br>
+						<code id="example-EP_fsm_addState">[_sm, _name, _onEnter, _transitions] call EP_fsm_addState;</code>
+					</div>
+				</div>
+				<div class="function-block" id="EP_fsm_getState">
+					<h3><code>EP_fsm_getState</code></h3>
+					<div>Получить FSM State</div>
+					<strong>Parameters:</strong>
+					<ul>
+						<li>_sm</li>
+						<li>_name</li>
+					</ul>
+					<div class="returns"><strong>Returns:</strong> None</div><br>
+					<div class="example"><strong><button class="copy-btn" data-target="example-EP_fsm_getState">Copy</button> Example:</strong><br><br>
+						<code id="example-EP_fsm_getState">[_sm, _name] call EP_fsm_getState;</code>
+					</div>
+				</div>
+				<div class="function-block" id="EP_fsm_handleUpdate">
+					<h3><code>EP_fsm_handleUpdate</code></h3>
+					<div>Обработчик обновления State в FSM</div>
+					<strong>Parameters:</strong>
+					<ul>
+						<li>_sm</li>
+					</ul>
+					<div class="returns"><strong>Returns:</strong> None</div><br>
+					<div class="example"><strong><button class="copy-btn" data-target="example-EP_fsm_handleUpdate">Copy</button> Example:</strong><br><br>
+						<code id="example-EP_fsm_handleUpdate">[_sm] call EP_fsm_handleUpdate;</code>
+					</div>
+				</div>
+				<div class="function-block" id="EP_fsm_setState">
+					<h3><code>EP_fsm_setState</code></h3>
+					<div>Задать в FSM новый state</div>
+					<strong>Parameters:</strong>
+					<ul>
+						<li>_sm</li>
+						<li>_newStateName</li>
+					</ul>
+					<div class="returns"><strong>Returns:</strong> None</div><br>
+					<div class="example"><strong><button class="copy-btn" data-target="example-EP_fsm_setState">Copy</button> Example:</strong><br><br>
+						<code id="example-EP_fsm_setState">[_sm, _newStateName] call EP_fsm_setState;</code>
+					</div>
+				</div>
+				<div class="function-block" id="EP_fsm_startStateMachine">
+					<h3><code>EP_fsm_startStateMachine</code></h3>
+					<div>Запустить FSM</div>
+					<strong>Parameters:</strong>
+					<ul>
+						<li>_sm</li>
+						<li>_initial</li>
+					</ul>
+					<div class="returns"><strong>Returns:</strong> None</div><br>
+					<div class="example"><strong><button class="copy-btn" data-target="example-EP_fsm_startStateMachine">Copy</button> Example:</strong><br><br>
+						<code id="example-EP_fsm_startStateMachine">[_sm, _initial] call EP_fsm_startStateMachine;</code>
+					</div>
+				</div>
+				<div class="function-block" id="EP_applySystem_OneManTank">
+					<h3><code>EP_applySystem_OneManTank</code></h3>
+					<div>Применить систему упраления техникой одним игроком к списку техники</div>
+					<strong>Parameters:</strong>
+					<ul>
+						<li>_vehicles</li>
+						<li>_enableSentences (default: false)</li>
+						<li>_getOutText (default: "Выйти")</li>
+						<li>_cameraExternal (default: true)</li>
+					</ul>
+					<div class="returns"><strong>Returns:</strong> None</div><br>
+					<div class="example"><strong><button class="copy-btn" data-target="example-EP_applySystem_OneManTank">Copy</button> Example:</strong><br><br>
+						<code id="example-EP_applySystem_OneManTank">[_vehicles, _enableSentences*, _getOutText*, _cameraExternal*] call EP_applySystem_OneManTank;</code>
+					</div>
+				</div>
+				<div class="function-block" id="EP_applySystem_CasualHealth">
+					<h3><code>EP_applySystem_CasualHealth</code></h3>
+					<div>Применить систему казуального здоровья к списку юнитов</div>
+					<strong>Parameters:</strong>
+					<ul>
+						<li>_units</li>
+						<li>_regenHealth (default: true)</li>
+						<li>_defaultDamage (default: 0.1)</li>
+						<li>_headshotKill (default: true)</li>
+						<li>_threshold (default: 0.2)</li>
+						<li>_regenCoef (default: 0.05)</li>
+					</ul>
+					<div class="returns"><strong>Returns:</strong> None</div><br>
+					<div class="example"><strong><button class="copy-btn" data-target="example-EP_applySystem_CasualHealth">Copy</button> Example:</strong><br><br>
+						<code id="example-EP_applySystem_CasualHealth">[_units, _regenHealth*, _defaultDamage*, _headshotKill*, _threshold*, _regenCoef*] call EP_applySystem_CasualHealth;</code>
+					</div>
+				</div>
+				<div class="function-block" id="EP_applySystem_HealthBar">
+					<h3><code>EP_applySystem_HealthBar</code></h3>
+					<div>Показать полоску здоровья игроку</div>
+					<strong>Parameters:</strong>
+					<ul>
+						<li>_targetUnit (default: player)</li>
+						<li>_layerId (default: 1)</li>
+						<li>_healthShowVehicle (default: false)</li>
+						<li>_healthCharNumber (default: 66)</li>
+						<li>_healthSymbol (default: "I")</li>
+						<li>_healthMediumThreshold (default: 20)</li>
+						<li>_healthHighThreshold (default: 40)</li>
+						<li>_healthPosFromBottomPerc (default: 1.62)</li>
+						<li>_healthPosFromRightPerc (default: 1.616)</li>
+						<li>_healthColorMap (default: ["#ff6565", "#ffae8e", "#ffffff"])</li>
+						<li>_updateOnEach (default: 0.1)</li>
+					</ul>
+					<div class="returns"><strong>Returns:</strong> None</div><br>
+					<div class="example"><strong><button class="copy-btn" data-target="example-EP_applySystem_HealthBar">Copy</button> Example:</strong><br><br>
+						<code id="example-EP_applySystem_HealthBar">[_targetUnit*, _layerId*, _healthShowVehicle*, _healthCharNumber*, _healthSymbol*, _healthMediumThreshold*, _healthHighThreshold*, _healthPosFromBottomPerc*, _healthPosFromRightPerc*, _healthColorMap*, _updateOnEach*] spawn EP_applySystem_HealthBar;</code>
+					</div>
+				</div>
+				<div class="function-block" id="EP_applySystem_SimpleConvoy">
+					<h3><code>EP_applySystem_SimpleConvoy</code></h3>
+					<div>Применить систему конвоя к группе</div>
+					<strong>Parameters:</strong>
+					<ul>
+						<li>_convoyGroup</li>
+						<li>_convoySpeed (default: 50)</li>
+						<li>_convoySeparation (default: 50)</li>
+						<li>_pushThrough (default: true)</li>
+					</ul>
+					<div class="returns"><strong>Returns:</strong> None</div><br>
+					<div class="example"><strong><button class="copy-btn" data-target="example-EP_applySystem_SimpleConvoy">Copy</button> Example:</strong><br><br>
+						<code id="example-EP_applySystem_SimpleConvoy">[_convoyGroup, _convoySpeed*, _convoySeparation*, _pushThrough*] spawn EP_applySystem_SimpleConvoy;</code>
+					</div>
+				</div>
+				<div class="function-block" id="EP_applySystem_RandomRadio">
+					<h3><code>EP_applySystem_RandomRadio</code></h3>
+					<div>Применить систему рандомного радио</div>
+					<strong>Parameters:</strong>
+					<ul>
+						<li>_side</li>
+						<li>_sleepBetween (default: 10)</li>
+						<li>_condition</li>
+					</ul>
+					<div class="returns"><strong>Returns:</strong> None</div><br>
+					<div class="example"><strong><button class="copy-btn" data-target="example-EP_applySystem_RandomRadio">Copy</button> Example:</strong><br><br>
+						<code id="example-EP_applySystem_RandomRadio">[_side, _sleepBetween*, _condition*] spawn EP_applySystem_RandomRadio;</code>
+					</div>
+				</div>
+		</main>
+	</div>
+	<script>
+	// Copy button logic
+	function copyToClipboard(text) {
+		if (navigator.clipboard) {
+			navigator.clipboard.writeText(text);
+		} else {
+			var textarea = document.createElement('textarea');
+			textarea.value = text;
+			document.body.appendChild(textarea);
+			textarea.select();
+			document.execCommand('copy');
+			document.body.removeChild(textarea);
+		}
+	}
+	document.addEventListener('DOMContentLoaded', function () {
+		document.querySelectorAll('.copy-btn').forEach(function(btn) {
+			btn.addEventListener('click', function() {
+				var targetId = btn.getAttribute('data-target');
+				var codeElem = document.getElementById(targetId);
+				if (codeElem) {
+					copyToClipboard(codeElem.textContent);
+					btn.textContent = 'Copied!';
+					setTimeout(function() { btn.textContent = 'Copy'; }, 1200);
+				}
+			});
+		});
+	});
+	// Improved menu search filter for all menu sections
+	document.addEventListener('DOMContentLoaded', function () {
+		var searchInput = document.getElementById('menuSearch');
+		if (searchInput) {
+			searchInput.addEventListener('input', function () {
+				var filter = searchInput.value.toLowerCase();
+				var sideMenu = document.querySelector('.side-menu');
+				if (!sideMenu) return;
+				var allLists = sideMenu.querySelectorAll('ul');
+				var collapsibleContents = sideMenu.querySelectorAll('.collapsible-content');
+				var collapsibles = sideMenu.querySelectorAll('.collapsible');
+
+				allLists.forEach(function (ul, idx) {
+					var hasVisible = false;
+					ul.querySelectorAll('li').forEach(function (li) {
+						var text = li.textContent.toLowerCase();
+						var match = text.includes(filter);
+						li.style.display = match ? '' : 'none';
+						if (match) hasVisible = true;
+					});
+					var content = ul.parentElement.classList.contains('collapsible-content') ? ul.parentElement : ul;
+					if (content.classList.contains('collapsible-content')) {
+						if (hasVisible && filter) {
+							content.style.display = 'block';
+							content.classList.remove('collapsed');
+							var header = content.previousElementSibling;
+							if (header && header.classList.contains('collapsible')) {
+								var arrow = header.querySelector('.arrow');
+								if (arrow) arrow.style.transform = 'rotate(0deg)';
+							}
+						} else {
+							content.style.display = 'none';
+							content.classList.add('collapsed');
+							var header = content.previousElementSibling;
+							if (header && header.classList.contains('collapsible')) {
+								var arrow = header.querySelector('.arrow');
+								if (arrow) arrow.style.transform = 'rotate(-90deg)';
+							}
+						}
+					}
+				});
+				collapsibles.forEach(function (btn) {
+					var content = btn.nextElementSibling;
+					if (!content) return;
+					var anyVisible = Array.from(content.querySelectorAll('li')).some(li => li.style.display !== 'none');
+					content.style.display = anyVisible && filter ? 'block' : 'none';
+				});
+				// If search is cleared, expand all and show all items
+				if (!filter) {
+					allLists.forEach(function (ul) {
+						ul.querySelectorAll('li').forEach(function (li) {
+							li.style.display = '';
+						});
+						var content = ul.parentElement.classList.contains('collapsible-content') ? ul.parentElement : ul;
+						if (content.classList.contains('collapsible-content')) {
+							content.style.display = 'block';
+							content.classList.remove('collapsed');
+							var header = content.previousElementSibling;
+							if (header && header.classList.contains('collapsible')) {
+								var arrow = header.querySelector('.arrow');
+								if (arrow) arrow.style.transform = 'rotate(0deg)';
+							}
+						}
+					});
+				}
+			});
+		}
+
+		// Collapsible menu logic
+		var collapsibles = document.querySelectorAll('.collapsible');
+		collapsibles.forEach(function (btn) {
+			btn.addEventListener('click', function () {
+				var content = btn.nextElementSibling;
+				var arrow = btn.querySelector('.arrow');
+				if (!content) return;
+				var isCollapsed = content.classList.contains('collapsed');
+				if (isCollapsed) {
+					content.classList.remove('collapsed');
+					content.style.display = 'block';
+					if (arrow) arrow.style.transform = 'rotate(0deg)';
+				} else {
+					content.classList.add('collapsed');
+					content.style.display = 'none';
+					if (arrow) arrow.style.transform = 'rotate(-90deg)';
+				}
+			});
+			var content = btn.nextElementSibling;
+			var arrow = btn.querySelector('.arrow');
+			if (content) {
+				content.classList.remove('collapsed');
+				content.style.display = 'block';
+			}
+			if (arrow) arrow.style.transform = 'rotate(0deg)';
+		});
+	});
+	</script>
+	<style>
+		.section-header {
+			cursor: pointer;
+			user-select: none;
+			font-size: 1em;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 0.2em 0.2em 0.2em 0.2em;
+			background: none;
+			border: none;
+			margin-bottom: 0.2em;
+			box-shadow: none;
+			font-weight: 500;
+			color: #1e293b;
+		}
+		.section-header .arrow {
+			font-size: 1em;
+			margin-left: 0.5em;
+			margin-right: 0;
+			transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+			color: #2563eb !important;
+		}
+		.section-header span:last-child {
+			font-weight: 500;
+			letter-spacing: 0.2px;
+			color: #1e293b;
+		}
+		body {
+			margin: 0;
+			background: #f9f9f9;
+		}
+
+		.flex-container {
+			display: flex;
+			align-items: flex-start;
+		}
+
+		.side-menu {
+			position: sticky;
+			top: 0;
+			min-width: 270px;
+			max-width: 320px;
+			height: 100vh;
+			overflow-y: auto;
+			background: #f4f4f4;
+			border-right: 1px solid #ddd;
+			padding: 2em 1em 2em 2em;
+			box-sizing: border-box;
+		}
+
+		.side-menu ul {
+			margin-top: 1em;
+		}
+
+		.side-menu li {
+			margin-bottom: 0.5em;
+		}
+
+		.side-menu a {
+			text-decoration: none;
+			color: #2c3e50;
+			font-size: 1em;
+			transition: color 0.2s;
+		}
+
+		.side-menu a:hover {
+			color: #0077cc;
+		}
+
+		.main-content {
+			flex: 1;
+			padding: 2em 3em 2em 2em;
+			min-width: 0;
+		}
+
+		.function-block {
+			background: #fff;
+			border: 1px solid #ddd;
+			border-radius: 8px;
+			margin-bottom: 1.5em;
+			padding: 1em 1.5em;
+			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+			font-size: 14px;
+		}
+
+		.function-block h3 {
+			margin-top: 0;
+		}
+	</style>
+</body>
+
+</html>
