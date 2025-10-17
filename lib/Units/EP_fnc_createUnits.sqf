@@ -1,3 +1,32 @@
+/**
+	Creates units and vehicles at a given position and side/group
+
+	PARAMETERS:
+		_spawnPosition				: POSITION/ARRAY/STRING - position to spawn units at, can be a position, an array of coordinates, or a marker name
+		_sideOrGroup					: SIDE/GROUP - side or group to create the units in
+		_units								: ARRAY - array of unit class names to create
+		_vehicles						: ARRAY (OPTIONAL) - array of vehicle class names to create (default: empty array)
+		_direction						: NUMBER (OPTIONAL) - direction to set for created units and vehicles (default: -1, no change)
+		_relPositions				: ARRAY (OPTIONAL) - array of relative positions (arrays of [x,y]) to offset each created unit/vehicle (default: empty array)
+		_createCrewForVehicles : BOOL (OPTIONAL) - whether to create crew for created vehicles (default: true)
+		_deleteGroupWhenEmpty : BOOL (OPTIONAL) - whether to delete the group when it is empty (default: true)
+		_vehicleSpecialParam : STRING (OPTIONAL) - special parameter for vehicle creation, e.g. "FLY" for aircraft (default: "NONE")
+	
+	RETURNS:
+		GROUP - the group containing the created units and vehicles
+
+	EXAMPLE:
+		private _group = [ "marker_spawnPoint", west, 
+			[ "B_Soldier_F", "B_Soldier_AR_F", "B_Soldier_TL_F" ], 
+			[ "B_MRAP_01_F" ], 
+			90, 
+			[ [0,0], [2,2], [-2,2], [5,0] ], 
+			true, 
+			true, 
+			"NONE" 
+		] call EP_fnc_createUnits;
+*/
+
 params [
 	"_spawnPosition",
 	"_sideOrGroup",
@@ -31,7 +60,7 @@ _group deleteGroupWhenEmpty _deleteGroupWhenEmpty;
 // units
 _hasRelPositions = (count _relPositions > 0);
 {
-	if (_hasRelPositions && _forEachIndex > 0) then {
+	if (_hasRelPositions) then {
 		_offset = _relPositions deleteAt 0;
 		_position = _position getPos [ (_offset select 0), (_offset select 1) ];
 	};

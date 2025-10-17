@@ -1,4 +1,15 @@
-// SM call EP_fsm_handleUpdate;
+/**
+	Handles update of a state machine, checking transitions and changing state as needed
+
+	PARAMETERS:
+		_sm										: STATE MACHINE - the state machine to update
+	
+	RETURNS:
+		NONE
+
+	EXAMPLE:
+		[_sm] call EP_fsm_handleUpdate;
+*/
 
 params ["_sm"];
 

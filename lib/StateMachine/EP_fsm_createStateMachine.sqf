@@ -1,4 +1,12 @@
-// call EP_fsm_createStateMachine;
+/**
+	Creates a new state machine
+
+	RETURNS:
+		STATE MACHINE - the created state machine
+
+	EXAMPLE:
+		private _sm = call EP_fsm_createStateMachine;
+*/
 
 private _sm = createHashMap;
 

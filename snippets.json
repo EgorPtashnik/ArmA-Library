@@ -1,0 +1,49 @@
+{
+  "Add HoldAction to unit": { "prefix": "EP_fnc_addHoldAction", "body": "EP_fnc_addHoldAction" },
+  "Handle Tasks": { "prefix": "EP_fnc_handleTasks", "body": "EP_fnc_handleTasks" },
+
+	"Do artillery fire": { "prefix": "EP_fnc_doArtilleryFire", "body": "EP_fnc_doArtilleryFire" },
+  "Add waypoint": { "prefix": "EP_fnc_addWaypoint", "body": "EP_fnc_addWaypoint" },
+	"Clear group waypoints": { "prefix": "EP_fnc_clearWaypoints", "body": "EP_fnc_clearWaypoints" },
+
+	"Fade In": { "prefix": "EP_fnc_fadeIn", "body": "EP_fnc_fadeIn" },
+	"Fade Out": { "prefix": "EP_fnc_fadeOut", "body": "EP_fnc_fadeOut" },
+  "Show subtitles": { "prefix": "EP_fnc_showSubs", "body": "EP_fnc_showSubs" },
+	"Show subtitles with sound": { "prefix": "EP_fnc_conversation", "body": "EP_fnc_conversation" },
+
+	"Show Units": { "prefix": "EP_fnc_showUnits", "body": "EP_fnc_showUnits" },
+	"Hide Units": { "prefix": "EP_fnc_hideUnits", "body": "EP_fnc_hideUnits" },
+	"Show / Hide Units": { "prefix": "EP_fnc_showHideUnits", "body": "EP_fnc_showHideUnits" },
+  "Create Units": { "prefix": "EP_fnc_createUnits", "body": "EP_fnc_createUnits" },
+  "Get Units": { "prefix": "EP_fnc_getUnits", "body": "EP_fnc_getUnits" },
+
+	
+	"System: One Man Tank": { "prefix": "EP_applySystem_OneManTank", "body": "EP_applySystem_OneManTank" },
+	"System: Casual Health": { "prefix": "EP_applySystem_CasualHealth", "body": "EP_applySystem_CasualHealth" },
+	"System: Health Bar": { "prefix": "EP_applySystem_HealthBar", "body": "EP_applySystem_HealthBar" },
+	"System: Simple Convoy": { "prefix": "EP_applySystem_SimpleConvoy", "body": "EP_applySystem_SimpleConvoy" },
+	"System: Random Radio": { "prefix": "EP_applySystem_RandomRadio", "body": "EP_applySystem_RandomRadio" },
+
+  "FSM: Create": { "prefix": "EP_fsm_createStateMachine", "body": "EP_fsm_createStateMachine" },
+  "FSM: Add State": { "prefix": "EP_fsm_addState", "body": "EP_fsm_addState" },
+	"FSM: Get State": { "prefix": "EP_fsm_getState", "body": "EP_fsm_getState" },
+	"FSM: Handle Update": { "prefix": "EP_fsm_handleUpdate", "body": "EP_fsm_handleUpdate" },
+	"FSM: Set State": { "prefix": "EP_fsm_setState", "body": "EP_fsm_setState" },
+	"FSM: Start": { "prefix": "EP_fsm_startStateMachine", "body": "EP_fsm_startStateMachine" },
+
+	"CBA: Current Unit": { "prefix": "CBA_fnc_currentUnit", "body": "CBA_fnc_currentUnit" },
+	"CBA: Clear Waypoints": { "prefix": "CBA_fnc_clearWaypoints", "body": "CBA_fnc_clearWaypoints" },
+	"CBA: Add Waypoints": { "prefix": "CBA_fnc_addWaypoint", "body": "CBA_fnc_addWaypoint" },
+	"CBA: Building Positions": { "prefix": "CBA_fnc_buildingPositions", "body": "CBA_fnc_buildingPositions" },
+	"CBA: Task Search Area": { "prefix": "CBA_fnc_taskSearchArea", "body": "CBA_fnc_taskSearchArea" },
+	"CBA: Task Search Nearby": { "prefix": "CBA_fnc_searchNearby", "body": "CBA_fnc_searchNearby" },
+	"CBA: Task Attack": { "prefix": "CBA_fnc_taskAttack", "body": "CBA_fnc_taskAttack" },
+	"CBA: Task Defend": { "prefix": "CBA_fnc_taskDefend", "body": "CBA_fnc_taskDefend" },
+	"CBA: Task Patrol": { "prefix": "CBA_fnc_taskPatrol", "body": "CBA_fnc_taskPatrol" },
+	"CBA: Delete Entity": { "prefix": "CBA_fnc_deleteEntity", "body": "CBA_fnc_deleteEntity" },
+	"CBA: Near Player": { "prefix": "CBA_fnc_nearPlayer", "body": "CBA_fnc_nearPlayer" },
+	"CBA: Random Position": { "prefix": "CBA_fnc_randPos", "body": "CBA_fnc_randPos" },
+	"CBA: Random Position Area": { "prefix": "CBA_fnc_randPosArea", "body": "CBA_fnc_randPosArea" },
+	"CBA: Switch Player": { "prefix": "CBA_fnc_switchPlayer", "body": "CBA_fnc_switchPlayer" }
+  
+}

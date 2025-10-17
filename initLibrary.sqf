@@ -5,7 +5,7 @@ EP_fnc_handleTasks 					= compile preprocessFileLineNumbers "lib\Common\EP_fnc_h
 //AI Functions
 EP_fnc_doArtilleryFire 			= compile preprocessFileLineNumbers "lib\AI\EP_fnc_doArtilleryFire.sqf";
 EP_fnc_addWaypoint 					= compile preprocessFileLineNumbers "lib\AI\EP_fnc_addWaypoint.sqf";
-EP_fnc_clearWaypoint 				= compile preprocessFileLineNumbers "lib\AI\EP_fnc_clearWaypoint.sqf";
+EP_fnc_clearWaypoints 			= compile preprocessFileLineNumbers "lib\AI\EP_fnc_clearWaypoints.sqf";
 
 //UI Functions
 EP_fnc_fadeIn 							= compile preprocessFileLineNumbers "lib\UI\EP_fnc_fadeI.sqf";
@@ -18,7 +18,7 @@ EP_fnc_hideUnits 						= compile preprocessFileLineNumbers "lib\Units\EP_fnc_hid
 EP_fnc_showUnits 						= compile preprocessFileLineNumbers "lib\Units\EP_fnc_showUnits.sqf";
 EP_fnc_showHideUnits 				= compile preprocessFileLineNumbers "lib\Units\EP_fnc_showHideUnits.sqf";
 EP_fnc_getUnits							= compile preprocessFileLineNumbers "lib\Units\EP_fnc_getUnits.sqf";
-EP_fnc_showUnits						= compile preprocessFileLineNumbers "lib\Units\EP_fnc_showUnits.sqf";
+EP_fnc_createUnits					= compile preprocessFileLineNumbers "lib\Units\EP_fnc_createUnits.sqf";
 
 //Systems
 EP_applySystem_OneManTank 	= compile preprocessFileLineNumbers "lib\Systems\EP_applySystem_OneManTank.sqf";
