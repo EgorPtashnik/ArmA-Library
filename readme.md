@@ -33,6 +33,65 @@
 5. [EP_fsm_handleUpdate](#ep_fsm_handleupdate-menu)
 6. [EP_fsm_startStateMachine](#ep_fsm_startstatemachine-menu)
 
+## BIS
+1. [BIS_fnc_addCommMenuItem](https://community.bistudio.com/wiki/BIS_fnc_addCommMenuItem)
+2. [BIS_fnc_removeCommMenuItem](https://community.bistudio.com/wiki/BIS_fnc_removeCommMenuItem)
+3. [BIS_fnc_advHint](https://community.bistudio.com/wiki/BIS_fnc_advHint)
+4. [BIS_fnc_ambientAnim](https://community.bistudio.com/wiki/BIS_fnc_ambientAnim)
+5. [BIS_fnc_ambientFlyby](https://community.bistudio.com/wiki/BIS_fnc_ambientFlyby)
+6. [BIS_fnc_attachToRelative](https://community.bistudio.com/wiki/BIS_fnc_attachToRelative)
+7. [BIS_fnc_blackIn](https://community.bistudio.com/wiki/BIS_fnc_blackIn)
+8. [BIS_fnc_blackOut](https://community.bistudio.com/wiki/BIS_fnc_blackOut)
+9. [BIS_fnc_cinemaBorder](https://community.bistudio.com/wiki/BIS_fnc_cinemaBorder)
+10. [BIS_fnc_earthquake](https://community.bistudio.com/wiki/BIS_fnc_earthquake)
+11. [BIS_fnc_enemyDetected](https://community.bistudio.com/wiki/BIS_fnc_enemyDetected)
+12. [BIS_fnc_fireSupport](https://community.bistudio.com/wiki/BIS_fnc_fireSupport)
+13. [BIS_fnc_fireSupportVirtual](https://community.bistudio.com/wiki/BIS_fnc_fireSupportVirtual)
+14. [BIS_fnc_fireSupportCluster](https://community.bistudio.com/wiki/BIS_fnc_fireSupportCluster)
+15. [BIS_fnc_getArea](https://community.bistudio.com/wiki/BIS_fnc_getArea)
+16. [BIS_fnc_holdActionAdd](https://community.bistudio.com/wiki/BIS_fnc_holdActionAdd)
+17. [BIS_fnc_holdActionRemove](https://community.bistudio.com/wiki/BIS_fnc_holdActionRemove)
+18. [BIS_fnc_moveIn](https://community.bistudio.com/wiki/BIS_fnc_moveIn)
+19. [BIS_fnc_jukebox](https://community.bistudio.com/wiki/BIS_fnc_jukebox)
+20. [BIS_fnc_infoText](https://community.bistudio.com/wiki/BIS_fnc_infoText)
+21. [BIS_fnc_lookAtArray](https://community.bistudio.com/wiki/BIS_fnc_lookAtArray)
+22. [BIS_fnc_randomPos](https://community.bistudio.com/wiki/BIS_fnc_randomPos)
+23. [BIS_fnc_findSafePos](https://community.bistudio.com/wiki/BIS_fnc_findSafePos)
+24. [BIS_fnc_randomPosTrigger](https://community.bistudio.com/wiki/BIS_fnc_randomPosTrigger)
+25. [BIS_fnc_showSubtitle](https://community.bistudio.com/wiki/BIS_fnc_showSubtitle)
+26. [BIS_fnc_spawnCrew](https://community.bistudio.com/wiki/BIS_fnc_spawnCrew)
+27. [BIS_fnc_spawnEnemy](https://community.bistudio.com/wiki/BIS_fnc_spawnEnemy)
+28. [BIS_fnc_spawnGroup](https://community.bistudio.com/wiki/BIS_fnc_spawnGroup)
+29. [BIS_fnc_spawnObjects](https://community.bistudio.com/wiki/BIS_fnc_spawnObjects)
+30. [BIS_fnc_spawnVehicle](https://community.bistudio.com/wiki/BIS_fnc_spawnVehicle)
+31. [BIS_fnc_spotter](https://community.bistudio.com/wiki/BIS_fnc_spotter)
+32. [BIS_fnc_stalk](https://community.bistudio.com/wiki/BIS_fnc_stalk)
+33. [BIS_fnc_taskDefend](https://community.bistudio.com/wiki/BIS_fnc_taskDefend)
+34. [BIS_fnc_taskPatrol](https://community.bistudio.com/wiki/BIS_fnc_taskPatrol)
+35. [BIS_fnc_taskAttack](https://community.bistudio.com/wiki/BIS_fnc_taskAttack)
+36. [BIS_fnc_textTiles](https://community.bistudio.com/wiki/BIS_fnc_textTiles)
+37. [BIS_fnc_typeText](https://community.bistudio.com/wiki/BIS_fnc_typeText)
+38. [BIS_fnc_typeText2](https://community.bistudio.com/wiki/BIS_fnc_typeText2)
+39. [BIS_fnc_fadeEffect](https://community.bistudio.com/wiki/BIS_fnc_fadeEffect)
+40. [BIS_fnc_EXP_camp_SITREP](https://community.bistudio.com/wiki/BIS_fnc_EXP_camp_SITREP)
+
+## CBA
+1. []
+2. []
+3. []
+4. []
+5. []
+6. []
+7. []
+8. []
+9. []
+10. []
+11. []
+12. []
+13. []
+14. []
+15. []
+
 # EP_fnc_addAction [Menu](#menu)
 ```
 TODO
