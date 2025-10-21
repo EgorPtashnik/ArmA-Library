@@ -94,8 +94,22 @@
 
 # EP_fnc_addAction [Menu](#menu)
 ```
-TODO
+[_attachTo, _title, _code, _condition*, _args*, _priority*, _showWindow*, _hideOnUse*, _shortcut*, _radius*, _unconcious*] call EP_fnc_addAction;
 ```
+Params:
+- _attachTo" : OBJECT
+- _title : STRING
+- _code : CODE
+- _condition : STRING CODE (default: "true")
+- _args : ARRAY (default: nil)
+- _priority : NUMBER (default: 1.5)
+- _showWindow : BOOLEAN (default: true)
+- _hideOnUse : BOOLEAN (default: true)
+- _shortcut : STRING (default: "")
+- _radius : NUMBER (default: 50)
+- _unconcious : BOOLEAN (default true)
+
+Returns: _actionId: NUMBER
 
 # EP_fnc_addHoldAction [Menu](#menu)
 Добавляет HoldAction объекту

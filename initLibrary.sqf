@@ -1,4 +1,5 @@
 //Common Functions
+EP_fnc_addAction 				= compile preprocessFileLineNumbers "lib\Common\EP_fnc_addAction.sqf";
 EP_fnc_addHoldAction 				= compile preprocessFileLineNumbers "lib\Common\EP_fnc_addHoldAction.sqf";
 EP_fnc_handleTasks 					= compile preprocessFileLineNumbers "lib\Common\EP_fnc_handleTasks.sqf";
 
@@ -8,7 +9,7 @@ EP_fnc_addWaypoint 					= compile preprocessFileLineNumbers "lib\AI\EP_fnc_addWa
 EP_fnc_clearWaypoints 			= compile preprocessFileLineNumbers "lib\AI\EP_fnc_clearWaypoints.sqf";
 
 //UI Functions
-EP_fnc_fadeIn 							= compile preprocessFileLineNumbers "lib\UI\EP_fnc_fadeI.sqf";
+EP_fnc_fadeIn 							= compile preprocessFileLineNumbers "lib\UI\EP_fnc_fadeIn.sqf";
 EP_fnc_fadeOut 							= compile preprocessFileLineNumbers "lib\UI\EP_fnc_fadeOut.sqf";
 EP_fnc_showSubs 						= compile preprocessFileLineNumbers "lib\UI\EP_fnc_showSubs.sqf";
 EP_fnc_conversation 				= compile preprocessFileLineNumbers "lib\UI\EP_fnc_conversation.sqf";
