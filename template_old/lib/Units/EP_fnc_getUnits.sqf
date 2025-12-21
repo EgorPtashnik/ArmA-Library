@@ -10,9 +10,6 @@
 	
 	EXAMPLE
 		(group player) call EP_fnc_getUnits;
-
-	IMPORT
-	EP_fnc_getUnits = compile preprocessFileLineNumbers "functions\EP_fnc_getUnits.sqf";
 */
 
 private ["_units"];

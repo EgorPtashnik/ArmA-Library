@@ -1,6 +1,6 @@
 class CfgDebriefing {
-	class Fail {
-		title = "Миссия Провалена";
+	class Fail1 {
+		title = "Mission Failed";
 		subtitle = "";
 		description = "";
 		pictureBackground = "";
@@ -8,8 +8,8 @@ class CfgDebriefing {
 		pictureColor[] = { 0.0, 0.3, 0.6, 1 };
 	};
 
-	class Win {
-		title = "Миссия Выполнена";
+	class Win1 {
+		title = "Mission Completed";
 		subtitle = "";
 		description = "";
 		pictureBackground = "";
@@ -32,7 +32,7 @@ class CfgDebriefing {
 // }
 
 class CfgSounds {
-    sounds[] = {mybeep, myin1, myin2, myin4, myin5, myin6, mynoise1, mynoise2, mynoise3, mynoise4};
+    sounds[] = {mybeep, myin1, myin2, myin4, myin5, myin6, myin7, mynoise1, mynoise2, mynoise3, mynoise4};
     
 	class mybeep {
 		name = "mybeep";

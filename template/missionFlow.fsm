@@ -1,9 +1,156 @@
-/*%FSM<COMPILE "scriptedFSM.cfg, missionFlow">*/
+/*%FSM<COMPILE "C:\Myself\steam\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, missionFlow">*/
 /*%FSM<HEAD>*/
 /*
-item0[] = {"start",0,4346,-75.000000,-1830.000000,15.000000,-1785.000000,0.000000,"start"};
-globals[] = {0.000000,0,0,0,0,640,480,1,494,6316128,1,-301.783844,204.771240,-1382.015625,-1890.310059,873,876,1};
-window[] = {2,-1,-1,-1,-1,846,494,2025,79,3,891};
+item0[] = {"start",0,250,-75.000000,-1825.000000,25.000000,-1775.000000,0.000000,"start"};
+item1[] = {"mission_started",4,218,-75.000000,-1725.000000,25.000000,-1675.000000,0.000000,"mission" \n "started"};
+item2[] = {"Intro",2,250,-75.000000,-1625.000000,25.000000,-1575.000000,0.000000,"Intro"};
+item3[] = {"timeout",4,218,-75.000000,-1525.000000,25.000000,-1475.000000,0.000000,"timeout"};
+item4[] = {"Bradley_no_fuel",4,218,-375.000000,-1225.000000,-275.000000,-1175.000000,22.000000,"Bradley" \n "no fuel"};
+item5[] = {"Bradley_lost",4,218,-375.000000,-1325.000000,-275.000000,-1275.000000,22.000000,"Bradley" \n "lost"};
+item6[] = {"Fail_No_Fuel",1,250,-525.000000,-1225.000000,-425.000000,-1175.000000,0.000000,"Fail" \n "No Fuel"};
+item7[] = {"Fail_Bradley_Los",1,250,-525.000000,-1325.000000,-425.000000,-1275.000000,0.000000,"Fail" \n "Bradley Lost"};
+item8[] = {"start_alpha_base",2,250,-75.000000,-1400.000000,25.000000,-1350.000000,0.000000,"start" \n "alpha base" \n "loop"};
+item9[] = {"",7,210,-154.000000,-1304.000000,-146.000000,-1296.000000,0.000000,""};
+item10[] = {"",7,210,-216.500000,-1304.000000,-208.500000,-1296.000000,0.000000,""};
+item11[] = {"__st_wave__comba",4,218,75.000000,-1200.000000,175.000000,-1150.000000,0.000000,"1st wave:" \n "combat"};
+item12[] = {"defenders_move",2,250,250.000000,-1200.000000,350.000000,-1150.000000,0.000000,"defenders" \n "move"};
+item13[] = {"__nd_wave_dead",4,218,-75.000000,-950.000000,25.000000,-900.000000,1.000000,"2nd wave" \n "dead"};
+item14[] = {"",7,210,-29.000000,-1304.000000,-21.000000,-1296.000000,0.000000,""};
+item15[] = {"beta_base_init",2,250,-75.000000,-850.000000,25.000000,-800.000000,0.000000,"beta" \n "base" \n "init"};
+item16[] = {"",7,210,-29.000000,-1104.000000,-21.000000,-1096.000000,0.000000,""};
+item17[] = {"",7,210,-4.000000,-1104.000000,4.000000,-1096.000000,0.000000,""};
+item18[] = {"Stryker_down",4,218,75.000000,-1275.000000,175.000000,-1225.000000,0.000000,"Stryker" \n "down"};
+item19[] = {"Bradley_is_new_t",2,250,250.000000,-1275.000000,350.000000,-1225.000000,0.000000,"Bradley" \n "is new target"};
+item20[] = {"__st_wave_dead",4,218,75.000000,-1125.000000,175.000000,-1075.000000,0.000000,"1st wave" \n "dead"};
+item21[] = {"timeout",4,218,75.000000,-1050.000000,175.000000,-1000.000000,0.000000,"timeout"};
+item22[] = {"send_2nd_wave",2,250,250.000000,-1125.000000,350.000000,-1075.000000,0.000000,"send" \n "2nd" \n "wave"};
+item23[] = {"",7,210,-154.000000,-1604.000000,-146.000000,-1596.000000,0.000000,""};
+item24[] = {"",7,210,-154.000000,-829.000000,-146.000000,-821.000000,0.000000,""};
+item25[] = {"",7,210,-216.500000,-1204.000000,-208.500000,-1196.000000,0.000000,""};
+item26[] = {"",7,210,408.500000,-1254.000000,416.500000,-1246.000000,0.000000,""};
+item27[] = {"",7,210,408.500000,-1304.000000,416.500000,-1296.000000,0.000000,""};
+item28[] = {"",7,210,-4.000000,-1254.000000,4.000000,-1246.000000,0.000000,""};
+item29[] = {"",7,210,-4.000000,-1179.000000,4.000000,-1171.000000,0.000000,""};
+item30[] = {"",7,210,408.500000,-1179.000000,416.500000,-1171.000000,0.000000,""};
+item31[] = {"",7,210,408.500000,-1104.000000,416.500000,-1096.000000,0.000000,""};
+item32[] = {"",7,210,-4.000000,-1029.000000,4.000000,-1021.000000,0.000000,""};
+item33[] = {"",7,210,208.500000,-1104.000000,216.500000,-1096.000000,0.000000,""};
+item34[] = {"",7,210,208.500000,-1029.000000,216.500000,-1021.000000,0.000000,""};
+item35[] = {"attack_repelled",4,218,-75.000000,-750.000000,25.000000,-700.000000,0.000000,"attack" \n "repelled"};
+item36[] = {"helis_loop",2,250,-75.000000,-475.000000,25.000000,-425.000000,0.000000,"helis" \n "loop"};
+item37[] = {"helicopters_down",4,218,0.000000,-50.000000,100.000000,0.000000,1.000000,"helicopters" \n "down"};
+item38[] = {"__st_heli_down",4,218,0.000000,-350.000000,100.000000,-300.000000,1.000000,"1st heli down"};
+item39[] = {"__nd_heli_down",4,218,150.000000,-350.000000,250.000000,-300.000000,1.000000,"2nd heli down"};
+item40[] = {"report",2,250,0.000000,175.000000,100.000000,225.000000,0.000000,"report"};
+item41[] = {"send_helicopters",2,250,-75.000000,-650.000000,25.000000,-600.000000,0.000000,"send" \n "helicopters"};
+item42[] = {"_",8,218,-75.000000,-575.000000,25.000000,-525.000000,0.000000,""};
+item43[] = {"",7,210,-154.000000,-629.000000,-146.000000,-621.000000,0.000000,""};
+item44[] = {"",7,210,-154.000000,-391.500000,-146.000000,-383.500000,0.000000,""};
+item45[] = {"__st_heli_landed",4,218,-300.000000,-350.000000,-200.000000,-300.000000,0.000000,"1st heli" \n "landed"};
+item46[] = {"__nd_heli_landed",4,218,-150.000000,-350.000000,-50.000000,-300.000000,0.000000,"2nd heli" \n "landed"};
+item47[] = {"comms",2,250,0.000000,-250.000000,100.000000,-200.000000,0.000000,"comms"};
+item48[] = {"send_infantry",2,250,-300.000000,-250.000000,-200.000000,-200.000000,0.000000,"send" \n "infantry"};
+item49[] = {"comms_1",2,250,150.000000,-250.000000,250.000000,-200.000000,0.000000,"comms"};
+item50[] = {"send_infantry_1",2,250,-150.000000,-250.000000,-50.000000,-200.000000,0.000000,"send" \n "infantry"};
+item51[] = {"",7,210,-29.000008,-91.500000,-20.999992,-83.499992,0.000000,""};
+item52[] = {"",7,210,-28.999992,-391.500000,-21.000008,-383.500000,0.000000,""};
+item53[] = {"",7,210,321.000000,-91.500000,329.000000,-83.500000,0.000000,""};
+item54[] = {"",7,210,321.000000,-391.500000,329.000000,-383.500000,0.000000,""};
+item55[] = {"heli_landed",4,218,-150.000000,-50.000000,-50.000000,0.000000,0.000000,"heli landed"};
+item56[] = {"kill_infantry",2,250,-150.000000,25.000000,-50.000000,75.000000,0.000000,"kill" \n "infantry"};
+item57[] = {"defended",8,218,-75.000000,350.000000,25.000000,400.000000,0.000000,"defended"};
+item58[] = {"infantry_dead",4,218,-150.000000,100.000000,-50.000000,150.000000,0.000000,"infantry" \n "dead"};
+item59[] = {"complete_task",2,250,-150.000000,175.000000,-50.000000,225.000000,0.000000,"complete task"};
+item60[] = {"",7,210,46.000000,296.000000,54.000000,304.000000,0.000000,""};
+item61[] = {"",7,210,-29.000000,296.000000,-21.000000,304.000000,0.000000,""};
+item62[] = {"",7,210,-104.000008,296.000000,-95.999992,304.000000,0.000000,""};
+item63[] = {"",7,210,-428.999969,46.000008,-421.000031,53.999992,0.000000,""};
+item64[] = {"",7,210,-429.000000,-391.500000,-421.000000,-383.500000,0.000000,""};
+item65[] = {"",7,210,-429.000000,196.000000,-421.000000,204.000000,0.000000,""};
+item66[] = {"Clean_Up_Wave_2",2,250,-75.000000,475.000000,25.000000,525.000000,0.000000,"Clean Up" \n "Wave 2"};
+link0[] = {0,1};
+link1[] = {1,2};
+link2[] = {2,3};
+link3[] = {2,23};
+link4[] = {3,8};
+link5[] = {4,6};
+link6[] = {5,7};
+link7[] = {8,14};
+link8[] = {9,10};
+link9[] = {10,5};
+link10[] = {10,25};
+link11[] = {11,12};
+link12[] = {12,30};
+link13[] = {13,15};
+link14[] = {14,9};
+link15[] = {14,16};
+link16[] = {15,24};
+link17[] = {15,35};
+link18[] = {16,13};
+link19[] = {16,17};
+link20[] = {17,20};
+link21[] = {17,29};
+link22[] = {17,32};
+link23[] = {18,19};
+link24[] = {19,26};
+link25[] = {20,33};
+link26[] = {21,34};
+link27[] = {22,31};
+link28[] = {23,9};
+link29[] = {24,9};
+link30[] = {25,4};
+link31[] = {26,27};
+link32[] = {27,14};
+link33[] = {28,18};
+link34[] = {29,11};
+link35[] = {29,28};
+link36[] = {30,26};
+link37[] = {31,30};
+link38[] = {32,21};
+link39[] = {33,22};
+link40[] = {34,33};
+link41[] = {35,41};
+link42[] = {36,52};
+link43[] = {37,40};
+link44[] = {38,47};
+link45[] = {39,49};
+link46[] = {40,60};
+link47[] = {41,42};
+link48[] = {41,43};
+link49[] = {42,36};
+link50[] = {43,24};
+link51[] = {44,43};
+link52[] = {45,48};
+link53[] = {46,50};
+link54[] = {47,51};
+link55[] = {48,51};
+link56[] = {49,51};
+link57[] = {50,51};
+link58[] = {51,37};
+link59[] = {51,53};
+link60[] = {51,55};
+link61[] = {52,38};
+link62[] = {52,39};
+link63[] = {52,44};
+link64[] = {52,45};
+link65[] = {52,46};
+link66[] = {53,54};
+link67[] = {54,52};
+link68[] = {55,56};
+link69[] = {56,58};
+link70[] = {56,63};
+link71[] = {57,66};
+link72[] = {58,59};
+link73[] = {59,62};
+link74[] = {59,65};
+link75[] = {60,61};
+link76[] = {61,57};
+link77[] = {62,61};
+link78[] = {63,64};
+link79[] = {64,44};
+link80[] = {65,63};
+globals[] = {0.000000,0,0,0,0,640,480,1,622,6316128,1,-654.348633,961.810547,-37.024170,-1658.737061,873,876,1};
+window[] = {2,-1,-1,-1,-1,819,-1868,-337,52,3,891};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -15,7 +162,1247 @@ class FSM
                 {
                         name = "start";
                         itemno = 0;
-                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        init = /*%FSM<STATEINIT""">*/"private ""_time"";"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "mission_started">*/
+                                class mission_started
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="Intro";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(isNil ""EP_MissionStarted"")"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Intro">*/
+                class Intro
+                {
+                        name = "Intro";
+                        itemno = 2;
+                        init = /*%FSM<STATEINIT""">*/"_time = time;" \n
+                         "[] spawn {" \n
+                         "	sleep 2;" \n
+                         "	" \n
+                         "	""Intro"" call BIS_fnc_missionConversations;" \n
+                         "	" \n
+                         "	sleep 2;" \n
+                         "" \n
+                         "	""EP_task_DefendAlpha"" call BIS_fnc_missionTasks;" \n
+                         "	" \n
+                         "	sleep 5;" \n
+                         "" \n
+                         "	savegame;	" \n
+                         "}"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Bradley_lost">*/
+                                class Bradley_lost
+                                {
+                                        itemno = 5;
+                                        priority = 22.000000;
+                                        to="Fail_Bradley_Los";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(alive EP_Bradley) || !(canFire EP_Bradley)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Bradley_no_fuel">*/
+                                class Bradley_no_fuel
+                                {
+                                        itemno = 4;
+                                        priority = 22.000000;
+                                        to="Fail_No_Fuel";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(canMove EP_Bradley) || (fuel EP_Bradley) == 0"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "timeout">*/
+                                class timeout
+                                {
+                                        itemno = 3;
+                                        priority = 0.000000;
+                                        to="start_alpha_base";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time > _time + 60;"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Fail_No_Fuel">*/
+                class Fail_No_Fuel
+                {
+                        name = "Fail_No_Fuel";
+                        itemno = 6;
+                        init = /*%FSM<STATEINIT""">*/"[""FailFuel"", false] call BIS_fnc_endMission;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Fail_Bradley_Los">*/
+                class Fail_Bradley_Los
+                {
+                        name = "Fail_Bradley_Los";
+                        itemno = 7;
+                        init = /*%FSM<STATEINIT""">*/"[""FailLost"", false] call BIS_fnc_endMission"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "start_alpha_base">*/
+                class start_alpha_base
+                {
+                        name = "start_alpha_base";
+                        itemno = 8;
+                        init = /*%FSM<STATEINIT""">*/"_time = time;" \n
+                         "EP_Send_Wave_1 = true;" \n
+                         "" \n
+                         "[] spawn {" \n
+                         "" \n
+                         "	sleep 30;" \n
+                         "" \n
+                         "	{_x enableSimulation true; _x hideObject false} forEach (getMissionLayerEntities ""Wave_1"" # 0);" \n
+                         "" \n
+                         "}"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Bradley_no_fuel">*/
+                                class Bradley_no_fuel
+                                {
+                                        itemno = 4;
+                                        priority = 22.000000;
+                                        to="Fail_No_Fuel";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(canMove EP_Bradley) || (fuel EP_Bradley) == 0"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Bradley_lost">*/
+                                class Bradley_lost
+                                {
+                                        itemno = 5;
+                                        priority = 22.000000;
+                                        to="Fail_Bradley_Los";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(alive EP_Bradley) || !(canFire EP_Bradley)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__nd_wave_dead">*/
+                                class __nd_wave_dead
+                                {
+                                        itemno = 13;
+                                        priority = 1.000000;
+                                        to="beta_base_init";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(!(alive EP_Wave_2_BTR) && !(alive EP_Wave_2_BRDM)) || ({alive _x} count (units EP_Wave_2_Infantry) < 3)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__st_wave__comba">*/
+                                class __st_wave__comba
+                                {
+                                        itemno = 11;
+                                        priority = 0.000000;
+                                        to="defenders_move";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""EP_1st_Wave_Combat"" && {(behaviour EP_BaseA_1) == ""COMBAT""}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Stryker_down">*/
+                                class Stryker_down
+                                {
+                                        itemno = 18;
+                                        priority = 0.000000;
+                                        to="Bradley_is_new_t";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(isNil ""EP_Stryker_Down"") && {!(canMove EP_BaseA_Stryker) || !(alive EP_BaseA_Stryker) || !(canFire EP_BaseA_Stryker)}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"(isNil ""EP_Stryker_Down"") && {!(canMove EP_BaseA_Stryker) || !(alive EP_BaseA_Stryker) || !(canFire EP_BaseA_Stryker)}"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "timeout">*/
+                                class timeout
+                                {
+                                        itemno = 21;
+                                        priority = 0.000000;
+                                        to="send_2nd_wave";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(isNil ""EP_Send_Wave_2"") && time > _time + 60"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__st_wave_dead">*/
+                                class __st_wave_dead
+                                {
+                                        itemno = 20;
+                                        priority = 0.000000;
+                                        to="send_2nd_wave";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(isNil ""EP_Send_Wave_2"") && ({alive _x} count (getMissionLayerEntities ""Wave_1"" # 0) < 3)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "defenders_move">*/
+                class defenders_move
+                {
+                        name = "defenders_move";
+                        itemno = 12;
+                        init = /*%FSM<STATEINIT""">*/"EP_1st_Wave_Combat = true;" \n
+                         "" \n
+                         "private ""_unit"";" \n
+                         "{_unit = missionNamespace getVariable (format [""EP_BaseB_%1"", _x]); _unit doFollow EP_BaseA_1} forEach [5,9,10,11];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Bradley_no_fuel">*/
+                                class Bradley_no_fuel
+                                {
+                                        itemno = 4;
+                                        priority = 22.000000;
+                                        to="Fail_No_Fuel";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(canMove EP_Bradley) || (fuel EP_Bradley) == 0"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Bradley_lost">*/
+                                class Bradley_lost
+                                {
+                                        itemno = 5;
+                                        priority = 22.000000;
+                                        to="Fail_Bradley_Los";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(alive EP_Bradley) || !(canFire EP_Bradley)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__nd_wave_dead">*/
+                                class __nd_wave_dead
+                                {
+                                        itemno = 13;
+                                        priority = 1.000000;
+                                        to="beta_base_init";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(!(alive EP_Wave_2_BTR) && !(alive EP_Wave_2_BRDM)) || ({alive _x} count (units EP_Wave_2_Infantry) < 3)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__st_wave__comba">*/
+                                class __st_wave__comba
+                                {
+                                        itemno = 11;
+                                        priority = 0.000000;
+                                        to="defenders_move";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""EP_1st_Wave_Combat"" && {(behaviour EP_BaseA_1) == ""COMBAT""}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Stryker_down">*/
+                                class Stryker_down
+                                {
+                                        itemno = 18;
+                                        priority = 0.000000;
+                                        to="Bradley_is_new_t";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(isNil ""EP_Stryker_Down"") && {!(canMove EP_BaseA_Stryker) || !(alive EP_BaseA_Stryker) || !(canFire EP_BaseA_Stryker)}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"(isNil ""EP_Stryker_Down"") && {!(canMove EP_BaseA_Stryker) || !(alive EP_BaseA_Stryker) || !(canFire EP_BaseA_Stryker)}"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "timeout">*/
+                                class timeout
+                                {
+                                        itemno = 21;
+                                        priority = 0.000000;
+                                        to="send_2nd_wave";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(isNil ""EP_Send_Wave_2"") && time > _time + 60"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__st_wave_dead">*/
+                                class __st_wave_dead
+                                {
+                                        itemno = 20;
+                                        priority = 0.000000;
+                                        to="send_2nd_wave";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(isNil ""EP_Send_Wave_2"") && ({alive _x} count (getMissionLayerEntities ""Wave_1"" # 0) < 3)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "beta_base_init">*/
+                class beta_base_init
+                {
+                        name = "beta_base_init";
+                        itemno = 15;
+                        init = /*%FSM<STATEINIT""">*/"EP_Bradley setCaptive false;" \n
+                         "" \n
+                         "{_x enableSimulation true; _x hideObject false} forEach (getMissionLayerEntities ""Base_Support_Units"" # 0);" \n
+                         "{_x enableSimulation true; _x hideObject false} forEach (getMissionLayerEntities ""Base_Beta_Units"" # 0);" \n
+                         "{_x enableSimulation true; _x setCaptive false; _x hideObject false; _x reveal [EP_Sniper, 4]} forEach (units EP_Group_AmbientEnemy);" \n
+                         "{_x enableSimulation true} forEach (getMissionLayerEntities ""Ambient_Units"" # 0);" \n
+                         "{_x enableSimulation true; _x hideObject false;} forEach (getMissionLayerEntities ""Wave_Beta_1"" # 0);" \n
+                         "" \n
+                         "[] spawn {" \n
+                         "	waitUntil {(combatBehaviour group EP_BaseB_1) == ""COMBAT""};" \n
+                         "	""BetaAttacked"" spawn BIS_fnc_missionConversations;" \n
+                         "	{_x setCaptive false} forEach (getMissionLayerEntities ""Base_Beta_Units"" # 0);" \n
+                         "" \n
+                         "	sleep 3;" \n
+                         "" \n
+                         "	""EP_task_DefendAlpha"" call BIS_fnc_missionTasks;" \n
+                         "	""EP_task_DefendBeta"" call BIS_fnc_missionTasks;" \n
+                         "	" \n
+                         "" \n
+                         "	sleep 17;" \n
+                         "" \n
+                         "	EP_BaseB_Bradley setDamage 1;" \n
+                         "	" \n
+                         "	sleep 5;" \n
+                         "	savegame;" \n
+                         "}" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Bradley_lost">*/
+                                class Bradley_lost
+                                {
+                                        itemno = 5;
+                                        priority = 22.000000;
+                                        to="Fail_Bradley_Los";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(alive EP_Bradley) || !(canFire EP_Bradley)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Bradley_no_fuel">*/
+                                class Bradley_no_fuel
+                                {
+                                        itemno = 4;
+                                        priority = 22.000000;
+                                        to="Fail_No_Fuel";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(canMove EP_Bradley) || (fuel EP_Bradley) == 0"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "attack_repelled">*/
+                                class attack_repelled
+                                {
+                                        itemno = 35;
+                                        priority = 0.000000;
+                                        to="send_helicopters";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"{alive _x} count (getMissionLayerEntities ""Wave_Beta_1"" # 0) < 3"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Bradley_is_new_t">*/
+                class Bradley_is_new_t
+                {
+                        name = "Bradley_is_new_t";
+                        itemno = 19;
+                        init = /*%FSM<STATEINIT""">*/"EP_Stryker_Down = true;" \n
+                         "" \n
+                         "EP_Bradley setCaptive false;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Bradley_no_fuel">*/
+                                class Bradley_no_fuel
+                                {
+                                        itemno = 4;
+                                        priority = 22.000000;
+                                        to="Fail_No_Fuel";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(canMove EP_Bradley) || (fuel EP_Bradley) == 0"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Bradley_lost">*/
+                                class Bradley_lost
+                                {
+                                        itemno = 5;
+                                        priority = 22.000000;
+                                        to="Fail_Bradley_Los";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(alive EP_Bradley) || !(canFire EP_Bradley)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__nd_wave_dead">*/
+                                class __nd_wave_dead
+                                {
+                                        itemno = 13;
+                                        priority = 1.000000;
+                                        to="beta_base_init";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(!(alive EP_Wave_2_BTR) && !(alive EP_Wave_2_BRDM)) || ({alive _x} count (units EP_Wave_2_Infantry) < 3)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__st_wave__comba">*/
+                                class __st_wave__comba
+                                {
+                                        itemno = 11;
+                                        priority = 0.000000;
+                                        to="defenders_move";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""EP_1st_Wave_Combat"" && {(behaviour EP_BaseA_1) == ""COMBAT""}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Stryker_down">*/
+                                class Stryker_down
+                                {
+                                        itemno = 18;
+                                        priority = 0.000000;
+                                        to="Bradley_is_new_t";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(isNil ""EP_Stryker_Down"") && {!(canMove EP_BaseA_Stryker) || !(alive EP_BaseA_Stryker) || !(canFire EP_BaseA_Stryker)}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"(isNil ""EP_Stryker_Down"") && {!(canMove EP_BaseA_Stryker) || !(alive EP_BaseA_Stryker) || !(canFire EP_BaseA_Stryker)}"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "timeout">*/
+                                class timeout
+                                {
+                                        itemno = 21;
+                                        priority = 0.000000;
+                                        to="send_2nd_wave";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(isNil ""EP_Send_Wave_2"") && time > _time + 60"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__st_wave_dead">*/
+                                class __st_wave_dead
+                                {
+                                        itemno = 20;
+                                        priority = 0.000000;
+                                        to="send_2nd_wave";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(isNil ""EP_Send_Wave_2"") && ({alive _x} count (getMissionLayerEntities ""Wave_1"" # 0) < 3)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "send_2nd_wave">*/
+                class send_2nd_wave
+                {
+                        name = "send_2nd_wave";
+                        itemno = 22;
+                        init = /*%FSM<STATEINIT""">*/"EP_Send_Wave_2 = true;" \n
+                         "" \n
+                         "[] spawn {" \n
+                         "	sleep 30;" \n
+                         "	{_x enableSimulation true; _x hideObject false} forEach (getMissionLayerEntities ""Wave_2"" # 0);" \n
+                         "}"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Bradley_no_fuel">*/
+                                class Bradley_no_fuel
+                                {
+                                        itemno = 4;
+                                        priority = 22.000000;
+                                        to="Fail_No_Fuel";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(canMove EP_Bradley) || (fuel EP_Bradley) == 0"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Bradley_lost">*/
+                                class Bradley_lost
+                                {
+                                        itemno = 5;
+                                        priority = 22.000000;
+                                        to="Fail_Bradley_Los";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(alive EP_Bradley) || !(canFire EP_Bradley)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__nd_wave_dead">*/
+                                class __nd_wave_dead
+                                {
+                                        itemno = 13;
+                                        priority = 1.000000;
+                                        to="beta_base_init";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(!(alive EP_Wave_2_BTR) && !(alive EP_Wave_2_BRDM)) || ({alive _x} count (units EP_Wave_2_Infantry) < 3)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__st_wave__comba">*/
+                                class __st_wave__comba
+                                {
+                                        itemno = 11;
+                                        priority = 0.000000;
+                                        to="defenders_move";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""EP_1st_Wave_Combat"" && {(behaviour EP_BaseA_1) == ""COMBAT""}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Stryker_down">*/
+                                class Stryker_down
+                                {
+                                        itemno = 18;
+                                        priority = 0.000000;
+                                        to="Bradley_is_new_t";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(isNil ""EP_Stryker_Down"") && {!(canMove EP_BaseA_Stryker) || !(alive EP_BaseA_Stryker) || !(canFire EP_BaseA_Stryker)}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"(isNil ""EP_Stryker_Down"") && {!(canMove EP_BaseA_Stryker) || !(alive EP_BaseA_Stryker) || !(canFire EP_BaseA_Stryker)}"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "timeout">*/
+                                class timeout
+                                {
+                                        itemno = 21;
+                                        priority = 0.000000;
+                                        to="send_2nd_wave";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(isNil ""EP_Send_Wave_2"") && time > _time + 60"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__st_wave_dead">*/
+                                class __st_wave_dead
+                                {
+                                        itemno = 20;
+                                        priority = 0.000000;
+                                        to="send_2nd_wave";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(isNil ""EP_Send_Wave_2"") && ({alive _x} count (getMissionLayerEntities ""Wave_1"" # 0) < 3)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "helis_loop">*/
+                class helis_loop
+                {
+                        name = "helis_loop";
+                        itemno = 36;
+                        init = /*%FSM<STATEINIT""">*/"private [""_wp""];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Bradley_no_fuel">*/
+                                class Bradley_no_fuel
+                                {
+                                        itemno = 4;
+                                        priority = 22.000000;
+                                        to="Fail_No_Fuel";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(canMove EP_Bradley) || (fuel EP_Bradley) == 0"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Bradley_lost">*/
+                                class Bradley_lost
+                                {
+                                        itemno = 5;
+                                        priority = 22.000000;
+                                        to="Fail_Bradley_Los";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(alive EP_Bradley) || !(canFire EP_Bradley)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__nd_heli_down">*/
+                                class __nd_heli_down
+                                {
+                                        itemno = 39;
+                                        priority = 1.000000;
+                                        to="comms_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"{alive _x} count _helis < 2 && {isNil ""EP_Second_Heli_Down""}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__st_heli_down">*/
+                                class __st_heli_down
+                                {
+                                        itemno = 38;
+                                        priority = 1.000000;
+                                        to="comms";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"{alive _x} count _helis < 3 && {isNil ""EP_First_Heli_Down""}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__nd_heli_landed">*/
+                                class __nd_heli_landed
+                                {
+                                        itemno = 46;
+                                        priority = 0.000000;
+                                        to="send_infantry_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isTouchingGround EP_Heli_3 && alive EP_Heli_3 && (isNil ""EP_Landed_3"")"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"EP_Second_Heli_Down = true;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__st_heli_landed">*/
+                                class __st_heli_landed
+                                {
+                                        itemno = 45;
+                                        priority = 0.000000;
+                                        to="send_infantry";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isTouchingGround EP_Heli_1 && alive EP_Heli_1 && (isNil ""EP_Landed_1"")"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"EP_First_Heli_Down = true;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "report">*/
+                class report
+                {
+                        name = "report";
+                        itemno = 40;
+                        init = /*%FSM<STATEINIT""">*/"""HelisDown"" spawn BIS_fnc_missionConversations;" \n
+                         """EP_task_DestroyHelis"" call BIS_fnc_missionTasks;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "defended">*/
+                                class defended
+                                {
+                                        itemno = 57;
+                                        priority = 0.000000;
+                                        to="Clean_Up_Wave_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"false"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "send_helicopters">*/
+                class send_helicopters
+                {
+                        name = "send_helicopters";
+                        itemno = 41;
+                        init = /*%FSM<STATEINIT""">*/"private [""_helis""];" \n
+                         "" \n
+                         "{_x enableSimulation true;	_x hideObject false} forEach (getMissionLayerEntities ""Wave_Beta_2"" # 0);" \n
+                         "" \n
+                         "_helis = [EP_Heli_1, EP_Heli_2, EP_Heli_3];" \n
+                         "" \n
+                         "[] spawn {" \n
+                         "	sleep 2;" \n
+                         "	""BetaSendHelis"" call BIS_fnc_missionConversations;" \n
+                         "	""EP_task_DestroyHelis"" call BIS_fnc_missionTasks;" \n
+                         "}"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Bradley_lost">*/
+                                class Bradley_lost
+                                {
+                                        itemno = 5;
+                                        priority = 22.000000;
+                                        to="Fail_Bradley_Los";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(alive EP_Bradley) || !(canFire EP_Bradley)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Bradley_no_fuel">*/
+                                class Bradley_no_fuel
+                                {
+                                        itemno = 4;
+                                        priority = 22.000000;
+                                        to="Fail_No_Fuel";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(canMove EP_Bradley) || (fuel EP_Bradley) == 0"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 42;
+                                        priority = 0.000000;
+                                        to="helis_loop";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "comms">*/
+                class comms
+                {
+                        name = "comms";
+                        itemno = 47;
+                        init = /*%FSM<STATEINIT""">*/"EP_First_Heli_Down = true;" \n
+                         "" \n
+                         "[] spawn {" \n
+                         "	""FirstHeliDown"" call BIS_fnc_missionConversations;" \n
+                         "};" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Bradley_no_fuel">*/
+                                class Bradley_no_fuel
+                                {
+                                        itemno = 4;
+                                        priority = 22.000000;
+                                        to="Fail_No_Fuel";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(canMove EP_Bradley) || (fuel EP_Bradley) == 0"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Bradley_lost">*/
+                                class Bradley_lost
+                                {
+                                        itemno = 5;
+                                        priority = 22.000000;
+                                        to="Fail_Bradley_Los";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(alive EP_Bradley) || !(canFire EP_Bradley)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__nd_heli_down">*/
+                                class __nd_heli_down
+                                {
+                                        itemno = 39;
+                                        priority = 1.000000;
+                                        to="comms_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"{alive _x} count _helis < 2 && {isNil ""EP_Second_Heli_Down""}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__st_heli_down">*/
+                                class __st_heli_down
+                                {
+                                        itemno = 38;
+                                        priority = 1.000000;
+                                        to="comms";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"{alive _x} count _helis < 3 && {isNil ""EP_First_Heli_Down""}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "helicopters_down">*/
+                                class helicopters_down
+                                {
+                                        itemno = 37;
+                                        priority = 1.000000;
+                                        to="report";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"missionNamespace getVariable [""EP_First_Heli_Down"", false] &&" \n
+                                         "missionNamespace getVariable [""EP_Second_Heli_Down"", false] &&" \n
+                                         "{alive _x} count (getMissionLayerEntities ""Wave_Beta_2"" # 0) == 0"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__nd_heli_landed">*/
+                                class __nd_heli_landed
+                                {
+                                        itemno = 46;
+                                        priority = 0.000000;
+                                        to="send_infantry_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isTouchingGround EP_Heli_3 && alive EP_Heli_3 && (isNil ""EP_Landed_3"")"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"EP_Second_Heli_Down = true;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__st_heli_landed">*/
+                                class __st_heli_landed
+                                {
+                                        itemno = 45;
+                                        priority = 0.000000;
+                                        to="send_infantry";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isTouchingGround EP_Heli_1 && alive EP_Heli_1 && (isNil ""EP_Landed_1"")"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"EP_First_Heli_Down = true;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "heli_landed">*/
+                                class heli_landed
+                                {
+                                        itemno = 55;
+                                        priority = 0.000000;
+                                        to="kill_infantry";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"missionNamespace getVariable [""EP_Landed_1"", false] ||" \n
+                                         "missionNamespace getVariable [""EP_Landed_3"", false]"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "send_infantry">*/
+                class send_infantry
+                {
+                        name = "send_infantry";
+                        itemno = 48;
+                        init = /*%FSM<STATEINIT""">*/"EP_Landed_1 = true;" \n
+                         "EP_First_Heli_Down = false;" \n
+                         "EP_Second_Heli_Down = false;" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Bradley_no_fuel">*/
+                                class Bradley_no_fuel
+                                {
+                                        itemno = 4;
+                                        priority = 22.000000;
+                                        to="Fail_No_Fuel";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(canMove EP_Bradley) || (fuel EP_Bradley) == 0"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Bradley_lost">*/
+                                class Bradley_lost
+                                {
+                                        itemno = 5;
+                                        priority = 22.000000;
+                                        to="Fail_Bradley_Los";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(alive EP_Bradley) || !(canFire EP_Bradley)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__nd_heli_down">*/
+                                class __nd_heli_down
+                                {
+                                        itemno = 39;
+                                        priority = 1.000000;
+                                        to="comms_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"{alive _x} count _helis < 2 && {isNil ""EP_Second_Heli_Down""}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__st_heli_down">*/
+                                class __st_heli_down
+                                {
+                                        itemno = 38;
+                                        priority = 1.000000;
+                                        to="comms";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"{alive _x} count _helis < 3 && {isNil ""EP_First_Heli_Down""}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "helicopters_down">*/
+                                class helicopters_down
+                                {
+                                        itemno = 37;
+                                        priority = 1.000000;
+                                        to="report";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"missionNamespace getVariable [""EP_First_Heli_Down"", false] &&" \n
+                                         "missionNamespace getVariable [""EP_Second_Heli_Down"", false] &&" \n
+                                         "{alive _x} count (getMissionLayerEntities ""Wave_Beta_2"" # 0) == 0"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__nd_heli_landed">*/
+                                class __nd_heli_landed
+                                {
+                                        itemno = 46;
+                                        priority = 0.000000;
+                                        to="send_infantry_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isTouchingGround EP_Heli_3 && alive EP_Heli_3 && (isNil ""EP_Landed_3"")"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"EP_Second_Heli_Down = true;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__st_heli_landed">*/
+                                class __st_heli_landed
+                                {
+                                        itemno = 45;
+                                        priority = 0.000000;
+                                        to="send_infantry";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isTouchingGround EP_Heli_1 && alive EP_Heli_1 && (isNil ""EP_Landed_1"")"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"EP_First_Heli_Down = true;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "heli_landed">*/
+                                class heli_landed
+                                {
+                                        itemno = 55;
+                                        priority = 0.000000;
+                                        to="kill_infantry";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"missionNamespace getVariable [""EP_Landed_1"", false] ||" \n
+                                         "missionNamespace getVariable [""EP_Landed_3"", false]"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "comms_1">*/
+                class comms_1
+                {
+                        name = "comms_1";
+                        itemno = 49;
+                        init = /*%FSM<STATEINIT""">*/"EP_Second_Heli_Down = true;" \n
+                         "" \n
+                         "[] spawn {" \n
+                         "	""SecondHeliDown"" spawn BIS_fnc_missionConversations;" \n
+                         "};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Bradley_no_fuel">*/
+                                class Bradley_no_fuel
+                                {
+                                        itemno = 4;
+                                        priority = 22.000000;
+                                        to="Fail_No_Fuel";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(canMove EP_Bradley) || (fuel EP_Bradley) == 0"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Bradley_lost">*/
+                                class Bradley_lost
+                                {
+                                        itemno = 5;
+                                        priority = 22.000000;
+                                        to="Fail_Bradley_Los";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(alive EP_Bradley) || !(canFire EP_Bradley)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__nd_heli_down">*/
+                                class __nd_heli_down
+                                {
+                                        itemno = 39;
+                                        priority = 1.000000;
+                                        to="comms_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"{alive _x} count _helis < 2 && {isNil ""EP_Second_Heli_Down""}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__st_heli_down">*/
+                                class __st_heli_down
+                                {
+                                        itemno = 38;
+                                        priority = 1.000000;
+                                        to="comms";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"{alive _x} count _helis < 3 && {isNil ""EP_First_Heli_Down""}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "helicopters_down">*/
+                                class helicopters_down
+                                {
+                                        itemno = 37;
+                                        priority = 1.000000;
+                                        to="report";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"missionNamespace getVariable [""EP_First_Heli_Down"", false] &&" \n
+                                         "missionNamespace getVariable [""EP_Second_Heli_Down"", false] &&" \n
+                                         "{alive _x} count (getMissionLayerEntities ""Wave_Beta_2"" # 0) == 0"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__nd_heli_landed">*/
+                                class __nd_heli_landed
+                                {
+                                        itemno = 46;
+                                        priority = 0.000000;
+                                        to="send_infantry_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isTouchingGround EP_Heli_3 && alive EP_Heli_3 && (isNil ""EP_Landed_3"")"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"EP_Second_Heli_Down = true;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__st_heli_landed">*/
+                                class __st_heli_landed
+                                {
+                                        itemno = 45;
+                                        priority = 0.000000;
+                                        to="send_infantry";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isTouchingGround EP_Heli_1 && alive EP_Heli_1 && (isNil ""EP_Landed_1"")"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"EP_First_Heli_Down = true;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "heli_landed">*/
+                                class heli_landed
+                                {
+                                        itemno = 55;
+                                        priority = 0.000000;
+                                        to="kill_infantry";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"missionNamespace getVariable [""EP_Landed_1"", false] ||" \n
+                                         "missionNamespace getVariable [""EP_Landed_3"", false]"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "send_infantry_1">*/
+                class send_infantry_1
+                {
+                        name = "send_infantry_1";
+                        itemno = 50;
+                        init = /*%FSM<STATEINIT""">*/"EP_Landed_3 = true;" \n
+                         "EP_First_Heli_Down = false;" \n
+                         "EP_Second_Heli_Down = false;" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Bradley_no_fuel">*/
+                                class Bradley_no_fuel
+                                {
+                                        itemno = 4;
+                                        priority = 22.000000;
+                                        to="Fail_No_Fuel";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(canMove EP_Bradley) || (fuel EP_Bradley) == 0"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Bradley_lost">*/
+                                class Bradley_lost
+                                {
+                                        itemno = 5;
+                                        priority = 22.000000;
+                                        to="Fail_Bradley_Los";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(alive EP_Bradley) || !(canFire EP_Bradley)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__nd_heli_down">*/
+                                class __nd_heli_down
+                                {
+                                        itemno = 39;
+                                        priority = 1.000000;
+                                        to="comms_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"{alive _x} count _helis < 2 && {isNil ""EP_Second_Heli_Down""}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__st_heli_down">*/
+                                class __st_heli_down
+                                {
+                                        itemno = 38;
+                                        priority = 1.000000;
+                                        to="comms";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"{alive _x} count _helis < 3 && {isNil ""EP_First_Heli_Down""}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "helicopters_down">*/
+                                class helicopters_down
+                                {
+                                        itemno = 37;
+                                        priority = 1.000000;
+                                        to="report";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"missionNamespace getVariable [""EP_First_Heli_Down"", false] &&" \n
+                                         "missionNamespace getVariable [""EP_Second_Heli_Down"", false] &&" \n
+                                         "{alive _x} count (getMissionLayerEntities ""Wave_Beta_2"" # 0) == 0"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__nd_heli_landed">*/
+                                class __nd_heli_landed
+                                {
+                                        itemno = 46;
+                                        priority = 0.000000;
+                                        to="send_infantry_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isTouchingGround EP_Heli_3 && alive EP_Heli_3 && (isNil ""EP_Landed_3"")"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"EP_Second_Heli_Down = true;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__st_heli_landed">*/
+                                class __st_heli_landed
+                                {
+                                        itemno = 45;
+                                        priority = 0.000000;
+                                        to="send_infantry";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isTouchingGround EP_Heli_1 && alive EP_Heli_1 && (isNil ""EP_Landed_1"")"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"EP_First_Heli_Down = true;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "heli_landed">*/
+                                class heli_landed
+                                {
+                                        itemno = 55;
+                                        priority = 0.000000;
+                                        to="kill_infantry";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"missionNamespace getVariable [""EP_Landed_1"", false] ||" \n
+                                         "missionNamespace getVariable [""EP_Landed_3"", false]"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "kill_infantry">*/
+                class kill_infantry
+                {
+                        name = "kill_infantry";
+                        itemno = 56;
+                        init = /*%FSM<STATEINIT""">*/"{_x setCaptive false} forEach (getMissionLayerEntities ""Wave_Beta_2"" # 0);" \n
+                         "" \n
+                         "[""EP_task_DestroyHelis"", ""FAILED""] call BIS_fnc_taskSetState;" \n
+                         """EP_task_DestroyHelisInf"" call BIS_fnc_missionTasks;" \n
+                         """HeliLanded"" spawn BIS_fnc_missionConversations;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Bradley_lost">*/
+                                class Bradley_lost
+                                {
+                                        itemno = 5;
+                                        priority = 22.000000;
+                                        to="Fail_Bradley_Los";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(alive EP_Bradley) || !(canFire EP_Bradley)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Bradley_no_fuel">*/
+                                class Bradley_no_fuel
+                                {
+                                        itemno = 4;
+                                        priority = 22.000000;
+                                        to="Fail_No_Fuel";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(canMove EP_Bradley) || (fuel EP_Bradley) == 0"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "infantry_dead">*/
+                                class infantry_dead
+                                {
+                                        itemno = 58;
+                                        priority = 0.000000;
+                                        to="complete_task";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"({alive _x} count units EP_Heli_1_Inf) == 0 && ({alive _x} count units EP_Heli_3_Inf) == 0"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "complete_task">*/
+                class complete_task
+                {
+                        name = "complete_task";
+                        itemno = 59;
+                        init = /*%FSM<STATEINIT""">*/"""EP_task_DestroyHelisInf"" call BIS_fnc_missionTasks;" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Bradley_lost">*/
+                                class Bradley_lost
+                                {
+                                        itemno = 5;
+                                        priority = 22.000000;
+                                        to="Fail_Bradley_Los";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(alive EP_Bradley) || !(canFire EP_Bradley)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Bradley_no_fuel">*/
+                                class Bradley_no_fuel
+                                {
+                                        itemno = 4;
+                                        priority = 22.000000;
+                                        to="Fail_No_Fuel";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(canMove EP_Bradley) || (fuel EP_Bradley) == 0"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "defended">*/
+                                class defended
+                                {
+                                        itemno = 57;
+                                        priority = 0.000000;
+                                        to="Clean_Up_Wave_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"false"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Clean_Up_Wave_2">*/
+                class Clean_Up_Wave_2
+                {
+                        name = "Clean_Up_Wave_2";
+                        itemno = 66;
+                        init = /*%FSM<STATEINIT""">*/"{" \n
+                         "	if (alive _x) then {" \n
+                         "		deleteVehicle _x;" \n
+                         "	};" \n
+                         "} forEach (getMissionLayerEntities ""Wave_Beta_2"" # 0);" \n
+                         ""/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
                         {
@@ -26,6 +1413,8 @@ class FSM
         initState="start";
         finalStates[] =
         {
+                "Fail_No_Fuel",
+                "Fail_Bradley_Los",
         };
 };
 /*%FSM</COMPILE>*/
