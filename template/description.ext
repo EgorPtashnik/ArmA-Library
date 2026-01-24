@@ -1,6 +1,6 @@
 class CfgDebriefing {
 	class Fail {
-		title = "Миссия Провалена";
+		title = "Mission Failed";
 		subtitle = "";
 		description = "";
 		pictureBackground = "";
@@ -9,7 +9,7 @@ class CfgDebriefing {
 	};
 
 	class Win {
-		title = "Миссия Выполнена";
+		title = "Mission Accomplished";
 		subtitle = "";
 		description = "";
 		pictureBackground = "";

@@ -18,7 +18,7 @@ if (_pushThrough) then {
 };
 
 {
-	(vehicle _x) limitSpeed _group * 1.15;
+	(vehicle _x) limitSpeed _convoySpeed * 1.15;
 	(vehicle _x) setConvoySeparation _convoySeparation;
 } forEach (units _group);
 
