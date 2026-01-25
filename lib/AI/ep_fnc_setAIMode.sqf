@@ -1,5 +1,4 @@
-/*ws_fnc_setAIMode
-By Wolfenswan [FA]: wolfenswanarps@gmail.com | folkarps.com
+/* ep_fnc_setAIMode
 
 FEATURE
 Set a group to desired behaviour and combatmode

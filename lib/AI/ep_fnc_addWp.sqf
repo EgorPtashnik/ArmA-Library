@@ -1,11 +1,24 @@
-private ["_grp", "_dest", "_settings", "_wp"];
-_grp = _this # 0;
-_dest = _this # 1;
+/** ep_fnc_addWp
+
+FEATURE
+Add waypoint to group's wps chain
+
+RETURNS
+waypoint
+
+USAGE
+[group,markerName or object] call ep_fnc_addWp
+
+PARAMETERS
+1. Group (group)
+2. Destination (position, object, group, marker)
+3..n WP parameters like behaviour, formation, etc (string, order does not matter)
+*/
+
+params ["_grp", "_dest"];
+private ["_settings", "_wp"];
 _settings = _this - [_grp, _dest];
-
 _dest = (_dest call ep_fnc_getPos);
-
-
 _wp = _grp addWaypoint [_dest, 0];
 
 {
@@ -68,3 +81,5 @@ _wp = _grp addWaypoint [_dest, 0];
 		default {["ep_fnc_addWp DBG:", _x ,"is not a valid waypoint parameter!"] call ep_fnc_debugText};
 	};
 } forEach _settings;
+
+_wp

@@ -1,14 +1,16 @@
-/**
-	Shows units and enables their simulation
-	
-	PARAMETERS
-		_this	: ARRAY - array of units
-	
-	RETURNS
-		ARRAY - units
+/** ep_fnc_showUnits
 
-	EXAMPLE
-	(units group player) call EP_fnc_showUnits;
+FEATURE
+Shows units and enables their simulation
+
+RETURNS
+units (array)
+
+USAGE
+[group] call ep_fnc_showUnits
+
+PARAMETERS
+1. units or group to show
 */
 
 if (typeName _this == "GROUP") then {_this = units _this};
