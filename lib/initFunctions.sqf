@@ -6,6 +6,8 @@ ep_fnc_setAIMode 			= compile preprocessFileLineNumbers "lib\AI\ep_fnc_setAIMode
 ep_fnc_showUnits 			= compile preprocessFileLineNumbers "lib\AI\ep_fnc_showUnits.sqf";
 
 //Common
+ep_fnc_debugText 			= compile preprocessFileLineNumbers "lib\common\ep_fnc_debugText.sqf";
+ep_fnc_getPos 				= compile preprocessFileLineNumbers "lib\common\ep_fnc_getPos.sqf";
 ep_fnc_addAction 			= compile preprocessFileLineNumbers "lib\common\ep_fnc_addAction.sqf";
 ep_fnc_addHoldAction 		= compile preprocessFileLineNumbers "lib\common\ep_fnc_addHoldAction.sqf";
 

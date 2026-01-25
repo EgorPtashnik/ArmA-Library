@@ -11,6 +11,7 @@
 	(units group player) call EP_fnc_hideUnits;
 */
 
+if (typeName _this == "GROUP") then {_this = units _this};
 
 private ["_vehicle"];
 {
@@ -21,4 +22,4 @@ private ["_vehicle"];
   _vehicle allowDamage false;
 } forEach _this;
 
-_this;
+_this
