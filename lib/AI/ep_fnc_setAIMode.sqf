@@ -24,9 +24,10 @@
 	"FULL" "NORMAL" "LIMITED"
 */
 
-private [ "_grp","_modes" ];
-_grp = _this select 0;
-_modes = _this - [_this select 0];
+params ["_grp"];
+private ["_modes"];
+_modes = _this - [_this # 0];
+_grp = _grp call ep_fnc_getGroup;
 
 {
 	_x = toUpper _x;

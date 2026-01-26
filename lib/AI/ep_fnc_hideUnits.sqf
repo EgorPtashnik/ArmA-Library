@@ -14,15 +14,15 @@
     M|1. units or group to hide
 */
 
-if (typeName _this == "GROUP") then {_this = units _this};
+_this = _this call ep_fnc_collectUnits;
 
 private ["_vehicle"];
 {
-  _vehicle = vehicle _x;
-  _vehicle enableSimulation false;
-  _vehicle hideObject true;
-  _vehicle setCaptive true;
-  _vehicle allowDamage false;
+	_vehicle = vehicle _x;
+	_vehicle enableSimulation false;
+	_vehicle hideObject true;
+	_vehicle setCaptive true;
+	_vehicle allowDamage false;
 } forEach _this;
 
 _this

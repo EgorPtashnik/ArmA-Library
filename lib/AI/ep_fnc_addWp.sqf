@@ -16,16 +16,17 @@
 	O|3..n WP parameters like behaviour, formation, etc (string, order does not matter)
 */
 
-params [ "_grp", "_dest" ];
-private [ "_settings", "_wp" ];
-
+params ["_grp", "_dest"];
+private ["_settings", "_wp"];
 _settings = _this - [_grp, _dest];
-_dest = (_dest call ep_fnc_getPos);
+_grp = _grp call ep_fnc_getGroup;
+_dest = _dest call ep_fnc_getPos;
 _wp = _grp addWaypoint [_dest, 0];
 
 {
 	_x = toUpper _x;
 	switch (_x) do {
+
 		//Type
 		case "MOVE"				: {_wp setWaypointType _x};
 		case "DESTROY"			: {_wp setWaypointType _x};
@@ -56,12 +57,14 @@ _wp = _grp addWaypoint [_dest, 0];
 		case "AWARE"			: {_wp setWaypointBehaviour _x};
 		case "COMBAT"			: {_wp setWaypointBehaviour _x};
 		case "STEALTH"			: {_wp setWaypointBehaviour _x};
+
 		//Combat Mode
 		case "BLUE"				: {_wp setWaypointCombatMode _x};
 		case "GREEN"			: {_wp setWaypointCombatMode _x};
 		case "WHITE"			: {_wp setWaypointCombatMode _x};
 		case "YELLOW"			: {_wp setWaypointCombatMode _x};
 		case "RED"				: {_wp setWaypointCombatMode _x};
+
 		//Formation
 		case "COLUMN"			: {_wp setWaypointFormation _x};
 		case "STAG COLUMN"		: {_wp setWaypointFormation _x};

@@ -23,9 +23,7 @@ params [
 	[ "_magType", objNull ],
 	[ "_sleepRange", [0.5, 1, 1.5] ]
 ];
-
-private [ "_isInRange" ];
-
+private ["_isInRange"];
 _target = _target call ep_fnc_getPos;
 
 //get vehicles from group if group is passed

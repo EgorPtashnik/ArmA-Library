@@ -14,9 +14,7 @@
 	M|1. Array of strings to search for in marker names (or single string)
 */
 
-
 private ["_arr"];
-
 _arr = [];
 
 if (typeName _this != "ARRAY") then { _this = [_this] };

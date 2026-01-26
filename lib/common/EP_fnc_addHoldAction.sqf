@@ -27,8 +27,7 @@
 */
 
 params [
-	"_attachTo", "_title", "_codeFinish",
-	"_iconStart",
+	"_attachTo", "_title", "_codeFinish", "_iconStart",
 	["_duration", 3],
 	["_conditionToShow", "true"],
 	["_arguments", []],
