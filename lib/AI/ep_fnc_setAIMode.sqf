@@ -1,33 +1,30 @@
-/* ep_fnc_setAIMode
+/**
+    ep_fnc_setAIMode
 
-FEATURE
-Set a group to desired behaviour and combatmode
+    FEATURE
+    Set a group to desired behaviour and combatmode
 
-RETURNS
-group
+    RETURNS
+    group
 
-USAGE
-[group,behaviour,combatmode,formation,speed] call ws_fnc_setAIMode
+    USAGE
+	[group, "COMBAT", "RED", "LINE", "LIMITED"] call ep_fnc_setAIMode
 
-PARAMETERS
-1. Group to be set
-2. Combat mode, Behaviour, speed and/or formation to be set (all strings, order does not matter)
+    PARAMETERS
+    M|1. units or group to hide
+	M|2. Combat mode, Behaviour, speed and/or formation to be set (all strings, order does not matter)
 
-EXAMPLES
-[Group1,"LINE"] call ws_fnc_setAIMode;
-[Group2,"COMBAT","ECH LEFT","RED"] call ws_fnc_setAIMode;
+	Accepted Strings:
+	"COLUMN" "STAG COLUMN" "WEDGE" "ECH LEFT" "ECH RIGHT" "VEE" "LINE" "FILE" "DIAMOND"
 
-Accepted Strings:
-"COLUMN" "STAG COLUMN" "WEDGE" "ECH LEFT" "ECH RIGHT" "VEE" "LINE" "FILE" "DIAMOND"
+	"CARELESS" "SAFE" "AWARE" "COMBAT" "STEALTH".
 
-"CARELESS" "SAFE" "AWARE" "COMBAT" "STEALTH".
+	"BLUE"  "GREEN"  "WHITE"  "YELLOW" "RED"
 
-"BLUE"  "GREEN"  "WHITE"  "YELLOW" "RED"
-
-"FULL" "NORMAL" "LIMITED"
+	"FULL" "NORMAL" "LIMITED"
 */
 
-private ["_grp","_modes"];
+private [ "_grp","_modes" ];
 _grp = _this select 0;
 _modes = _this - [_this select 0];
 
@@ -65,7 +62,7 @@ _modes = _this - [_this select 0];
 		case "NORMAL": {_grp setSpeedMode _x;};
 		case "FULL": {_grp setSpeedMode _x;};
 
-		default {hint (format ["%1 is not a valid combatmode, behaviour or formation!", _x])};
+		default {["ep_fnc_setAIMode DBG:", _x ,"is not a valid parameter!"] call ep_fnc_dbgLog};
 	};
 
 } forEach _modes;

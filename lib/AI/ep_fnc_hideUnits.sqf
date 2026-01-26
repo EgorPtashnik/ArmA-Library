@@ -1,16 +1,17 @@
-/** ep_fnc_hideUnits
+/**
+    ep_fnc_hideUnits
 
-FEATURE
-Hides units and disables their simulation
+    FEATURE
+    Hides units and disables their simulation
 
-RETURNS
-units (array)
+    RETURNS
+    units (array)
 
-USAGE
-[group] call ep_fnc_hideUnits
+    USAGE
+    [group] call ep_fnc_hideUnits
 
-PARAMETERS
-1. units or group to hide
+    PARAMETERS
+    M|1. units or group to hide
 */
 
 if (typeName _this == "GROUP") then {_this = units _this};
