@@ -14,16 +14,10 @@
 	M|1. Group (group) or unit (object) or units (array)
 */
 
-switch (typeName _this) do {
+private ["_grp"];
 
-	case "GROUP": 	{_this = _this};
+if (_this isEqualType []) then {_this = _this # 0};
 
-	case "OBJECT": 	{_this = group _this};
+_grp = _this call cba_fnc_getGroup;
 
-	case "ARRAY": 	{_this = group (_this # 0)};
-
-	default: 		{ ["ep_fnc_getGroup DBG:", _this ,"is not a valid parameter to get group!"] call ep_fnc_dbgLog };
-
-};
-
-_this
+_grp
