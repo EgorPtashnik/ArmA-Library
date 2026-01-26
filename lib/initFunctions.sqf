@@ -21,6 +21,8 @@ ep_fnc_getPos 				= compile preprocessFileLineNumbers "lib\position\ep_fnc_getPo
 //system
 ep_system_casualHealth		= compile preprocessFileLineNumbers "lib\system\ep_system_casualHealth.sqf";
 ep_system_convoyPath		= compile preprocessFileLineNumbers "lib\system\ep_system_convoyPath.sqf";
+ep_system_healthBar			= compile preprocessFileLineNumbers "lib\system\ep_system_healthBar.sqf";
+ep_system_oneManVehicle		= compile preprocessFileLineNumbers "lib\system\ep_system_oneManVehicle.sqf";
 ep_system_randomRadio		= compile preprocessFileLineNumbers "lib\system\ep_system_randomRadio.sqf";
 
 //UI

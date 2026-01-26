@@ -31,10 +31,10 @@ params [
 _units = _units call ep_fnc_collectUnits;
 
 {
-	_x setVariable ["ep_health_defaultDamage", _defaultDamage];
-	_x setVariable ["ep_health_headshotKill", _headshotKill];
-	_x setVariable ["ep_health_lastHitTime", time];
-	_x setVariable ["ep_health", 0];
+	_x setVariable ["ep_casualHealth_defaultDamage", _defaultDamage];
+	_x setVariable ["ep_casualHealth_headshotKill", _headshotKill];
+	_x setVariable ["ep_casualHealth_lastHitTime", time];
+	_x setVariable ["ep_casualHealth_health", 0];
 
 	_x addEventHandler ["HandleDamage", {
 		private ["_selection", "_damage", "_directHit"];
@@ -52,18 +52,18 @@ _units = _units call ep_fnc_collectUnits;
 		private ["_headDamage"];
 		_headDamage = 0;
 		
-		if (_unit getVariable ["ep_health_headshotKill", false]) then {	_headDamage = _unit getHit "head" };
+		if (_unit getVariable ["ep_casualHealth_headshotKill", false]) then {	_headDamage = _unit getHit "head" };
 		
 		if (_headDamage >= 1) exitWith {
 			_unit setDamage 1;
 			_unit removeEventHandler [_thisEvent, _thisEventHandler];
 		};
 
-		_damage = (_unit getVariable "ep_health") + (_unit getVariable "ep_health_defaultDamage");
+		_damage = (_unit getVariable "ep_casualHealth_health") + (_unit getVariable "ep_casualHealth_defaultDamage");
 		_unit setDamage _damage;
-		_unit setVariable ["ep_health", _damage];
+		_unit setVariable ["ep_casualHealth_health", _damage];
 
-		_unit setVariable ["ep_health_lastHitTime", ( time + 5 ), true];	
+		_unit setVariable ["ep_casualHealth_lastHitTime", ( time + 5 ), true];	
 	}];
 } forEach _units;
 
@@ -76,12 +76,12 @@ if (_regenHealth) then {
 		while { (_units findIf { alive _x }) > -1 } do {
 			{
 				if (alive _x) then {
-					_unitDamage = _x getVariable ["ep_health", 0];
-					_lastHitTime = _x getVariable ["ep_health_lastHitTime", time];
+					_unitDamage = _x getVariable ["ep_casualHealth_health", 0];
+					_lastHitTime = _x getVariable ["ep_casualHealth_lastHitTime", time];
 					if (_unitDamage > _threshold && { _lastHitTime <= time }) then {
 						_unitDamage = _unitDamage - _regenCoef;
 						_x setDamage _unitDamage;
-						_x setVariable ["ep_health", _unitDamage];
+						_x setVariable ["ep_casualHealth_health", _unitDamage];
 					};
 				};
 			}	forEach _units;
