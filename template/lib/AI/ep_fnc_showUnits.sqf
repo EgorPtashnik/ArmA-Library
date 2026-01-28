@@ -1,28 +1,28 @@
-/** ep_fnc_showUnits
+/**
+    ep_fnc_showUnits
 
-FEATURE
-Shows units and enables their simulation
+    FEATURE
+    Shows units and enables their simulation
 
-RETURNS
-units (array)
+    RETURNS
+    units (array)
 
-USAGE
-[group] call ep_fnc_showUnits
+    USAGE
+    [group] call ep_fnc_showUnits
 
-PARAMETERS
-1. units or group to show
+    PARAMETERS
+    M|1. units or group to show
 */
 
-if (typeName _this == "GROUP") then {_this = units _this};
+_this = _this call ep_fnc_collectUnits;
 
 private ["_vehicle"];
 {
-  _vehicle = vehicle _x;
-  _vehicle enableSimulation true;
-  _vehicle hideObject false;
-  _vehicle setCaptive false;
-  _vehicle allowDamage true;
+	_vehicle = vehicle _x;
+	_vehicle enableSimulation true;
+	_vehicle hideObject false;
+	_vehicle setCaptive false;
+	_vehicle allowDamage true;
 } forEach _this;
 
 _this
-	

@@ -1,37 +1,33 @@
 /**
-	Adds hold action to an object
+	ep_fnc_addHoldAction
 
-	PARAMETERS:
-		_attachTo							: OBJECT - to whom attach the action
-		_title								:	STRING - title action
-		_codeFinish						:	CODE - code to execute after hold action is completed
-		_iconStart						: STRING - path to icon to show when hold action is visible
-		_duration							: NUMBER (Default 3) - how long to hold the space key
-		_conditionToShow			: STRING (Default "true") - condition to show hold action
-		_arguments						: ARRAY (Default []) - arguments to pass to functions
-		_removeCompleted			: BOOLEN  (Default true) - remove hold action after completed
-		_priority							: NUMBER (Default 1000) - action priority (for showing in the menu)
-		_iconProgress					: STRING (Default objNull) - icon for progressing (default will be _iconStart)
-		_conditionToProgress	: STRING (Default "true") - condition for progression
-		_codeStart						: CODE (Default {}) - code for starting hold action
-		_codeProgress					: CODE (Default {}) - code for progressing hold action
-		_codeInterupted				: CODE (Default {}) - code for stopping holding key
-		_showUnconsious				: BOOLEAN (Default false) - show for unconsious
-		_showWindow						: BOOLEAN (Default true) - show hold action icon as soon as _conditionToShow is completed
+	FEATURE
+	Adds a hold action to an object
 
 	RETURNS
-		NONE
-	
-	EXAMPLE
-		[player, "HOLD ACTION", { hint "START" }, ""] call EP_fnc_addHoldAction;
+	action ID
 
+	PARAMETERS
+	M|1. Object to attach action to
+	M|2. Title of the hold action
+	M|3. Code to execute when hold action is completed
+	M|4. Icon to show when hold action is visible
+	O|5. Duration to hold the action (Default 3)
+	O|6. Condition to show the hold action (Default "true")
+	O|7. Arguments to pass to the code (Default [])
+	O|8. Remove hold action after completed (Default true)
+	O|9. Priority of the action (Default 1000)
+	O|10. Icon to show for progressing (Default will be same as icon to show when visible)
+	O|11. Condition for progression (Default "true")
+	O|12. Code to execute when hold action starts (Default {})
+	O|13. Code to execute while progressing (Default {})
+	O|14. Code to execute if hold action is interrupted (Default {})
+	O|15. Show hold action for unconscious (Default false)
+	O|16. Show hold action window as soon as condition to show is met (Default true)
 */
 
 params [
-	"_attachTo",
-	"_title",
-	"_codeFinish",
-	"_iconStart",
+	"_attachTo", "_title", "_codeFinish", "_iconStart",
 	["_duration", 3],
 	["_conditionToShow", "true"],
 	["_arguments", []],
@@ -45,12 +41,11 @@ params [
 	["_showUnconsious", false],
 	["_showWindow", true]
 ];
+private ["_actionId"];
 
-if (isNull _iconProgress) then {
-	_iconProgress = _iconStart;
-};
+if (isNull _iconProgress) then { _iconProgress = _iconStart };
 
-[
+_actionId = [
 	_attachTo,
 	_title,
 	_iconStart,
@@ -68,3 +63,5 @@ if (isNull _iconProgress) then {
 	_showUnconsious,
 	_showWindow
 ] call BIS_fnc_holdActionAdd;
+
+_actionId

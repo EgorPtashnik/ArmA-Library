@@ -1,5 +1,6 @@
 params [
 	"_grp", "_path",
+	["_condition", true],
 	["_sleep", 1]
 ];
 private ["_vehicles", "_leadVeh", "_prevVeh"];
@@ -14,7 +15,7 @@ _leadVeh = _vehicles # 0;
 {_x limitSpeed 30; _x setConvoySeparation 15} forEach _vehicles;
 
 _vehicles = _vehicles - [_leadVeh];
-while {true} do {
+while {call _condition} do {
 
 	if ( !(alive _leadVeh) || {((count crew _leadVeh) == 0) || !(canMove _leadVeh)}) then {
 		_leadVeh = _vehicles # 0;

@@ -1,27 +1,28 @@
-/** ep_fnc_hideUnits
+/**
+    ep_fnc_hideUnits
 
-FEATURE
-Hides units and disables their simulation
+    FEATURE
+    Hides units and disables their simulation
 
-RETURNS
-units (array)
+    RETURNS
+    units (array)
 
-USAGE
-[group] call ep_fnc_hideUnits
+    USAGE
+    [group] call ep_fnc_hideUnits
 
-PARAMETERS
-1. units or group to hide
+    PARAMETERS
+    M|1. units or group to hide
 */
 
-if (typeName _this == "GROUP") then {_this = units _this};
+_this = _this call ep_fnc_collectUnits;
 
 private ["_vehicle"];
 {
-  _vehicle = vehicle _x;
-  _vehicle enableSimulation false;
-  _vehicle hideObject true;
-  _vehicle setCaptive true;
-  _vehicle allowDamage false;
+	_vehicle = vehicle _x;
+	_vehicle enableSimulation false;
+	_vehicle hideObject true;
+	_vehicle setCaptive true;
+	_vehicle allowDamage false;
 } forEach _this;
 
 _this
