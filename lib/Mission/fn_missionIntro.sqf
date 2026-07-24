@@ -1,5 +1,5 @@
-#define EP_DEFAULT_EST_SHOW_PARAMS [worldName, 500, 200, random 360];
-#define EP_DEFAULT_INTRO_TEXTS [worldName, groupId group player];
+#define EP_DEFAULT_EST_SHOW_PARAMS [worldName, 500, 200, random 360]
+#define EP_DEFAULT_INTRO_TEXTS [worldName, groupId group player]
 
 params [
 	"_estShotPos",

@@ -1,15 +1,15 @@
-#define EP_SOUNDS_NOISES ["mynoise1", "mynoise2", "mynoise3"];
-#define EP_SOUNDS_TYPING ["gm_rtty_stroke_01", "gm_rtty_stroke_02", "gm_rtty_stroke_03"];
-#define EP_SOUNDS_TYPING_TIMINGS [0.06, 0.06, 0.06, 0.1, 0.3, 0.5];
-#define EP_DEFAULT_SOUND_IN "myin1";
-#define EP_DEFAULT_SOUND_OUT "myin4";
+#define EP_SOUNDS_NOISES ["mynoise1", "mynoise2", "mynoise3"]
+#define EP_SOUNDS_TYPING ["gm_rtty_stroke_01", "gm_rtty_stroke_02", "gm_rtty_stroke_03"]
+#define EP_SOUNDS_TYPING_TIMINGS [0.06, 0.06, 0.06, 0.1, 0.3, 0.5]
+#define EP_DEFAULT_SOUND_IN "myin1"
+#define EP_DEFAULT_SOUND_OUT "myin4"
 
 params [
-	'_subtitles', //Array if array in format [ [Title, Subtitles, duration] ]
-	['_lastTiming', 5],
-	['_isRadio', true],
-	['_radioSoundIn', EP_DEFAULT_SOUND_IN],
-	['_radioSoundOut', EP_DEFAULT_SOUND_OUT]
+	"_subtitles", //Array if array in format [ [Title, Subtitles, duration] ]
+	["_lastTiming", 5],
+	["_isRadio", true],
+	["_radioSoundIn", EP_DEFAULT_SOUND_IN],
+	["_radioSoundOut", EP_DEFAULT_SOUND_OUT]
 ];
 
 private _subsCount = (count _subtitles) - 1;
@@ -17,7 +17,7 @@ private _subsTiming = _subtitles apply {_x # 2};
 private _soundsTiming = [];
 
 private _nextIndex = 0;
-for '_i' from 0 to _subsCount do {
+for "_i" from 0 to _subsCount do {
 	if (_i != _subsCount) then {
 		_nextIndex = _i + 1;
 		_timing = (_subsTiming # _nextIndex) - (_subsTiming # _i);
