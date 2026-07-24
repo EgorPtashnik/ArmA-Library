@@ -1,12 +1,17 @@
+#define EP_SOUNDS_NOISES ["mynoise1", "mynoise2", "mynoise3"];
+#define EP_SOUNDS_TYPING ["gm_rtty_stroke_01", "gm_rtty_stroke_02", "gm_rtty_stroke_03"];
+#define EP_SOUNDS_TYPING_TIMINGS [0.06, 0.06, 0.06, 0.1, 0.3, 0.5];
+#define EP_DEFAULT_SOUND_IN "myin1";
+#define EP_DEFAULT_SOUND_OUT "myin4";
+
 params [
 	'_subtitles', //Array if array in format [ [Title, Subtitles, duration] ]
 	['_lastTiming', 5],
 	['_isRadio', true],
-	['_radioSoundIn', 'myin1'],
-	['_radioSoundOut', 'myin4']
+	['_radioSoundIn', EP_DEFAULT_SOUND_IN],
+	['_radioSoundOut', EP_DEFAULT_SOUND_OUT]
 ];
 
-private _noises = ['mynoise1', 'mynoise2', 'mynoise3'];
 private _subsCount = (count _subtitles) - 1;
 private _subsTiming = _subtitles apply {_x # 2};
 private _soundsTiming = [];
@@ -38,7 +43,7 @@ _subtitles spawn BIS_fnc_EXP_camp_playSubtitles;
 	if (_isRadio) then {
 		playSoundUI [_radioSoundIn];
 
-		[_x, _noises] spawn {
+		[_x, EP_SOUNDS_NOISES] spawn {
 			private _time = time;
 			while {time < (_time + _this # 0)} do {
 				ep_subs_noise = playSoundUI [(selectRandom (_this # 1))];
@@ -50,8 +55,8 @@ _subtitles spawn BIS_fnc_EXP_camp_playSubtitles;
 			sleep 0.5;
 			private _time = time;
 			while {time < _time + _this - 1.5} do {
-				playSoundUI [selectRandom ['gm_rtty_stroke_01','gm_rtty_stroke_02','gm_rtty_stroke_03']];
-				sleep selectRandom [0.06, 0.06, 0.06, 0.1, 0.3, 0.5];
+				playSoundUI [selectRandom EP_SOUNDS_TYPING];
+				sleep selectRandom EP_SOUNDS_TYPING_TIMINGS;
 			};
 		};
 
@@ -61,7 +66,7 @@ _subtitles spawn BIS_fnc_EXP_camp_playSubtitles;
 		playSoundUI [_radioSoundOut];
 		sleep 2;
 	} else {
-		playSoundUI ['mybeep'];
+		playSoundUI ["mybeep"];
 		sleep _x;
 	}
 

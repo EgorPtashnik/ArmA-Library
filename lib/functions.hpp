@@ -12,6 +12,10 @@ class EP
 	class Mission
 	{
 		file = "lib\Mission";
+		class missionInit {};
+		class missionTasks {};
+		class missionIntro {};
+		class showSubtitles {};
 	};
 
 	class Tool

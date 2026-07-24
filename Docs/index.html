@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>ArmA Library — Function Docs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+
+<header>
+    <h1>ArmA Library — Function Docs</h1>
+    <span class="spacer"></span>
+    <a class="wiki-link" href="https://community.bistudio.com/wiki/" target="_blank" rel="noopener">BI Wiki &#8599;</a>
+</header>
+
+<aside>
+    <input id="filter" type="search" placeholder="Filter functions…" autocomplete="off" />
+    <div id="nav"></div>
+</aside>
+
+<main id="content">
+    <p class="placeholder">Loading…</p>
+</main>
+
+<!-- ==========================================================
+     Core engine — must load first
+     ========================================================== -->
+<script src="assets/core.js"></script>
+
+<!-- ==========================================================
+     Route rules — URL redirect rules for unknown function names.
+     Add new prefixes (CBA, ACE, etc.) inside routes.js.
+     ========================================================== -->
+<script src="docs/routes.js"></script>
+
+<!-- ==========================================================
+     Function doc modules — one <script> per category.
+     To add a new module, drop a JS file in /docs/ and add it here.
+     ========================================================== -->
+<script src="docs/ai.js"></script>
+<script src="docs/tool.js"></script>
+<script src="docs/mission.js"></script>
+<script src="docs/constants.js"></script>
+
+<!-- Boot — must load LAST -->
+<script src="docs/_init.js"></script>
+
+</body>
+</html>
