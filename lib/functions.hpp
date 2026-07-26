@@ -24,5 +24,7 @@ class EP
 		file = "lib\Tool";
 		class getGroup {};
 		class getPosition {};
+		class getRandomArray {};
+		class collectMarkers {};
 	}
 }
