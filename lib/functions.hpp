@@ -7,6 +7,7 @@ class EP
 		class clearWaypoints {};
 		class setAIMode {};
 		class taskAttack {};
+		class taskPatrol {};
 	};
 
 	class Mission

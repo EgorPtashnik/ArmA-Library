@@ -1,7 +1,11 @@
 #include "..\constants.hpp";
 
-private _group = _this deleteAt 0;
-private _destination = _this deleteAt 0;
+params [
+	"_group",
+	"_destination"
+];
+
+private _args = _this - [_group, _destination];
 
 _group 	= _group call ep_fnc_getGroup;
 _destination = _destination call ep_fnc_getPosition;
@@ -24,6 +28,6 @@ private _waypoint = _group addWaypoint [_destination, -1];
 
 	if (true) exitWith { systemChat (format ["ep_fnc_addWaypoint: %1 is not a valid parameter!", _x]) }; 
 
-} forEach _this;
+} forEach _args;
 
 _waypoint

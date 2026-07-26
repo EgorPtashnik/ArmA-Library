@@ -1,6 +1,10 @@
 #include "..\constants.hpp";
 
-private _target = _this deleteAt 0;
+params [
+	"_target"
+];
+
+private _args = _this - [_target];
 private _isGroup = false;
 
 switch (typeName _target) do {
@@ -25,7 +29,7 @@ if (_isGroup) then {
 
 		if (true) exitWith { systemChat (format ["ep_fnc_setAIMode: %1 is not a valid parameter for group!", _x]) }; 
 
-	} forEach _this;
+	} forEach _args;
 } else {
 	{
 		private _val = toUpper _x;
@@ -42,7 +46,7 @@ if (_isGroup) then {
 
 		if (true) exitWith { systemChat (format ["ep_fnc_setAIMode: %1 is not a valid parameter for unit!", _x]) };
 
-	} forEach _this;
+	} forEach _args;
 };
 
 _target
