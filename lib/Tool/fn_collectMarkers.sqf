@@ -14,9 +14,9 @@ for "_i" from 1 to 128 do {
 	if ((_markerPos # 0) == 0) exitWith {};
 
 	if (_returnPositionArray) then {
-		_array append _markerPos;
+		_array append [_markerPos];
 	} else {
-		_array append _markerName;
+		_array append [_markerName];
 	};
 };
 

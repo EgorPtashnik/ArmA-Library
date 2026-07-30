@@ -1,0 +1,63 @@
+#include "lib\constants.hpp"
+
+// ----- General mission metadata ---------------------------------------------
+onLoadName    = "";
+onLoadMission = "";
+author        = "";
+overviewText  = "";
+
+respawn       = "BASE";
+respawnDelay  = 5;
+
+// ----- Debriefing ----------------------------------------------------------
+class CfgDebriefing {
+    class Win {
+        title             = "Mission Accomplished";
+        subtitle          = "";
+        description       = "";
+        pictureBackground = "";
+        picture           = "";
+        pictureColor[]    = { 0.0, 0.3, 0.6, 1 };
+    };
+
+    class Fail {
+        title             = "Mission Failed";
+        subtitle          = "";
+        description       = "";
+        pictureBackground = "";
+        picture           = "";
+        pictureColor[]    = { 0.0, 0.3, 0.6, 1 };
+    };
+};
+
+// ----- Functions -----------------------------------------------------------
+// Includes ep_fnc_* functions declared in lib\functions.hpp.
+class CfgFunctions {
+    #include "lib\functions.hpp"
+};
+
+// ----- Support menu (Comm menu) --------------------------------------------
+// To add:  [player, "CustomSupportMenuItem"] call BIS_fnc_addCommMenuItem;
+//
+// class CfgCommunicationMenu {
+//     class CustomSupportMenuItem {
+//         text                     = "Custom Support Item";
+//         submenu                  = "";
+//         expression               = "custVariable = true;";
+//         icon                     = "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\artillery_ca.paa";
+//         cursor                   = "\a3\Ui_f\data\IGUI\Cfg\Cursors\iconCursorSupport_ca.paa";
+//         enable                   = "1";
+//         removeAfterExpressionCall = 1;
+//     };
+// };
+
+// ----- Sounds --------------------------------------------------------------
+class CfgSounds {
+    sounds[] = {};
+
+    // class mybeep {
+    //     name     = "mybeep";
+    //     sound[]  = { "sounds\beep.ogg", db+10, 1.0 };
+    //     titles[] = { 0, "" };
+    // };
+};

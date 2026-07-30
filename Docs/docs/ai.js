@@ -54,6 +54,24 @@ ArmADocs.register("AI", {
         returns: "Waypoint — the created attack waypoint.",
         example: '[group player, "marker_enemy", 100] call ep_fnc_taskAttack;\n' +
                  '[myGroup, target, false] call ep_fnc_taskAttack;   // don\'t clear existing waypoints'
+    },
+
+    "ep_fnc_taskPatrol": {
+        description: "Assigns a circular patrol task to a group. By default clears existing waypoints and re-enables PATH / MOVE on all units, then generates <code>count</code> waypoints on a randomised ring around the destination (LIMITED / SAFE) and closes the loop with a CYCLE waypoint. " +
+                     "Pass <code>false</code> anywhere in the params to keep existing waypoints instead of overriding.",
+        syntax: "[group, destination?, radius?, count?, ...properties, override?] call ep_fnc_taskPatrol",
+        params: [
+            { name: "group",         type: "Group | Object",                             desc: "Group or unit (resolved via ep_fnc_getGroup)." },
+            { name: "destination",   type: "Position | Object | Group | String (optional)", desc: "Patrol centre. Any value accepted by ep_fnc_getPosition. Default 0 \u2014 uses the group\u2019s current position." },
+            { name: "radius",        type: "Number (optional)",                          desc: "Patrol ring radius in meters. Default 100." },
+            { name: "count",         type: "Number (optional)",                          desc: "Number of patrol waypoints (excluding CYCLE). Default 3." },
+            { name: "...properties", type: "String | Array | Number",                    desc: "Extra waypoint properties appended to ep_fnc_addWaypoint (behaviour, combat mode, formation, speed, timeout, completion radius)." },
+            { name: "override",      type: "Boolean (optional)",                         desc: "Default true. If false, existing waypoints are kept." }
+        ],
+        returns: "Nothing.",
+        example: '[group player, "marker_town", 150, 5] call ep_fnc_taskPatrol;\n' +
+                 '[myGroup, target, 200, 4, "AWARE", "WEDGE"] call ep_fnc_taskPatrol;\n' +
+                 '[myGroup, target, 100, 3, false] call ep_fnc_taskPatrol;   // don\'t clear existing waypoints'
     }
 
 });

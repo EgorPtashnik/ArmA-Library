@@ -91,7 +91,7 @@
             <tr>
                 <td>${escapeHtml(p.name)}</td>
                 <td>${escapeHtml(p.type || "")}</td>
-                <td>${escapeHtml(p.desc || "")}</td>
+                <td>${p.desc || ""}</td>
             </tr>
         `).join("");
 
@@ -119,7 +119,7 @@
             ${doc.returns ? `
                 <section>
                     <h3>Returns</h3>
-                    <p>${escapeHtml(doc.returns)}</p>
+                    <p>${doc.returns}</p>
                 </section>` : ""}
 
             ${doc.example ? `

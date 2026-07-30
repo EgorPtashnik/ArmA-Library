@@ -120,6 +120,16 @@ main h3 {
     margin: 0 0 8px;
 }
 main p { margin: 0 0 8px; line-height: 1.5; }
+main :not(pre) > code,
+main table.params code {
+    background: var(--code-bg);
+    color: var(--accent);
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-family: "SF Mono", Consolas, Menlo, monospace;
+    font-size: .85em;
+    border: 1px solid var(--border);
+}
 main pre {
     background: var(--code-bg);
     color: var(--code-text);
