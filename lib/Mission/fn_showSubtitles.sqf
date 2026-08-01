@@ -12,6 +12,8 @@ params [
 	["_radioSoundOut", EP_DEFAULT_SOUND_OUT]
 ];
 
+if !(_this isEqualType []) exitWith { _this spawn BIS_fnc_missionConversations };
+
 private _subsCount = (count _subtitles) - 1;
 private _subsTiming = _subtitles apply {_x # 2};
 private _soundsTiming = [];

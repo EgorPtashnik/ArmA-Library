@@ -8,6 +8,7 @@ class EP
 		class setAIMode {};
 		class taskAttack {};
 		class taskPatrol {};
+		class taskDefend {};
 	};
 
 	class Mission
@@ -25,6 +26,8 @@ class EP
 		class getGroup {};
 		class getPosition {};
 		class getRandomArray {};
+		class getRandomPosition {};
+		class getRandomPositionArea {};
 		class collectMarkers {};
 	}
 }

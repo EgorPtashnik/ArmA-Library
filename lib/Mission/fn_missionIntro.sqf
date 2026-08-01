@@ -1,5 +1,6 @@
 #define EP_DEFAULT_EST_SHOW_PARAMS [worldName, 500, 200, random 360]
-#define EP_DEFAULT_INTRO_TEXTS [worldName, groupId group player]
+#define EP_DEFAULT_INTRO_TEXTS [toUpper worldName, toUpper (groupId group player)]
+#define EP_MISSION_INTRO_TYPES ["EST_SHOT", "INFO", "TYPE", "TYPE_ALT", "TILES"]
 
 params [
 	"_estShotPos",
