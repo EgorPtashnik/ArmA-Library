@@ -1,4 +1,3 @@
-#include "lib\constants.hpp"
 
 // ----- General mission metadata ---------------------------------------------
 onLoadName    = "";
@@ -34,6 +33,7 @@ class CfgDebriefing {
 // Includes ep_fnc_* functions declared in lib\functions.hpp.
 class CfgFunctions {
     #include "lib\functions.hpp"
+    #include "lib\constants.hpp"
 };
 
 // ----- Support menu (Comm menu) --------------------------------------------
@@ -53,11 +53,71 @@ class CfgFunctions {
 
 // ----- Sounds --------------------------------------------------------------
 class CfgSounds {
-    sounds[] = {};
+    sounds[] = {mybeep, myin1, myin2, myin4, myin5, myin6, mynoise1, mynoise2, mynoise3, mynoise4};
+    
+	class mybeep {
+		name = "mybeep";
+		sound[] = {"sounds\beep.ogg", db+10, 1.0};
+		titles[] = {0,""};
+	};
 
-    // class mybeep {
-    //     name     = "mybeep";
-    //     sound[]  = { "sounds\beep.ogg", db+10, 1.0 };
-    //     titles[] = { 0, "" };
-    // };
+	class myin1 {
+		name = "myin1";
+		sound[] = {"sounds\in1.ogg", db+10, 1.0};
+		titles[] = {0,""};
+	};
+
+	class myin2	{
+		name = "myin2";
+		sound[] = {"sounds\in2.ogg", db+10, 1.0};
+		titles[] = {0,""};
+	};
+
+	class myin3	{
+		name = "myin3";
+		sound[] = {"sounds\in3.ogg", db+10, 1.0};
+		titles[] = {0,""};
+	};
+
+	class myin4	{
+		name = "myin4";
+		sound[] = {"sounds\in4.ogg", db+10, 1.0};
+		titles[] = {0,""};
+	};
+
+	class myin5	{
+		name = "myin5";
+		sound[] = {"sounds\in5.ogg", db+10, 1.0};
+		titles[] = {0,""};
+	};
+
+	class myin6	{
+		name = "myin6";
+		sound[] = {"sounds\in6.ogg", db+10, 1.0};
+		titles[] = {0,""};
+	};
+
+	class mynoise1 {
+		name = "mynoise1";
+		sound[] = {"sounds\noise1.ogg", db+10, 1.0};
+		titles[] = {0,""};
+	};
+
+	class mynoise2 {
+		name = "mynoise2";
+		sound[] = {"sounds\noise2.ogg", db+10, 1.0};
+		titles[] = {0,""};
+	};
+
+	class mynoise3 {
+		name = "mynoise3";
+		sound[] = {"sounds\noise3.ogg", db+10, 1.0};
+		titles[] = {0,""};
+	};
+	
+	class mynoise4 {
+		name = "mynoise4";
+		sound[] = {"sounds\noise4.ogg", db+10, 1.0};
+		titles[] = {0,""};
+	};
 };

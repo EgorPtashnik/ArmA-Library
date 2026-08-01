@@ -18,9 +18,8 @@
 "colorcorrections" ppeffectcommit 0;
 
 private _side = nil;
-private _sideParams = _nil;
+private _sideParams = nil;
 
-if (count _sideParams == 0) then { _sideParams = [0.5, 0.5, 0] };
 {
 	_side = _x # 0;
 	_sideParams = createHashMapFromArray (_x # 1);

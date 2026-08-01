@@ -5,6 +5,10 @@ params [
 	["_count", 3]
 ];
 
+if !(_this isEqualType []) then {
+	_this = [_this];
+};
+
 private _args = _this - [_group, _destination, _radius, _count];
 
 _group = _group call ep_fnc_getGroup;
