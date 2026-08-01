@@ -1,5 +1,12 @@
 class EP
 {
+	
+	class AI
+	{
+		file = "lib\Ambient";
+		class ambientWarfare {};
+	};
+
 	class AI
 	{
 		file = "lib\AI";
