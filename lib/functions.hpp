@@ -17,6 +17,14 @@ class EP
 		class ambientWarfare {};
 	};
 
+	class Create
+	{
+		file = "lib\Create";
+		class createGroup {};
+		class createTrigger {};
+		class createUnit {};
+	};
+
 	class Mission
 	{
 		file = "lib\Mission";
@@ -35,5 +43,5 @@ class EP
 		class getRandomPosition {};
 		class getRandomPositionArea {};
 		class collectMarkers {};
-	}
+	};
 }
