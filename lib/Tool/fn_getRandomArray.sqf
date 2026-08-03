@@ -7,7 +7,9 @@ params [
 private _array = [];
 private _initArrayCount = count _initArray;
 
-if (_withoutDublication && _resultCount > _initArrayCount) exitWith { systemChat "ep_fnc_getRandomArray: result cannot be bigger than initial array for 'without dublication' scenario." };
+if (_withoutDublication && _resultCount > _initArrayCount) exitWith {
+	systemChat "ep_fnc_getRandomArray: result cannot be bigger than initial array for 'without dublication' scenario."
+};
 
 for "_i" from 1 to _resultCount do {
 

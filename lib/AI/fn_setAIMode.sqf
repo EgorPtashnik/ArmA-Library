@@ -8,10 +8,14 @@ private _args = _this - [_target];
 private _isGroup = false;
 
 switch (typeName _target) do {
-	case "GROUP"	:
-	case "OBJECT"	: { _target = _target call ep_fnc_getGroup; _isGroup = true };
+	case "GROUP"	: { _target = _target call ep_fnc_getGroup; _isGroup = true };
+	case "OBJECT"	: { _target = [_target] };
 	case "ARRAY"	: { _target = _target };
-	default 		  { systemChat (format ["ep_fnc_setAIMode: %1 is not a valid parameter!", _position]) };
+	default 		  { _target = nil; };
+};
+
+if (isNil "_target") exitWith {
+	systemChat (format ["ep_fnc_setAIMode: %1 is not a valid parameter!", _target]);
 };
 
 if (_isGroup) then {

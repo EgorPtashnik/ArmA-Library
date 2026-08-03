@@ -1,12 +1,5 @@
 class EP
 {
-	
-	class AI
-	{
-		file = "lib\Ambient";
-		class ambientWarfare {};
-	};
-
 	class AI
 	{
 		file = "lib\AI";
@@ -16,6 +9,12 @@ class EP
 		class taskAttack {};
 		class taskPatrol {};
 		class taskDefend {};
+	};
+
+	class Ambient
+	{
+		file = "lib\Ambient";
+		class ambientWarfare {};
 	};
 
 	class Mission

@@ -5,11 +5,11 @@ params [
 
 // private _MAX_MARKERS = 128;
 private _array = [];
-private _markerName = nil;
-private _markerPos = nil;
+private ["_markerName", "_markerPos"];
+
 for "_i" from 1 to 128 do {
-	_markerName = format ["%1%2", _markerPrefix, _i];
-	_markerPos = getMarkerPos _markerName;
+	_markerName = format ["%1_%2", _markerPrefix, _i];
+	_markerPos = _markerName call ep_fnc_getPosition;
 
 	if ((_markerPos # 0) == 0) exitWith {};
 
