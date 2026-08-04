@@ -7,12 +7,12 @@ params [
 	["_hold", 0]
 ];
 
-_group = _group call ep_fnc_getGroup;
+_group = _group call EP_fnc_getGroup;
 
 if (_destination isEqualType 0) then {
-	_destination = _group call ep_fnc_getPosition;
+	_destination = _group call EP_fnc_getPosition;
 } else {
-	_destination = _destination call ep_fnc_getPosition;
+	_destination = _destination call EP_fnc_getPosition;
 };
 
-[_group, _destination, _radius, _threshold, _patrol, _hold] call cba_fnc_taskDefend;
+[_group, _destination, _radius, _threshold, _patrol, _hold] call CBA_fnc_taskDefend;

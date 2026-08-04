@@ -7,8 +7,8 @@ params [
 
 private _args = _this - [_group, _destination];
 
-_group 	= _group call ep_fnc_getGroup;
-_destination = _destination call ep_fnc_getPosition;
+_group 	= _group call EP_fnc_getGroup;
+_destination = _destination call EP_fnc_getPosition;
 
 private _waypoint = _group addWaypoint [_destination, -1];
 
@@ -26,7 +26,7 @@ private _waypoint = _group addWaypoint [_destination, -1];
 	if (_x isEqualType []) 			then { _waypoint setWaypointTimeout _x; continue };
 	if (_x isEqualType 1) 			then { _waypoint setWaypointCompletionRadius _x; continue };
 
-	if (true) exitWith { systemChat (format ["ep_fnc_addWaypoint: %1 is not a valid parameter!", _x]) }; 
+	if (true) exitWith { systemChat (format ["EP_fnc_addWaypoint: %1 is not a valid parameter!", _x]) }; 
 
 } forEach _args;
 

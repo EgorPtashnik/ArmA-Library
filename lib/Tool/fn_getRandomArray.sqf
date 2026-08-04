@@ -5,17 +5,17 @@ params [
 ];
 
 private _array = [];
-private _initArrayCount = count _initArray;
+private _count = count _initArray;
 
-if (_withoutDublication && _resultCount > _initArrayCount) exitWith {
-	systemChat "ep_fnc_getRandomArray: result cannot be bigger than initial array for 'without dublication' scenario."
+if (_withoutDublication && _resultCount > _count) exitWith {
+	systemChat "EP_fnc_getRandomArray: result cannot be bigger than initial array for 'without dublication' scenario."
 };
 
 for "_i" from 1 to _resultCount do {
 
 	if (_withoutDublication) then {
-		_array pushBack (_initArray deleteAt (floor random _initArrayCount));
-		_initArrayCount = _initArrayCount - 1;
+		_array pushBack (_initArray deleteAt (floor random _count));
+		_count = _count - 1;
 	} else {
 		_array pushBack (selectRandom _initArray);
 	};

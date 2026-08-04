@@ -30,18 +30,19 @@ class EP
 		file = "lib\Mission";
 		class missionInit {};
 		class missionTasks {};
-		class missionIntro {};
+		class showObjects {};
 		class showSubtitles {};
 	};
 
 	class Tool
 	{
 		file = "lib\Tool";
+		class collectMarkers {};
+		class collectUnits {};
 		class getGroup {};
 		class getPosition {};
 		class getRandomArray {};
 		class getRandomPosition {};
 		class getRandomPositionArea {};
-		class collectMarkers {};
 	};
 }

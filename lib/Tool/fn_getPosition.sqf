@@ -4,7 +4,7 @@ switch (typeName _this) do {
 	case "OBJECT"	: { _this = getPos _this };
 	case "ARRAY"	: { _this = _this };
 
-	default 		  { systemChat (format ["ep_fnc_getPosition: %1 is not a valid parameter!", _this]) };
+	default 		  { systemChat (format ["EP_fnc_getPosition: %1 is not a valid parameter!", _this]) };
 };
 
 _this

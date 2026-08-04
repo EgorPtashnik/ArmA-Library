@@ -5,7 +5,7 @@
 #define EP_DEFAULT_SOUND_OUT "myin4"
 
 params [
-	"_subtitles", //Array if array in format [ [Title, Subtitles, duration] ]
+	"_subtitles", //Array ff arrays in format [ [Title, Subtitles, duration for previous] ]
 	["_lastTiming", 5],
 	["_isRadio", true],
 	["_radioSoundIn", EP_DEFAULT_SOUND_IN],

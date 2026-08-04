@@ -2,7 +2,7 @@ params [
     ["_zoneReference", []],
     ["_perimeter", false]
 ];
-private _area = _zoneReference call bis_fnc_getArea;
+private _area = _zoneReference call BIS_fnc_getArea;
 
 if (_area isEqualTo []) exitWith {[]};
 
@@ -43,6 +43,6 @@ if (_isRect) then {
     _posVector = [_x * _a, _y * _b, 0];
 };
 
-_posVector = [_posVector, -_angle] call bis_fnc_rotateVector2D;
+_posVector = [_posVector, -_angle] call BIS_fnc_rotateVector2D;
 
 _center vectorAdd _posVector
