@@ -39,6 +39,7 @@ class EP
 		file = "lib\Tool";
 		class collectMarkers {};
 		class collectUnits {};
+		class collectVariables {};
 		class getGroup {};
 		class getPosition {};
 		class getRandomArray {};

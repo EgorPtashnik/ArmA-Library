@@ -5,9 +5,6 @@ onLoadMission = "";
 author        = "";
 overviewText  = "";
 
-respawn       = "BASE";
-respawnDelay  = 5;
-
 // ----- Debriefing ----------------------------------------------------------
 class CfgDebriefing {
     class Win {

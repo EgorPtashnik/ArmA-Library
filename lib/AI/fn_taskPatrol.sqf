@@ -17,9 +17,15 @@ _group = _group call EP_fnc_getGroup;
 // Patrol on predefined route by markers
 if (_setOnRoute) then {
 
-	if !(_destination isEqualType "") exitWith { systemChat "EP_fnc_taskPatrol: Destination parameter must be marker name string!" };
+	if !(_destination isEqualType "" || _destination isEqualType []) exitWith { systemChat "EP_fnc_taskPatrol: Destination parameter must be marker name string!" };
 
-	private _routePositions = [_destination, true] call EP_fnc_collectMarkers;
+	private _routePositions = [];
+	if (_destination isEqualType "") then {
+		_routePositions = [_destination, true] call EP_fnc_collectMarkers;
+	} else {
+		_routePositions = _destination;
+	};
+
 	private _override = true;
 	private _overrideIndex = _args findIf { _x isEqualType true };
 
@@ -30,9 +36,13 @@ if (_setOnRoute) then {
 		{ _x enableAI "PATH"; _x enableAI "MOVE" } forEach units _group;
 	};
 
-	{ ([_group, _x, "LIMITED", "SAFE"] + _args) call EP_fnc_addWaypoint } forEach _routePositions;
+	{
+		private _pos = _x call EP_fnc_getPosition;
+		([_group, _pos, "LIMITED", "SAFE"] + _args) call EP_fnc_addWaypoint
+	} forEach _routePositions;
+
 	// Close the patrol loop
-	private _cyclePosition = _routePositions # 0;
+	private _cyclePosition = (_routePositions # 0) call EP_fnc_getPosition;
 	[_group, _cyclePosition, "CYCLE"] call EP_fnc_addWaypoint;
 
 } else {

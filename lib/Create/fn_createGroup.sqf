@@ -5,7 +5,7 @@ params [
 	["_units", []]
 ];
 
-if (_group isEqualType sideUnknown) {
+if (_group isEqualType sideUnknown) then {
 	_group = createGroup [_side, _deleteWhenEmpty];
 } else {
 	_group = _group call EP_fnc_getGroup;

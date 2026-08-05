@@ -36,9 +36,9 @@ if (_isGroup) then {
 	} forEach _args;
 } else {
 	{
-		private _val = toUpper _x;
+		private _val = _x;
 
-		if (_x isEqualType "string") then {
+		if (_val isEqualType "") then {
 			_val = toUpper _val;
 			if (_val in EP_BEHAVIOURS)		then { {_x setBehaviour _val} forEach _target; continue };
 			if (_val in EP_COMBAT_MODES)	then { {_x setUnitCombatMode _val} forEach _target; continue };
