@@ -31,7 +31,7 @@ if (_isGroup) then {
 
 		if (_x isEqualType []) 			then { _target setGroupId _x; continue };
 
-		if (true) exitWith { systemChat (format ["EP_fnc_setAIMode: %1 is not a valid parameter for group!", _x]) }; 
+		if (true) exitWith { systemChat (format ["EP_fnc_setAIMode: %1 is not a valid parameter for group!", _x]) };
 
 	} forEach _args;
 } else {
