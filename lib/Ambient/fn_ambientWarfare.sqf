@@ -11,7 +11,7 @@ params [
 ];
 
 // Default sounds
-private _gSoundList = [ 
+private _soundList = [ 
     "A3\Sounds_F\environment\ambient\battlefield\battlefield_explosions1.wss", 
     "A3\Sounds_F\environment\ambient\battlefield\battlefield_explosions2.wss", 
     "A3\Sounds_F\environment\ambient\battlefield\battlefield_explosions3.wss", 
@@ -25,7 +25,7 @@ private _gSoundList = [
 ];
 
 // Air extension sounds
-private _gAirSoundList = [
+private _airSoundList = [
     "A3\Sounds_F\environment\ambient\battlefield\battlefield_Heli1.wss", 
     "A3\Sounds_F\environment\ambient\battlefield\battlefield_Heli2.wss", 
     "A3\Sounds_F\environment\ambient\battlefield\battlefield_Heli3.wss", 
@@ -35,17 +35,17 @@ private _gAirSoundList = [
     "A3\Sounds_F\environment\ambient\battlefield\battlefield_Jet3.wss"
 ];
 
-if (_includeAirSFC) then { _gSoundList append _gAirSoundList };
+if (_includeAirSFX) then { _soundList append _airSoundList };
  
-private _gTarget = player; 
-private _gSoundObject = player;
+private _target = player; 
+private _soundObject = player;
  
 while {true} do { 
-    _dir = round random 360;  
-    _dis = round random [EP_AMB_WARFARE_MIN_DISTANCE,EP_AMB_WARFARE_MID_DISTANCE,EP_AMB_WARFARE_MAX_DISTANCE]; 
-    private _gSoundPosition = _gTarget getRelPos [_dis, _dir]; 
-    private _gSound = selectRandom _gSoundList; 
-    playSound3D [_gSound, _gSoundObject, false, _gSoundPosition, EP_AMB_WARFARE_VOLUME, EP_AMB_WARFARE_SOUND_PITCH, EP_AMB_WARFARE_SOUND_DISTANCE]; 
+    private _dir = round random 360;  
+    private _dis = round random [EP_AMB_WARFARE_MIN_DISTANCE,EP_AMB_WARFARE_MID_DISTANCE,EP_AMB_WARFARE_MAX_DISTANCE]; 
+    private _soundPos = _gTarget getRelPos [_dis, _dir]; 
+    private _sound = selectRandom _gSoundList; 
+    playSound3D [_sound, _soundObject, false, _soundPos, EP_AMB_WARFARE_VOLUME, EP_AMB_WARFARE_SOUND_PITCH, EP_AMB_WARFARE_SOUND_DISTANCE]; 
     private _sleepRandom = round random EP_AMB_WARFARE_MAX_SLEEP; 
     sleep _sleepRandom; 
 };

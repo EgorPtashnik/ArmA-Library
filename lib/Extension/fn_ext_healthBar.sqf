@@ -32,14 +32,14 @@ private _healthBarHandler = {
 		
 		// Get total string for health
 		private _displayString = "";
-		_counter = _symbolsCount - _health * _sumbolsCount;
+		private _counter = _symbolsCount - _health * _symbolsCount;
 		for "_i" from 1 to _counter do {
-			_displayString = _displayStirng + _symbol;	
+			_displayString = _displayString + _symbol;	
 		};
 
-		_color = _colorMap # 0;
-		if (_counter > _mediumThreshold * _symbolsCount / 100) 	then { _color = _colorMap # 1 };
-		if (_counter > _highThreshold * _symbolsCount / 100) 	then { _color = _colorMap # 2 };
+		private _color = _colorMap # 0;
+		if (_counter > _highThreshold * _symbolsCount / 100) 	then { _color = _colorMap # 1 };
+		if (_counter > _mediumThreshold * _symbolsCount / 100) 	then { _color = _colorMap # 2 };
 
 		// Draw Health Bar
 		[
@@ -49,7 +49,7 @@ private _healthBarHandler = {
 			999, 0, 0, _layer
 		] call BIS_fnc_dynamicText;
 
-		_unit setVariable ["ep_healthBar_damage", _health];
+		_unit setVariable ["EP_healthBar_damage", _health];
 	};
 };
 
@@ -68,7 +68,7 @@ if ( ( (vehicle _targetUnit) isEqualTo _targetUnit) || _healthShowVehicle) then 
 		] call _healthBarHandler;
 	} else {
 		["", -1, -1, 0, 0, 0, _layerId] call BIS_fnc_dynamicText;
-		vehicle _targetUnit setVariable ["EP_healthBar_damage", objNull];
+		vehicle _targetUnit setVariable ["EP_healthBar_damage", -1];
 	};
 	sleep _sleep;
 };

@@ -6,7 +6,7 @@
 
 
 params [
-	_position
+	"_position"
 ];
 
 if !(_this isEqualType []) then {
@@ -15,6 +15,7 @@ if !(_this isEqualType []) then {
 
 private _args = _this - [_position];
 
+private _pos = _position call EP_fnc_getPosition;
 private _trigger = createTrigger ["EmptyDetector", _position];
 
 {
@@ -42,7 +43,7 @@ private _trigger = createTrigger ["EmptyDetector", _position];
 	if (_x isEqualTypeArray [ {}, {}, {} ]) then {
 		private _condition = str (_x # 0);
 		private _activation = str (_x # 1);
-		private _deactivation = str (_x # 1);
+		private _deactivation = str (_x # 2);
 		_trigger setTriggerStatements [_condition, _activation, _deactivation];
 		continue
 	};

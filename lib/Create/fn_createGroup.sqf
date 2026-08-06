@@ -12,7 +12,7 @@ params [
 ];
 
 if !(_spawnRef isEqualType grpNull || _spawnRef isEqualType sideUnknown) exitWith {
-	systemChat (format ["EP_fnc_createGroup: %1 is not a valid parameter! Expected side or group.", _side]);
+	systemChat (format ["EP_fnc_createGroup: %1 is not a valid parameter! Expected side or group.", _spawnRef]);
 };
 
 private _pos = [];
@@ -44,10 +44,10 @@ private _newGroup = [
 	_ammo,			// Ammo range 0..1 [min,max]
 	_randControls,	// Random controls [minUnits, chance to spawn each add unit in range 0..1]
 	_direction,		// Direction
-	_precisePos,	// Precise position placement
+	_precisePos		// Precise position placement
 ] call BIS_fnc_spawnGroup;
 
-[_newGroup, _skillParams] call EP_fnc_setAIMode;
+[_newGroup, _skillParams] call EP_fnc_setAISkill;
 
 private _returnedGroup = grpNull;
 if (_joinGroup) then {

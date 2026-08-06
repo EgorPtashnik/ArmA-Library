@@ -15,7 +15,7 @@ switch (typeName _target) do {
 };
 
 if (isNil "_target") exitWith {
-	systemChat (format ["EP_fnc_setAIMode: %1 is not a valid parameter!", _target]);
+	systemChat "EP_fnc_setAIMode: Reference object is not a valid parameter!";
 };
 
 if (_isGroup) then {
