@@ -1,5 +1,6 @@
 params [
-	"_varPrefixes"
+	"_varPrefixes",
+	["_reversed", false]
 ];
 
 // Params check
@@ -21,7 +22,11 @@ private _array = [];
 
 		if (isNil "_varValue") exitWith {};
 
-		_array append [_varValue];
+		if (_reversed) then {
+			_array pushBack _varValue;
+		} else {
+			_array append [_varValue];
+		};
 	};
 } forEach _this;
 
