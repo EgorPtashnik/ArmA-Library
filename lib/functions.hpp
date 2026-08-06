@@ -6,6 +6,7 @@ class EP
 		class addWaypoint {};
 		class clearWaypoints {};
 		class setAIMode {};
+		class setAISkill {};
 		class taskAttack {};
 		class taskPatrol {};
 		class taskDefend {};
@@ -29,6 +30,7 @@ class EP
 	{
 		file = "lib\Mission";
 		class missionInit {};
+		class missionIntro {};
 		class missionTasks {};
 		class showObjects {};
 		class showSubtitles {};
@@ -46,4 +48,12 @@ class EP
 		class getRandomPosition {};
 		class getRandomPositionArea {};
 	};
-}
+
+	class Extension
+	{
+		file="lib\Extension";
+		class ext_casualHealth {};
+		class ext_casualVehicle {};
+		class ext_healthBar {};
+	};
+};

@@ -6,7 +6,7 @@
 ArmADocs.register("Constants", {
 
     "EP_TASK_ICONS": {
-        description: "All task icon names accepted by <code>ep_fnc_missionTasks</code>. Matched case-insensitively.",
+        description: "All task icon names accepted by <code>EP_fnc_missionTasks</code>. Matched case-insensitively.",
         syntax: '#include "..\\constants.hpp"',
         example:
             '["airdrop","attack","danger","defend","destroy","download","exit","getin","getout",\n' +
@@ -23,7 +23,7 @@ ArmADocs.register("Constants", {
     },
 
     "EP_WP_TYPES": {
-        description: "Valid waypoint types for <code>setWaypointType</code>. Used by ep_fnc_addWaypoint.",
+        description: "Valid waypoint types for <code>setWaypointType</code>. Used by EP_fnc_addWaypoint.",
         example:
             '["MOVE","DESTROY","GETIN","SAD","JOIN","LEADER","GETOUT","CYCLE",\n' +
             ' "LOAD","UNLOAD","TR UNLOAD","HOLD","SENTRY","GUARD","TALK","SCRIPTED",\n' +
@@ -31,7 +31,7 @@ ArmADocs.register("Constants", {
     },
 
     "EP_BEHAVIOURS": {
-        description: "AI combat behaviour modes. Used by ep_fnc_setAIMode and ep_fnc_addWaypoint.",
+        description: "AI combat behaviour modes. Used by EP_fnc_setAIMode and EP_fnc_addWaypoint.",
         example: '["CARELESS", "SAFE", "AWARE", "COMBAT", "STEALTH"]'
     },
 

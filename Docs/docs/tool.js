@@ -3,56 +3,106 @@
  */
 ArmADocs.register("Tool", {
 
-    "ep_fnc_getGroup": {
+    "EP_fnc_getGroup": {
         description: "Resolves a Group from a Group, a unit belonging to a group, or a single-element array containing either. " +
                      "Thin wrapper around <code>CBA_fnc_getGroup</code>.",
-        syntax: "value call ep_fnc_getGroup",
+        syntax: "value call EP_fnc_getGroup",
         params: [
             { name: "value", type: "Group | Object | Array", desc: "The value to normalise into a Group." }
         ],
         returns: "Group",
-        example: "player call ep_fnc_getGroup;\n[myUnit] call ep_fnc_getGroup;"
+        example: "player call EP_fnc_getGroup;\n[myUnit] call EP_fnc_getGroup;"
     },
 
-    "ep_fnc_getPosition": {
+    "EP_fnc_getPosition": {
         description: "Resolves an AGL/ATL position from many input types.",
-        syntax: "value call ep_fnc_getPosition",
+        syntax: "value call EP_fnc_getPosition",
         params: [
             { name: "value", type: "String | Group | Object | Array", desc: "Marker name (<code>getMarkerPos</code>), group (leader pos), object (<code>getPos</code>), or position array (returned as-is)." }
         ],
         returns: "Position (Array [x, y, z])",
-        example: '"marker_1"        call ep_fnc_getPosition;\n' +
-                 'group player      call ep_fnc_getPosition;\n' +
-                 'player            call ep_fnc_getPosition;\n' +
-                 '[1000, 2000, 0]   call ep_fnc_getPosition;'
+        example: '"marker_1"        call EP_fnc_getPosition;\n' +
+                 'group player      call EP_fnc_getPosition;\n' +
+                 'player            call EP_fnc_getPosition;\n' +
+                 '[1000, 2000, 0]   call EP_fnc_getPosition;'
     },
 
-    "ep_fnc_getRandomArray": {
+    "EP_fnc_getRandomArray": {
         description: "Builds a new array of <code>resultCount</code> elements picked randomly from <code>initArray</code>. " +
                      "With <code>withoutDuplication = true</code>, each source element is picked at most once (uses <code>deleteAt</code> on the input array \u2014 pass a copy if you need to preserve it). " +
                      "If <code>withoutDuplication</code> is true and <code>resultCount</code> exceeds the input size, the function logs a systemChat warning and exits.",
-        syntax: "[initArray, resultCount, withoutDuplication?] call ep_fnc_getRandomArray",
+        syntax: "[initArray, resultCount, withoutDuplication?] call EP_fnc_getRandomArray",
         params: [
             { name: "initArray",          type: "Array",              desc: "Source array to pick from." },
             { name: "resultCount",        type: "Number",             desc: "How many elements to return." },
             { name: "withoutDuplication", type: "Boolean (optional)", desc: "If true, no element is picked twice. Default false." }
         ],
         returns: "Array \u2014 the randomised selection.",
-        example: '[["alpha","bravo","charlie","delta"], 2] call ep_fnc_getRandomArray;\n' +
-                 '[+aMarkers, 5, true] call ep_fnc_getRandomArray;   // no duplicates, input preserved via +copy'
+        example: '[["alpha","bravo","charlie","delta"], 2] call EP_fnc_getRandomArray;\n' +
+                 '[+aMarkers, 5, true] call EP_fnc_getRandomArray;   // no duplicates, input preserved via +copy'
     },
 
-    "ep_fnc_collectMarkers": {
+    "EP_fnc_collectMarkers": {
         description: "Collects sequentially numbered markers named <code>prefix1</code>, <code>prefix2</code>, \u2026 up to 128. " +
                      "Iteration stops at the first missing marker (detected by <code>getMarkerPos</code> returning <code>[0, 0, 0]</code>).",
-        syntax: "[markerPrefix, returnPositionArray?] call ep_fnc_collectMarkers",
+        syntax: "[markerPrefix, returnPositionArray?] call EP_fnc_collectMarkers",
         params: [
             { name: "markerPrefix",        type: "String",             desc: "Common prefix. Function reads <code>prefix1</code> \u2026 <code>prefix128</code>." },
             { name: "returnPositionArray", type: "Boolean (optional)", desc: "If true, returns marker positions instead of marker names. Default false." }
         ],
         returns: "Array \u2014 marker names, or marker positions when <code>returnPositionArray</code> is true.",
-        example: '"patrol_" call ep_fnc_collectMarkers;\n' +
-                 '["spawn_", true] call ep_fnc_collectMarkers;   // positions'
+        example: '"patrol_" call EP_fnc_collectMarkers;\n' +
+                 '["spawn_", true] call EP_fnc_collectMarkers;   // positions'
+    },
+
+    "EP_fnc_collectUnits": {
+        description: "Normalises a heterogeneous list of references into a flat array of units. Accepts groups, single objects, arrays of any of the above, or a mission-layer name.",
+        syntax: "value call EP_fnc_collectUnits",
+        params: [
+            { name: "value", type: "Group | Object | String | Array", desc: "Any mix of groups (units expanded), objects (kept), mission-layer name (its objects), or arrays of the same." }
+        ],
+        returns: "Array<Object> \u2014 the flattened list of units.",
+        example: '[group player, cursorObject, "AmbientLayer"] call EP_fnc_collectUnits;'
+    },
+
+    "EP_fnc_collectVariables": {
+        description: "Reads sequentially numbered mission-namespace variables named <code>prefix_1</code>, <code>prefix_2</code>, \u2026 up to 128. Iteration stops at the first missing variable. Accepts one prefix or an array of prefixes.",
+        syntax: "[varPrefixes, reversed?] call EP_fnc_collectVariables",
+        params: [
+            { name: "varPrefixes", type: "String | Array<String>", desc: "Single prefix or array of prefixes. Reads <code>prefix_1</code> \u2026 <code>prefix_128</code>." },
+            { name: "reversed",   type: "Boolean (optional)",     desc: "If true, entries are pushBack\u2019ed one-by-one; otherwise append\u2019ed. Default false." }
+        ],
+        returns: "Array \u2014 the collected variable values in order of discovery.",
+        example: '"trigger" call EP_fnc_collectVariables;\n' +
+                 '[["trigger", "marker"]] call EP_fnc_collectVariables;'
+    },
+
+    "EP_fnc_getRandomPosition": {
+        description: "Returns a random position uniformly distributed inside a disc / annular sector around a reference position. " +
+                     "Uses <code>sqrt(random 1)</code> so the resulting points are area-uniform (no clustering at the centre). " +
+                     "If the input reference is a 2D array (<code>[x, y]</code>) the returned position is resized back to 2 elements.",
+        syntax: "[ref, radius?, direction?, angle?] call EP_fnc_getRandomPosition",
+        params: [
+            { name: "ref",       type: "Position | Object | Group | String", desc: "Any value accepted by EP_fnc_getPosition \u2014 the sector centre." },
+            { name: "radius",    type: "Number (optional)",                  desc: "Max distance in meters. Default 0 (returns the centre)." },
+            { name: "direction", type: "Number (optional)",                  desc: "Sector centre bearing in degrees. Default 0 (north)." },
+            { name: "angle",     type: "Number (optional)",                  desc: "Sector opening angle in degrees, centred on <code>direction</code>. Default 360 (full disc)." }
+        ],
+        returns: "Position \u2014 same dimensionality (2D/3D) as the resolved reference.",
+        example: '[player, 150] call EP_fnc_getRandomPosition;                   // anywhere within 150m\n' +
+                 '["marker_spawn", 200, 90, 60] call EP_fnc_getRandomPosition;   // 60\u00b0 wedge to the east'
+    },
+
+    "EP_fnc_getRandomPositionArea": {
+        description: "Returns a random position inside or on the perimeter of a Zone / Trigger / Marker area (rectangle or ellipse). Uses <code>BIS_fnc_getArea</code> to resolve the shape.",
+        syntax: "[zoneReference, perimeter?] call EP_fnc_getRandomPositionArea",
+        params: [
+            { name: "zoneReference", type: "Marker | Trigger | Location | Array", desc: "Any value accepted by <code>BIS_fnc_getArea</code>." },
+            { name: "perimeter",     type: "Boolean (optional)",                  desc: "If true, sample on the perimeter of the area instead of inside it. Default false." }
+        ],
+        returns: "Position \u2014 world position inside/on the area, or <code>[]</code> if the reference is invalid.",
+        example: '"triggerZone" call EP_fnc_getRandomPositionArea;\n' +
+                 '["triggerZone", true] call EP_fnc_getRandomPositionArea;   // on perimeter'
     }
 
 });
