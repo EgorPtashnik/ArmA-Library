@@ -41,9 +41,9 @@ private _trigger = createTrigger ["EmptyDetector", _position];
 	};
 
 	if (_x isEqualTypeArray [ {}, {}, {} ]) then {
-		private _condition = str (_x # 0);
-		private _activation = str (_x # 1);
-		private _deactivation = str (_x # 2);
+		private _condition = toString (_x # 0);
+		private _activation = toString (_x # 1);
+		private _deactivation = toString (_x # 2);
 		_trigger setTriggerStatements [_condition, _activation, _deactivation];
 		continue
 	};
