@@ -17,7 +17,7 @@ switch (typeName _ref) do {
 	_veh enableSimulation _show;
 	_veh hideObject !_show;
 	_veh setCaptive !_show;
-	_veh allowDamage !_show;
+	_veh allowDamage _show;
 } forEach _objects;
 
 _objects
