@@ -40,6 +40,7 @@ class EP
 	class Tool
 	{
 		file = "lib\Tool";
+		class cleanupArea {};
 		class collectMarkers {};
 		class collectUnits {};
 		class collectVariables {};
