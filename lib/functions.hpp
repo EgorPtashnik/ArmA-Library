@@ -8,8 +8,9 @@ class EP
 		class setAIMode {};
 		class setAISkill {};
 		class taskAttack {};
-		class taskPatrol {};
+		class taskConvoy {};
 		class taskDefend {};
+		class taskPatrol {};
 	};
 
 	class Ambient
