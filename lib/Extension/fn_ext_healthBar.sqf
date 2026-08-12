@@ -47,16 +47,16 @@ private _healthBarHandler = {
 			safeZoneW + safeZoneX * _posFromRightPerc,
 			safeZoneH + safeZoneY * _posFromBottomPerc,
 			999, 0, 0, _layer
-		] call BIS_fnc_dynamicText;
+		] spawn BIS_fnc_dynamicText;
 
 		_unit setVariable ["EP_healthBar_damage", _health];
 	};
 };
 
 while { alive _targetUnit } do {
-if ( ( (vehicle _targetUnit) isEqualTo _targetUnit) || _healthShowVehicle) then {
+	if ( ( (vehicle _targetUnit) isEqualTo _targetUnit) || _healthShowVehicle) then {
 		[
-			vehicle _targetUnit,
+			(vehicle _targetUnit),
 			_layerId,
 			_healthSymbolsCount,
 			_healthSymbol,
@@ -70,6 +70,7 @@ if ( ( (vehicle _targetUnit) isEqualTo _targetUnit) || _healthShowVehicle) then 
 		["", -1, -1, 0, 0, 0, _layerId] call BIS_fnc_dynamicText;
 		vehicle _targetUnit setVariable ["EP_healthBar_damage", -1];
 	};
+
 	sleep _sleep;
 };
 

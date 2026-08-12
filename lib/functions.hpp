@@ -52,8 +52,8 @@ class EP
 	class Extension
 	{
 		file="lib\Extension";
-		class ext_casualHealth {};
 		class ext_casualVehicle {};
 		class ext_healthBar {};
+		class ext_healthRegen {};
 	};
 };
