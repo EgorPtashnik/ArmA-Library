@@ -183,13 +183,36 @@
         });
 
         const active = getRequestedName();
-        const html = Object.keys(groups).sort().map(cat => `
-            <div class="group-title">${escapeHtml(cat)}</div>
-            ${groups[cat].map(name => `
+        // Alphabetical, but "Constants" is pinned to the end.
+        const catOrder = (a, b) => {
+            if (a === "Constants") return 1;
+            if (b === "Constants") return -1;
+            return a.localeCompare(b);
+        };
+        const html = Object.keys(groups).sort(catOrder).map(cat => {
+            // Optional per-entry `group` field renders a sub-heading inside the category.
+            const subgroups = {};
+            const ungrouped = [];
+            groups[cat].forEach(name => {
+                const g = registry.docs[name].group;
+                if (g) (subgroups[g] = subgroups[g] || []).push(name);
+                else ungrouped.push(name);
+            });
+            const hasSubgroups = Object.keys(subgroups).length > 0;
+            const linksHtml = names => names.map(name => `
                 <a class="fn-link ${name === active ? "active" : ""}"
                    href="#${encodeURIComponent(name)}">${escapeHtml(name)}</a>
-            `).join("")}
-        `).join("");
+            `).join("");
+            const subgroupsHtml = Object.keys(subgroups).sort().map(g => `
+                <div class="subgroup-title">${escapeHtml(g)}</div>
+                ${linksHtml(subgroups[g])}
+            `).join("");
+            return `
+                <div class="group-title">${escapeHtml(cat)}</div>
+                ${linksHtml(ungrouped)}
+                ${hasSubgroups ? subgroupsHtml : ""}
+            `;
+        }).join("");
 
         navEl.innerHTML = html || `<div class="placeholder">No matches.</div>`;
     }

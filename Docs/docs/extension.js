@@ -4,11 +4,11 @@
  */
 ArmADocs.register("Extension", {
 
-    "EP_fnc_ext_casualHealth": {
+    "EP_fnc_ext_healthRegen": {
         description: "Installs a &laquo;casual&raquo; health model on the given units: each hit inflicts a small fixed damage (not the engine\u2019s raw damage), " +
                      "optionally with instant-kill headshots, and applies a slow regeneration back to a floor value if the unit is not damaged for a short period. " +
                      "Idempotent per unit (guarded by <code>EP_casualHealth_installed</code>).",
-        syntax: "[units, damageOnHit?, headshotKill?, stopRegenAt?, regenValue?, regenInterval?] call EP_fnc_ext_casualHealth",
+        syntax: "[units, damageOnHit?, headshotKill?, stopRegenAt?, regenValue?, regenInterval?] call EP_fnc_ext_healthRegen",
         params: [
             { name: "units",         type: "Group | Object | String | Array", desc: "Anything accepted by EP_fnc_collectUnits." },
             { name: "damageOnHit",   type: "Number (optional)",               desc: "Fixed damage applied per hit (0..1). Default 0.1." },
@@ -18,8 +18,8 @@ ArmADocs.register("Extension", {
             { name: "regenInterval", type: "Number (optional)",               desc: "Seconds between regen ticks. Default 1." }
         ],
         returns: "Array<Object> \u2014 the affected units.",
-        example: '[group player] call EP_fnc_ext_casualHealth;\n' +
-                 '[units group player, 0.15, false, 0.3, 0.03, 2] call EP_fnc_ext_casualHealth;   // tougher, slower regen'
+        example: '[group player] call EP_fnc_ext_healthRegen;\n' +
+                 '[units group player, 0.15, false, 0.3, 0.03, 2] call EP_fnc_ext_healthRegen;   // tougher, slower regen'
     },
 
     "EP_fnc_ext_casualVehicle": {

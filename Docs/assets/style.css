@@ -76,6 +76,13 @@ aside .group-title {
     letter-spacing: .05em;
     margin: 12px 8px 4px;
 }
+aside .subgroup-title {
+    color: var(--muted);
+    font-size: .68rem;
+    letter-spacing: .03em;
+    margin: 8px 8px 2px 16px;
+    opacity: .75;
+}
 aside a.fn-link {
     display: block;
     padding: 6px 10px;

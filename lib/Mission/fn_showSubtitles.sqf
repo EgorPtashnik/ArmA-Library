@@ -1,15 +1,11 @@
-#define EP_SOUNDS_NOISES ["mynoise1", "mynoise2", "mynoise3"]
-#define EP_SOUNDS_TYPING ["gm_rtty_stroke_01", "gm_rtty_stroke_02", "gm_rtty_stroke_03"]
-#define EP_SOUNDS_TYPING_TIMINGS [0.06, 0.06, 0.06, 0.1, 0.3, 0.5]
-#define EP_DEFAULT_SOUND_IN "myin1"
-#define EP_DEFAULT_SOUND_OUT "myin4"
+#include "..\constants.hpp";
 
 params [
 	"_subtitles", //Array ff arrays in format [ [Title, Subtitles, duration for previous] ]
 	["_lastTiming", 5],
 	["_isRadio", true],
-	["_radioSoundIn", EP_DEFAULT_SOUND_IN],
-	["_radioSoundOut", EP_DEFAULT_SOUND_OUT]
+	["_radioSoundIn", EP_SUBTITLES_DEFAULT_SOUND_IN],
+	["_radioSoundOut", EP_SUBTITLES_DEFAULT_SOUND_OUT]
 ];
 
 if !(_this isEqualType []) exitWith { _this spawn BIS_fnc_missionConversations };
@@ -45,7 +41,7 @@ _subtitles spawn BIS_fnc_EXP_camp_playSubtitles;
 	if (_isRadio) then {
 		playSoundUI [_radioSoundIn];
 
-		[_x, EP_SOUNDS_NOISES] spawn {
+		[_x, EP_SUBTITLES_SOUNDS_NOISES] spawn {
 			private _time = time;
 			while {time < (_time + _this # 0)} do {
 				ep_subs_noise = playSoundUI [(selectRandom (_this # 1))];
@@ -57,8 +53,8 @@ _subtitles spawn BIS_fnc_EXP_camp_playSubtitles;
 			sleep 0.5;
 			private _time = time;
 			while {time < _time + _this - 1.5} do {
-				playSoundUI [selectRandom EP_SOUNDS_TYPING];
-				sleep selectRandom EP_SOUNDS_TYPING_TIMINGS;
+				playSoundUI [selectRandom EP_SUBTITLES_SOUNDS_TYPING];
+				sleep selectRandom EP_SUBTITLES_SOUNDS_TYPING_TIMINGS;
 			};
 		};
 

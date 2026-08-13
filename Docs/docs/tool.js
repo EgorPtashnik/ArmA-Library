@@ -3,6 +3,21 @@
  */
 ArmADocs.register("Tool", {
 
+    "EP_fnc_cleanupArea": {
+        description: "Deletes every object within <code>radius</code> meters of <code>position</code> using <code>nearestObjects</code> (deep search). " +
+                     "If any deleted vehicle still had crew at the moment of removal, the function calls itself again to sweep newly-ejected units \u2014 " +
+                     "recursion is capped at 10 passes to avoid runaway loops. Position input is resolved via <code>EP_fnc_getPosition</code>, " +
+                     "so markers, objects, groups and position arrays are all accepted. Radius must be a Number; otherwise a systemChat warning is printed and the call exits.",
+        syntax: "[position, radius] call EP_fnc_cleanupArea",
+        params: [
+            { name: "position", type: "Position | Object | Group | String", desc: "Any value accepted by EP_fnc_getPosition \u2014 the sweep centre." },
+            { name: "radius",   type: "Number",                             desc: "Sweep radius in meters. Must be a Number." }
+        ],
+        returns: "Nothing.",
+        example: '[player, 50] call EP_fnc_cleanupArea;\n' +
+                 '["cleanupZone", 200] call EP_fnc_cleanupArea;'
+    },
+
     "EP_fnc_getGroup": {
         description: "Resolves a Group from a Group, a unit belonging to a group, or a single-element array containing either. " +
                      "Thin wrapper around <code>CBA_fnc_getGroup</code>.",
@@ -43,16 +58,16 @@ ArmADocs.register("Tool", {
     },
 
     "EP_fnc_collectMarkers": {
-        description: "Collects sequentially numbered markers named <code>prefix1</code>, <code>prefix2</code>, \u2026 up to 128. " +
+        description: "Collects sequentially numbered markers named <code>prefix_1</code>, <code>prefix_2</code>, \u2026 up to 128 (the underscore is inserted by the function \u2014 pass the bare prefix, without a trailing underscore). " +
                      "Iteration stops at the first missing marker (detected by <code>getMarkerPos</code> returning <code>[0, 0, 0]</code>).",
         syntax: "[markerPrefix, returnPositionArray?] call EP_fnc_collectMarkers",
         params: [
-            { name: "markerPrefix",        type: "String",             desc: "Common prefix. Function reads <code>prefix1</code> \u2026 <code>prefix128</code>." },
+            { name: "markerPrefix",        type: "String",             desc: "Common prefix without a trailing underscore. Function reads <code>prefix_1</code> \u2026 <code>prefix_128</code>." },
             { name: "returnPositionArray", type: "Boolean (optional)", desc: "If true, returns marker positions instead of marker names. Default false." }
         ],
         returns: "Array \u2014 marker names, or marker positions when <code>returnPositionArray</code> is true.",
-        example: '"patrol_" call EP_fnc_collectMarkers;\n' +
-                 '["spawn_", true] call EP_fnc_collectMarkers;   // positions'
+        example: '"patrol" call EP_fnc_collectMarkers;                 // -> ["patrol_1", "patrol_2", ...]\n' +
+                 '["spawn", true] call EP_fnc_collectMarkers;          // positions'
     },
 
     "EP_fnc_collectUnits": {
@@ -66,15 +81,18 @@ ArmADocs.register("Tool", {
     },
 
     "EP_fnc_collectVariables": {
-        description: "Reads sequentially numbered mission-namespace variables named <code>prefix_1</code>, <code>prefix_2</code>, \u2026 up to 128. Iteration stops at the first missing variable. Accepts one prefix or an array of prefixes.",
-        syntax: "[varPrefixes, reversed?] call EP_fnc_collectVariables",
+        description: "Reads sequentially numbered mission-namespace variables named <code>prefix_1</code>, <code>prefix_2</code>, \u2026 up to 128. Iteration stops at the first missing variable. Accepts one prefix (pass as string) or several prefixes (pass as an array of strings \u2014 note that in the multi-prefix form the <code>reversed</code> parameter is unavailable).",
+        syntax: "prefix call EP_fnc_collectVariables\n" +
+                "[prefix, reversed?] call EP_fnc_collectVariables\n" +
+                "[prefix1, prefix2, \u2026] call EP_fnc_collectVariables",
         params: [
-            { name: "varPrefixes", type: "String | Array<String>", desc: "Single prefix or array of prefixes. Reads <code>prefix_1</code> \u2026 <code>prefix_128</code>." },
-            { name: "reversed",   type: "Boolean (optional)",     desc: "If true, entries are pushBack\u2019ed one-by-one; otherwise append\u2019ed. Default false." }
+            { name: "varPrefixes", type: "String | Array<String>", desc: "Single prefix, or an array of prefixes. Reads <code>prefix_1</code> \u2026 <code>prefix_128</code> for each prefix." },
+            { name: "reversed",   type: "Boolean (optional)",     desc: "Single-prefix form only. If true, entries are pushBack\u2019ed one-by-one; otherwise append\u2019ed. Default false." }
         ],
         returns: "Array \u2014 the collected variable values in order of discovery.",
         example: '"trigger" call EP_fnc_collectVariables;\n' +
-                 '[["trigger", "marker"]] call EP_fnc_collectVariables;'
+                 '["trigger", true] call EP_fnc_collectVariables;         // single prefix, reversed\n' +
+                 '["trigger", "marker"] call EP_fnc_collectVariables;     // two prefixes, both scanned'
     },
 
     "EP_fnc_getRandomPosition": {

@@ -4,7 +4,7 @@
 ArmADocs.register("Create", {
 
     "EP_fnc_createGroup": {
-        description: "Spawns a group via <code>BIS_fnc_spawnGroup</code> and applies AI mode settings on the result. " +
+        description: "Spawns a group via <code>BIS_fnc_spawnGroup</code> and applies AI skill settings on the result. " +
                      "When <code>position</code> is <code>[ref, radius]</code>, a random position is generated inside the radius via EP_fnc_getRandomPosition. " +
                      "If <code>spawnRef</code> is an existing group, the spawned units (and their vehicles) join it silently; " +
                      "if it is a side, a new group is created for that side and set to <code>deleteGroupWhenEmpty true</code>.",
@@ -13,7 +13,7 @@ ArmADocs.register("Create", {
             { name: "position",     type: "Position | Object | Group | String | [ref, radius]", desc: "Spawn location, or <code>[ref, radius]</code> for a random position." },
             { name: "spawnRef",     type: "Side | Group",                                       desc: "Target side (creates a new group) or existing group (units join it silently)." },
             { name: "classes",      type: "Array<String>",                                      desc: "Class names of units/vehicles to spawn (BIS_fnc_spawnGroup format)." },
-            { name: "skillParams",  type: "Array (optional)",                                   desc: "AI mode flags forwarded to EP_fnc_setAIMode. Default <code>[]</code>." },
+            { name: "skillParams",  type: "Array (optional)",                                   desc: "AI skill key/value pairs forwarded to EP_fnc_setAISkill (SKILL, AIM, AIM_SHAKE, AIM_SPEED, SPOT, SPOT_TIME, COURAGE, RELOAD, COMMAND, FLEEING). Default <code>[]</code>." },
             { name: "relPositions", type: "Array (optional)",                                   desc: "Relative offsets per unit. Default <code>[]</code>." },
             { name: "direction",    type: "Number (optional)",                                  desc: "Facing direction in degrees. Default 0." },
             { name: "ranks",        type: "Array (optional)",                                   desc: "Rank per unit. Default <code>[]</code>." },

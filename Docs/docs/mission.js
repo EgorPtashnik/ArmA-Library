@@ -55,8 +55,8 @@ ArmADocs.register("Mission", {
             { name: "subtitles",     type: "Array",              desc: "Array of <code>[title, subtitle, duration]</code> entries." },
             { name: "lastTiming",    type: "Number (optional)",  desc: "Extra hold time after the last subtitle. Default 5." },
             { name: "isRadio",       type: "Boolean (optional)", desc: "Enables radio SFX (beeps, noise, typing). Default true." },
-            { name: "radioSoundIn",  type: "String (optional)",  desc: "Sound played at radio open. Default EP_DEFAULT_SOUND_IN." },
-            { name: "radioSoundOut", type: "String (optional)",  desc: "Sound played at radio close. Default EP_DEFAULT_SOUND_OUT." }
+            { name: "radioSoundIn",  type: "String (optional)",  desc: "Sound played at radio open. Default EP_SUBTITLES_DEFAULT_SOUND_IN." },
+            { name: "radioSoundOut", type: "String (optional)",  desc: "Sound played at radio close. Default EP_SUBTITLES_DEFAULT_SOUND_OUT." }
         ],
         example:
             '[\n' +

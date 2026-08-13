@@ -1,4 +1,4 @@
-#define EP_CREATE_UNIT_SPECIAL_TYPES ["NONE", "CAN_COLLIDE", "CARGO"]
+#include "..\constants.hpp";
 
 params [
 	"_group",
