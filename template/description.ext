@@ -16,7 +16,7 @@ class CfgDebriefing {
         pictureColor[]    = { 0.0, 0.3, 0.6, 1 };
     };
 
-    class Fail {
+    class FailCasualties {
         title             = "Mission Failed";
         subtitle          = "";
         description       = "";
@@ -32,6 +32,10 @@ class CfgFunctions {
     #include "lib\functions.hpp"
     #include "lib\constants.hpp"
 };
+
+class RscTitles {
+    #include "lib\rsc.hpp"
+}
 
 // ----- Support menu (Comm menu) --------------------------------------------
 // To add:  [player, "CustomSupportMenuItem"] call BIS_fnc_addCommMenuItem;
