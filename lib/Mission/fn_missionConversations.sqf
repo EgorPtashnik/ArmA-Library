@@ -21,15 +21,15 @@ if (_isRadio) then {
 private _display = (uiNamespace getVariable "EP_Subtitles");
 private _ctrl = _display displayCtrl 101;
 private _colorMap = [
-	"#FFF2F2F2",   //WHITE
-	"#FF004C99", //BLUFOR
-	"#FF800000", //OPFOR
-	"#FF008000", //Independent
-	"#FF660080", //Civilian
-	"#FFFF0000", //RED
-	"#FF0000FF", //BLUE
-	"#FF427626", //GREEN
-	"#FFCCCC00" //YELLOW
+	"#FFFFFF", 	//WHITE 		0
+	"#3399FF", 	//BLUE			1
+	"#33FF33", 	//GREEN			2
+	"#FFFF0000", 	//RED			3
+	"#EEEE00",  	//YELLOW		4
+	"#FF004C99", 	//BLUFOR 		5
+	"#FF800000", 	//OPFOR			7
+	"#FF008000", 	//Independent	8
+	"#FF660080" 	//Civilian		9
 ];
 
 {
@@ -48,7 +48,7 @@ private _colorMap = [
 	};
 
 	private _subtitles = parseText format [
-		"<t color='%1' font='PuristaSemibold'>%2:</t> <t font='PuristaMedium' color='#FFF2F2F2'>%3</t>",
+		"<t color='%1' font='PuristaSemibold'>%2:</t> <t font='PuristaMedium' color='#FFFFFF'>%3</t>",
 		_colorValue,
 		_speaker, 
 		_text
@@ -86,3 +86,5 @@ private _colorMap = [
 	};
 
 } forEach _conversation;
+_ctrl ctrlSetFade 1;
+_ctrl ctrlCommit 0.5;
