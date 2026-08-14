@@ -30,6 +30,7 @@ class EP
 	class Mission
 	{
 		file = "lib\Mission";
+		class missionConversations {};
 		class missionInit {};
 		class missionIntro {};
 		class missionTasks {};
