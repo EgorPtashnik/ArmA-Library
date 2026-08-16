@@ -8,10 +8,6 @@ params [
 ];
 
 if !(_this isEqualType []) exitWith { _this spawn BIS_fnc_missionConversations };
-if (missionNamespace getVariable ["EP_Subtitles_Init", true]) then {
-		cutRsc ["EP_Subtitles", "PLAIN"];
-		missionNamespace setVariable ["EP_Subtitles_Init", false];
-	};
 
 //In case this is radio enhance timing for each with 2 seconds
 if (_isRadio) then {
@@ -19,6 +15,10 @@ if (_isRadio) then {
 };
 
 private _display = (uiNamespace getVariable "EP_Subtitles");
+if (isNil "_display") then {
+	"EP_Subtitles" cutRsc ["EP_Subtitles", "PLAIN"]; 
+	_display = (uiNamespace getVariable "EP_Subtitles");
+};
 private _ctrl = _display displayCtrl 101;
 private _colorMap = [
 	"#FFFFFF", 	//WHITE 		0
@@ -32,6 +32,9 @@ private _colorMap = [
 	"#FF660080" 	//Civilian		9
 ];
 
+
+_ctrl ctrlSetFade 0;
+_ctrl ctrlCommit 0.2;
 {
 	_x params [
 		"_speaker",
@@ -87,4 +90,4 @@ private _colorMap = [
 
 } forEach _conversation;
 _ctrl ctrlSetFade 1;
-_ctrl ctrlCommit 0.5;
+_ctrl ctrlCommit 0.2;

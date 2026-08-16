@@ -3,7 +3,7 @@ params [
 	"_route",
 	["_limitSpeed", 50],
 	["_convoySeparation", 50],
-	["_pushThrough", true]
+	["_pushThrough", false]
 ];
 
 _group = _group call EP_fnc_getGroup;
@@ -22,7 +22,9 @@ _group enableAttack !_pushThrough;
 
 (vehicle leader _group) limitSpeed _limitSpeed;
 
-private _convoySubVehicles = (units _group) - (crew (vehicle (leader _group))) - player;
+{ [_group, _x] call EP_fnc_addWaypoint } forEach _route;
+
+private _convoySubVehicles = (units _group) - (crew (vehicle (leader _group))) - [player];
 while { sleep 5; !isNull _group } do {
 
 	// Check for stuck vehicle

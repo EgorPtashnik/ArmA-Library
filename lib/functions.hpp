@@ -32,7 +32,6 @@ class EP
 		file = "lib\Mission";
 		class missionConversations {};
 		class missionInit {};
-		class missionIntro {};
 		class missionTasks {};
 		class showObjects {};
 		class showSubtitles {};
