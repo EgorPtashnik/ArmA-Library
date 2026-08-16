@@ -11,7 +11,7 @@ if !(_this isEqualType []) then {
 private _args = _this - [_position];
 
 private _pos = _position call EP_fnc_getPosition;
-private _trigger = createTrigger ["EmptyDetector", _position];
+private _trigger = createTrigger ["EmptyDetector", _pos];
 
 {
 
