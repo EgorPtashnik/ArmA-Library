@@ -37,9 +37,9 @@ class EP
 		class showSubtitles {};
 	};
 
-	class Tool
+	class Utils
 	{
-		file = "lib\Tool";
+		file = "lib\Util";
 		class cleanupArea {};
 		class collectMarkers {};
 		class collectUnits {};

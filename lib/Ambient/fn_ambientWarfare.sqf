@@ -1,51 +1,70 @@
-#define EP_AMB_WARFARE_VOLUME 3
-#define EP_AMB_WARFARE_SOUND_PITCH 1
-#define EP_AMB_WARFARE_SOUND_DISTANCE 0
-#define EP_AMB_WARFARE_MIN_DISTANCE 350
-#define EP_AMB_WARFARE_MID_DISTANCE 500
-#define EP_AMB_WARFARE_MAX_DISTANCE 800
-#define EP_AMB_WARFARE_MAX_SLEEP 45
+
+
+#define EP_AMB_WARFARE_SOUNDS_FIREFIGHTS [ \
+	"A3\Sounds_F\environment\ambient\battlefield\battlefield_firefight1.wss", \
+	"A3\Sounds_F\environment\ambient\battlefield\battlefield_firefight2.wss", \
+	"A3\Sounds_F\environment\ambient\battlefield\battlefield_firefight3.wss", \
+	"A3\Sounds_F\environment\ambient\battlefield\battlefield_firefight4.wss" \
+]
+#define EP_AMB_WARFARE_SOUND_EXPLOSIONS [ \
+    "A3\Sounds_F\environment\ambient\battlefield\battlefield_explosions1.wss", \
+    "A3\Sounds_F\environment\ambient\battlefield\battlefield_explosions2.wss", \
+    "A3\Sounds_F\environment\ambient\battlefield\battlefield_explosions3.wss", \
+    "A3\Sounds_F\environment\ambient\battlefield\battlefield_explosions4.wss", \
+    "A3\Sounds_F\environment\ambient\battlefield\battlefield_explosions5.wss"  \
+]
+#define EP_AMB_WARFARE_SOUND_HELIS [ \
+    "A3\Sounds_F\environment\ambient\battlefield\battlefield_Heli1.wss", \
+    "A3\Sounds_F\environment\ambient\battlefield\battlefield_Heli2.wss", \
+    "A3\Sounds_F\environment\ambient\battlefield\battlefield_Heli3.wss"  \
+]
+#define EP_AMB_WARFARE_SOUND_JETS [ \
+    "A3\Sounds_F\environment\ambient\battlefield\battlefield_Jet1.wss", \
+    "A3\Sounds_F\environment\ambient\battlefield\battlefield_Jet2.wss", \
+    "A3\Sounds_F\environment\ambient\battlefield\battlefield_Jet3.wss"  \
+]
+
 
 params [
-	["_includeAirSFX", false]
+	["_condition", { true }],
+	["_firefight", true],
+	["_explosions", true],
+	["_helis", false],
+	["_jets", false]
 ];
 
-// Default sounds
-private _soundList = [ 
-    "A3\Sounds_F\environment\ambient\battlefield\battlefield_explosions1.wss", 
-    "A3\Sounds_F\environment\ambient\battlefield\battlefield_explosions2.wss", 
-    "A3\Sounds_F\environment\ambient\battlefield\battlefield_explosions3.wss", 
-    "A3\Sounds_F\environment\ambient\battlefield\battlefield_explosions4.wss", 
-    "A3\Sounds_F\environment\ambient\battlefield\battlefield_explosions5.wss", 
- 
-    "A3\Sounds_F\environment\ambient\battlefield\battlefield_firefight1.wss", 
-    "A3\Sounds_F\environment\ambient\battlefield\battlefield_firefight2.wss", 
-    "A3\Sounds_F\environment\ambient\battlefield\battlefield_firefight3.wss", 
-    "A3\Sounds_F\environment\ambient\battlefield\battlefield_firefight4.wss"
-];
+private _soundList = [];
 
-// Air extension sounds
-private _airSoundList = [
-    "A3\Sounds_F\environment\ambient\battlefield\battlefield_Heli1.wss", 
-    "A3\Sounds_F\environment\ambient\battlefield\battlefield_Heli2.wss", 
-    "A3\Sounds_F\environment\ambient\battlefield\battlefield_Heli3.wss", 
- 
-    "A3\Sounds_F\environment\ambient\battlefield\battlefield_Jet1.wss", 
-    "A3\Sounds_F\environment\ambient\battlefield\battlefield_Jet2.wss", 
-    "A3\Sounds_F\environment\ambient\battlefield\battlefield_Jet3.wss"
-];
+if (_firefight) 	then { _soundList append EP_AMB_WARFARE_SOUND_FIREFIGHTS };
+if (_explosions) 	then { _soundList append EP_AMB_WARFARE_SOUND_EXPLOSIONS };
+if (_helis) 		then { _soundList append EP_AMB_WARFARE_SOUND_HELIS };
+if (_jets) 			then { _soundList append EP_AMB_WARFARE_SOUND_JETS };
 
-if (_includeAirSFX) then { _soundList append _airSoundList };
- 
-private _target = player; 
-private _soundObject = player;
- 
-while {true} do { 
-    private _dir = round random 360;  
-    private _dis = round random [EP_AMB_WARFARE_MIN_DISTANCE,EP_AMB_WARFARE_MID_DISTANCE,EP_AMB_WARFARE_MAX_DISTANCE]; 
-    private _soundPos = _gTarget getRelPos [_dis, _dir]; 
-    private _sound = selectRandom _gSoundList; 
-    playSound3D [_sound, _soundObject, false, _soundPos, EP_AMB_WARFARE_VOLUME, EP_AMB_WARFARE_SOUND_PITCH, EP_AMB_WARFARE_SOUND_DISTANCE]; 
-    private _sleepRandom = round random EP_AMB_WARFARE_MAX_SLEEP; 
-    sleep _sleepRandom; 
+if (count _soundList == 0) exitWith {
+	systemChat "EP_fnc_ambientWarfase: at least one sound parameter must be true!";
 };
+
+private _handle = [_soundList, _condition] spawn {
+	params ["_soundList", "_condition"];
+	private _target = player;
+	private _soundObject = player;
+	private _volume = 3;
+	private _soundPitch = 1;
+	private _soundDistance = 0;
+	private _minDistance = 350;
+	private _midDistance = 500;
+	private _maxDistance = 800;
+	private _maxSleep = 45;
+	while { call _condition } do {
+		private _dir = round random 360;  
+		private _dis = round random [_minDistance, _midDistance, _maxDistance]; 
+		private _soundPos = _gTarget getRelPos [_dis, _dir]; 
+		private _sound = selectRandom _gSoundList; 
+		playSound3D [_sound, _soundObject, false, _soundPos, _volume, _soundPitch, _soundDistance]; 
+		private _sleepRandom = round random _maxSleep; 
+		sleep _sleepRandom; 
+	};
+};
+
+missionNamespace setVariable ["EP_AmbientWarfareHandle", _handle];
+ 

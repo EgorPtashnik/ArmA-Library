@@ -1,4 +1,13 @@
-#include "..\constants.hpp";
+#define EP_TASK_ICONS \
+	["airdrop", "attack", "danger", "defend", "destroy", "download", "exit", "getin", "getout", "heal", "interact", "kill", \
+	 "land", "listen", "meet", "move", "move1", "move2", "move3", "move4", "move5", "navigate", "rearm", "refuel", "repair", \
+	"run", "scout", "search", "takeoff", "talk", "talk1", "talk2", "talk3", "talk4", "talk5", "target", "unknown", "upload", \
+	"use", "wait", "walk", "armor", "backpack", "boat", "box", "car", "container", "documents", "heli", "intel", "map", "mine", \
+	"plane", "radio", "rifle", "truck", "whiteboard","a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", \
+	"p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+	
+#define EP_TASK_STATES ["CREATED", "ASSIGNED", "SUCCEEDED", "FAILED", "CANCELED"]
+
 
 private _taskID = nil;
 if (_this isEqualType []) then {

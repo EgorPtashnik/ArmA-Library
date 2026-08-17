@@ -1,14 +1,19 @@
 #include "..\constants.hpp";
 
 params [
-	"_position"
+	"_position",
+	["_handleArrayName", "EP_Triggers"]
 ];
 
 if !(_this isEqualType []) then {
 	_this = [_this];
 };
 
-private _args = _this - [_position];
+private _args = _this - [_position, _handleArrayName];
+
+if (isNil _handleArrayName) then {
+	missionNamespace setVariable [_handleArrayName, []];
+};
 
 private _pos = _position call EP_fnc_getPosition;
 private _trigger = createTrigger ["EmptyDetector", _pos];
@@ -44,5 +49,7 @@ private _trigger = createTrigger ["EmptyDetector", _pos];
 	};
 
 } forEach _args;
+
+(missionNamespace getVariable _handleArrayName) pushBack _trigger;
 
 _trigger

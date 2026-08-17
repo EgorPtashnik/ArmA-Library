@@ -1,4 +1,13 @@
-#include "..\constants.hpp";
+#define EP_DEFAULT_SKILL 0.5
+#define EP_DEFAULT_AIM 0.2
+#define EP_DEFAULT_AIM_SHAKE 0.2
+#define EP_DEFAULT_AIM_SPEED 0.2
+#define EP_DEFAULT_AIM_SPOT 0.5
+#define EP_DEFAULT_AIM_SPOT_TIME 0.25
+#define EP_DEFAULT_COURAGE 1
+#define EP_DEFAULT_RELOAD 0.5
+#define EP_DEFAULT_COMMAND 0.5
+#define EP_DEFAULT_FLEEING 0
 
 params [
 	"_ref",
@@ -17,16 +26,16 @@ switch (typeName _ref) do {
 private _params = createHashMapFromArray _skillParams;
 
 {
-	_x setSkill ( _params getOrDefault ["SKILL", EP_MISSION_DEFAULT_SKILL] );
-	_x setSkill ["aimingAccuracy", (_params getOrDefault ["AIM", EP_MISSION_DEFAULT_AIMING_ACCURACY])];
-	_x setSkill ["aimingShake", (_params getOrDefault ["AIM_SHAKE", EP_MISSION_DEFAULT_AIMING_SHAKE])];
-	_x setSkill ["aimingSpeed", (_params getOrDefault ["AIM_SPEED", EP_MISSION_DEFAULT_AIMING_SPEED])];
-	_x setSkill ["spotDistance", (_params getOrDefault ["SPOT", EP_MISSION_DEFAULT_SPOT_DISTANCE])];
-	_x setSkill ["spotTime", (_params getOrDefault ["SPOT_TIME", EP_MISSION_DEFAULT_SPOT_TIME])];
-	_x setSkill ["courage", (_params getOrDefault ["COURAGE", EP_MISSION_DEFAULT_COURAGE])];
-	_x setSkill ["reloadSpeed", (_params getOrDefault ["RELOAD", EP_MISSION_DEFAULT_RELOAD_SPEED])];
-	_x setSkill ["commanding", (_params getOrDefault ["COMMAND", EP_MISSION_DEFAULT_COMMANDING])];
-	_x allowFleeing (_params getOrDefault ["FLEEING", EP_MISSION_DEFAULT_FLEEING]);
+	_x setSkill ( _params getOrDefault ["SKILL", EP_DEFAULT_SKILL] );
+	_x setSkill ["aimingAccuracy", 	(_params getOrDefault ["AIM", 		EP_DEFAULT_AIM])];
+	_x setSkill ["aimingShake", 	(_params getOrDefault ["AIM_SHAKE", EP_DEFAULT_AIM_SHAKE])];
+	_x setSkill ["aimingSpeed", 	(_params getOrDefault ["AIM_SPEED", EP_DEFAULT_AIM_SPEED])];
+	_x setSkill ["spotDistance", 	(_params getOrDefault ["SPOT", 		EP_DEFAULT_AIM_SPOT])];
+	_x setSkill ["spotTime", 		(_params getOrDefault ["SPOT_TIME", EP_DEFAULT_AIM_SPOT_TIME])];
+	_x setSkill ["courage", 		(_params getOrDefault ["COURAGE", 	EP_DEFAULT_COURAGE])];
+	_x setSkill ["reloadSpeed", 	(_params getOrDefault ["RELOAD", 	EP_DEFAULT_RELOAD])];
+	_x setSkill ["commanding", 		(_params getOrDefault ["COMMAND",	EP_DEFAULT_COMMAND])];
+	_x allowFleeing 				(_params getOrDefault ["FLEEING", 	EP_DEFAULT_FLEEING]);
 } forEach _units;
 
 _ref

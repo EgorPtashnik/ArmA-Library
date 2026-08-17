@@ -32,6 +32,7 @@ private _colorMap = [
 	"#FF660080" 	//Civilian		9
 ];
 
+// Возможные цвета #0000cc - синий, #FF0000 – красный, #ffff00 – жёлтый цвет, #ffffff – белый, #00FF00 - зелёный
 
 _ctrl ctrlSetFade 0;
 _ctrl ctrlCommit 0.2;
