@@ -15,8 +15,8 @@ if (isNil _handleArrayName) then {
 	missionNamespace setVariable [_handleArrayName, []];
 };
 
-private _pos = _position call EP_fnc_getPosition;
-private _trigger = createTrigger ["EmptyDetector", _pos];
+_position = _position call EP_fnc_getPosition;
+private _trigger = createTrigger ["EmptyDetector", _position];
 
 {
 

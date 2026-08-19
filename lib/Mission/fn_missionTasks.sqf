@@ -18,10 +18,19 @@ if (_this isEqualType []) then {
 			if ((toLower _x) in EP_TASK_ICONS)	then { [_taskID, (toLower _x)] call BIS_fnc_taskSetType; continue };
 			if ((toUpper _x) in EP_TASK_STATES) then { [_taskID, (toUpper _x)] call BIS_fnc_taskSetState; continue };
 
-			if (true) exitWith { systemChat (format ["EP_fnc_missionTasks: %1 is not a valid parameter!", _x]) };
 		};
 		
-		if (_x isEqualType []) then { [_taskID, _x] call BIS_fnc_taskSetDestination; continue };
+		if (_x isEqualType []) 		then { [_taskID, _x] call BIS_fnc_taskSetDestination; continue };
+		if (_x isEqualType true) 	then {
+			private _state = "FAILED";
+			if (_x) then {
+				_state = "SUCCEEDED";
+			};
+			[_taskID, _state] call BIS_fnc_taskSetState;
+			continue
+		};
+
+		if (true) exitWith { systemChat (format ["EP_fnc_missionTasks: %1 is not a valid parameter!", _x]) };
 
 	} forEach _this;
 } else {
