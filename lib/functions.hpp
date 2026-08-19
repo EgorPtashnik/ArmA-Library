@@ -25,6 +25,7 @@ class EP
 		file = "lib\Create";
 		class createGroup {};
 		class createGuidedProjectile {};
+		class createSimpleTrigger {};
 		class createTrigger {};
 		class createUnit {};
 	};

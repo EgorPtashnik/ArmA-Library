@@ -2,15 +2,15 @@ params [
 	"_condition",
 	"_code",
 	["_sleep", 1],
+	["_spawnCode", false],
 	["_handleArrayName", "EP_SimpleTriggers"]
-	["_spawnCode", false]
 ];
 
-if !(_condition isEqualType []) exitWith {
+if !(_condition isEqualType []) then {
 	_condition = [_condition, []];
 };
 
-if !(_condition isEqualType []) exitWith {
+if !(_code isEqualType []) then {
 	_code = [_code, []];
 };
 
@@ -19,7 +19,7 @@ if (isNil _handleArrayName) then {
 };
 
 private _handle = [_condition, _code, _sleep, _spawnCode] spawn {
-	params ["_condition", "_code", "_sleep"];
+	params ["_condition", "_code", "_sleep", "_spawnCode"];
 	private _condCode = _condition # 0;
 	private _condArgs = _condition # 1;
 	private _codeCode = _code # 0;
@@ -27,7 +27,7 @@ private _handle = [_condition, _code, _sleep, _spawnCode] spawn {
 
 	waitUntil {
 		sleep _sleep;
-		_condArgs call _condCode;
+		(_condArgs call _condCode)
 	};
 
 	if (_spawnCode) then {
