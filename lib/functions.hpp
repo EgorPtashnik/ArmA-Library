@@ -16,6 +16,7 @@ class EP
 	class Ambient
 	{
 		file = "lib\Ambient";
+		class ambientFlyBy {};
 		class ambientWarfare {};
 	};
 
@@ -23,6 +24,7 @@ class EP
 	{
 		file = "lib\Create";
 		class createGroup {};
+		class createGuidedProjectile {};
 		class createTrigger {};
 		class createUnit {};
 	};

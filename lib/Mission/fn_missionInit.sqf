@@ -9,5 +9,5 @@
 {
 	private _side = _x # 0;
 	private _sideParams = (_x # 1);
-	[(allUnits _side), _sideParams] call EP_fnc_setAISkill;
+	[(units _side), _sideParams] call EP_fnc_setAISkill;
 } forEach _this;
