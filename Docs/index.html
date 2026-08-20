@@ -1,53 +1,540 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <title>ArmA Library — Function Docs</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="assets/style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EP Library — SQF Docs</title>
+  <script>window.EP_DATA = [];</script>
+  <script src="data/module_ai.js"></script>
+  <script src="data/module_ambient.js"></script>
+  <script src="data/module_create.js"></script>
+  <script src="data/module_extension.js"></script>
+  <script src="data/module_mission.js"></script>
+  <script src="data/module_util.js"></script>
+  <style>
+    :root {
+      --bg:       #0f1117;
+      --bg2:      #1a1d27;
+      --bg3:      #22263a;
+      --border:   #2e3350;
+      --accent:   #4f7ef8;
+      --accent2:  #7c5cbf;
+      --green:    #4ec994;
+      --yellow:   #e8c55a;
+      --red:      #e05c5c;
+      --text:     #d4d8f0;
+      --muted:    #6b7099;
+      --code-bg:  #141720;
+      --tag-bg:   #1e2540;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* ── SIDEBAR ───────────────────────────────── */
+    #sidebar {
+      width: 260px;
+      min-width: 260px;
+      background: var(--bg2);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    #sidebar-header {
+      padding: 20px 16px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    #sidebar-header h1 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    #sidebar-header p {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+
+    #search {
+      margin: 10px 12px;
+      padding: 7px 10px;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text);
+      font-size: 12px;
+      outline: none;
+      width: calc(100% - 24px);
+    }
+    #search::placeholder { color: var(--muted); }
+    #search:focus { border-color: var(--accent); }
+
+    #nav {
+      overflow-y: auto;
+      flex: 1;
+      padding-bottom: 16px;
+    }
+
+    .nav-category {
+      padding: 10px 16px 4px;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      cursor: pointer;
+      font-size: 12.5px;
+      color: var(--text);
+      border-left: 2px solid transparent;
+      transition: background 0.1s, border-color 0.1s;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .nav-item:hover  { background: var(--bg3); }
+    .nav-item.active { background: var(--bg3); border-left-color: var(--accent); color: #fff; }
+
+    .nav-item .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ── MAIN ──────────────────────────────────── */
+    #main {
+      flex: 1;
+      overflow-y: auto;
+      padding: 32px 40px;
+    }
+
+    /* ── FUNCTION CARD ─────────────────────────── */
+    .fn-card {
+      display: none;
+      max-width: 860px;
+    }
+    .fn-card.visible { display: block; }
+
+    .fn-card + .fn-card { margin-top: 0; }
+
+    .fn-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .fn-module {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .fn-desc {
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    /* section label */
+    .section-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    /* params table */
+    .params-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+      margin-bottom: 20px;
+    }
+
+    .params-table th {
+      text-align: left;
+      padding: 6px 10px;
+      background: var(--bg3);
+      color: var(--muted);
+      font-weight: 600;
+      border-bottom: 1px solid var(--border);
+      font-size: 11px;
+      text-transform: uppercase;
+    }
+
+    .params-table td {
+      padding: 7px 10px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    .params-table tr:last-child td { border-bottom: none; }
+    .params-table tr:hover td { background: var(--bg3); }
+
+    .param-name  { font-family: 'Cascadia Code', 'Consolas', monospace; color: var(--green); }
+    .param-type  { font-family: 'Cascadia Code', 'Consolas', monospace; color: var(--accent); font-size: 11px; }
+    .param-opt   { color: var(--yellow); font-size: 11px; }
+    .param-desc  { color: var(--text); }
+    .param-default { font-family: 'Cascadia Code', 'Consolas', monospace; color: var(--muted); font-size: 11px; }
+
+    /* returns */
+    .returns-block {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 6px 12px;
+      font-size: 12.5px;
+      margin-bottom: 20px;
+    }
+
+    .returns-block .ret-type {
+      font-family: 'Cascadia Code', 'Consolas', monospace;
+      color: var(--accent2);
+    }
+
+    /* code block */
+    .code-block {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 18px;
+      font-family: 'Cascadia Code', 'Consolas', monospace;
+      font-size: 12.5px;
+      line-height: 1.7;
+      overflow-x: auto;
+      margin-bottom: 20px;
+      white-space: pre;
+    }
+
+    /* notes */
+    .note {
+      background: var(--bg3);
+      border-left: 3px solid var(--yellow);
+      border-radius: 0 6px 6px 0;
+      padding: 10px 14px;
+      font-size: 12.5px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+
+    /* divider */
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 28px 0;
+    }
+
+    /* ── HOME PAGE ─────────────────────────────── */
+    #home {
+      max-width: 620px;
+    }
+
+    #home h2 {
+      font-size: 26px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    #home p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .module-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 10px;
+    }
+
+    .module-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 16px;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+    }
+
+    .module-card:hover {
+      border-color: var(--accent);
+      background: var(--bg3);
+    }
+
+    .module-card .mc-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      margin-bottom: 8px;
+    }
+
+    .module-card .mc-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .module-card .mc-count {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* scrollbar */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+
+    .hidden { display: none !important; }
+  </style>
 </head>
 <body>
 
-<header>
-    <h1>ArmA Library — Function Docs</h1>
-    <span class="spacer"></span>
-    <a class="wiki-link" href="https://community.bistudio.com/wiki/" target="_blank" rel="noopener">BI Wiki &#8599;</a>
-</header>
+<!-- ═══════════════════ SIDEBAR ═══════════════════ -->
+<div id="sidebar">
+  <div id="sidebar-header">
+    <h1>EP Library</h1>
+    <p>SQF Function Reference</p>
+  </div>
+  <input id="search" type="text" placeholder="Search functions..." autocomplete="off" />
+  <div id="nav"></div>
+</div>
 
-<aside>
-    <input id="filter" type="search" placeholder="Filter functions…" autocomplete="off" />
-    <div id="nav"></div>
-</aside>
+<!-- ═══════════════════ MAIN ═══════════════════ -->
+<div id="main">
 
-<main id="content">
-    <p class="placeholder">Loading…</p>
-</main>
+  <!-- HOME -->
+  <div id="home">
+    <h2>EP Library Docs</h2>
+    <p>Select a function from the sidebar or browse by module below.</p>
+    <div class="module-grid" id="module-grid"></div>
+  </div>
 
-<!-- ==========================================================
-     Core engine — must load first
-     ========================================================== -->
-<script src="assets/core.js"></script>
+  <!-- FUNCTION CARDS — generated by JS -->
+  <div id="cards"></div>
 
-<!-- ==========================================================
-     Route rules — URL redirect rules for unknown function names.
-     Add new prefixes (CBA, ACE, etc.) inside routes.js.
-     ========================================================== -->
-<script src="docs/routes.js"></script>
+</div>
 
-<!-- ==========================================================
-     Function doc modules — one <script> per category.
-     To add a new module, drop a JS file in /docs/ and add it here.
-     ========================================================== -->
-<script src="docs/ai.js"></script>
-<script src="docs/ambient.js"></script>
-<script src="docs/create.js"></script>
-<script src="docs/extension.js"></script>
-<script src="docs/mission.js"></script>
-<script src="docs/tool.js"></script>
-<script src="docs/constants.js"></script>
+<script>
+// ═══════════════════════════════════════════════════════════
+//  DATA — loaded from data/module_*.js files
+//  To add a function: edit the relevant module file.
+//  To add a new module: create data/module_<name>.js and add
+//  a <script src="..."> tag in the <head> above.
+// ═══════════════════════════════════════════════════════════
+const FUNCTIONS = window.EP_DATA;
 
-<!-- Boot — must load LAST -->
-<script src="docs/_init.js"></script>
+// ═══════════════════════════════════════════════════════════
+//  MODULE META
+// ═══════════════════════════════════════════════════════════
+const MODULES = {
+  AI:        { color: "#e05c5c", label: "AI" },
+  Ambient:   { color: "#e8c55a", label: "Ambient" },
+  Create:    { color: "#4ec994", label: "Create" },
+  Extension: { color: "#4f7ef8", label: "Extension" },
+  Mission:   { color: "#7c5cbf", label: "Mission" },
+  Util:      { color: "#3bbfbf", label: "Util" },
+};
 
+// ═══════════════════════════════════════════════════════════
+//  RENDER
+// ═══════════════════════════════════════════════════════════
+function escHtml(s) {
+  return String(s)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;");
+}
+
+function buildNav() {
+  const nav = document.getElementById("nav");
+  const byModule = {};
+  FUNCTIONS.forEach(f => {
+    if (!byModule[f.module]) byModule[f.module] = [];
+    byModule[f.module].push(f);
+  });
+
+  Object.entries(MODULES).forEach(([mod, meta]) => {
+    if (!byModule[mod]) return;
+    const cat = document.createElement("div");
+    cat.className = "nav-category";
+    cat.textContent = meta.label;
+    nav.appendChild(cat);
+
+    byModule[mod].forEach(f => {
+      const item = document.createElement("div");
+      item.className = "nav-item";
+      item.dataset.id = f.id;
+      item.innerHTML = `<span class="dot" style="background:${meta.color}"></span>${escHtml(f.name)}`;
+      item.addEventListener("click", () => showFn(f.id));
+      nav.appendChild(item);
+    });
+  });
+}
+
+function buildModuleGrid() {
+  const grid = document.getElementById("module-grid");
+  const counts = {};
+  FUNCTIONS.forEach(f => { counts[f.module] = (counts[f.module]||0)+1; });
+
+  Object.entries(MODULES).forEach(([mod, meta]) => {
+    if (!counts[mod]) return;
+    const card = document.createElement("div");
+    card.className = "module-card";
+    card.innerHTML = `
+      <div class="mc-dot" style="background:${meta.color}"></div>
+      <div class="mc-name">${escHtml(meta.label)}</div>
+      <div class="mc-count">${counts[mod]} function${counts[mod]>1?"s":""}</div>`;
+    card.addEventListener("click", () => {
+      const first = FUNCTIONS.find(f => f.module===mod);
+      if (first) showFn(first.id);
+    });
+    grid.appendChild(card);
+  });
+}
+
+function buildCards() {
+  const container = document.getElementById("cards");
+  FUNCTIONS.forEach(f => {
+    const meta = MODULES[f.module] || { color:"#888" };
+
+    let paramsHtml = "";
+    if (f.params && f.params.length) {
+      const rows = f.params.map(p => `
+        <tr>
+          <td><span class="param-name">${escHtml(p.name)}</span></td>
+          <td><span class="param-type">${escHtml(p.type)}</span></td>
+          <td><span class="param-opt">${p.optional ? "optional" : "required"}</span></td>
+          <td><span class="param-default">${p.default ? escHtml(p.default) : "—"}</span></td>
+          <td class="param-desc">${escHtml(p.desc)}</td>
+        </tr>`).join("");
+      paramsHtml = `
+        <div class="section-label">Parameters</div>
+        <table class="params-table">
+          <thead><tr><th>Name</th><th>Type</th><th></th><th>Default</th><th>Description</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>`;
+    }
+
+    const retHtml = f.returns && f.returns.type ? `
+      <div class="section-label">Returns</div>
+      <div class="returns-block">
+        <span class="ret-type">${escHtml(f.returns.type)}</span>
+        ${f.returns.desc ? `<span style="color:var(--muted)">—</span><span>${escHtml(f.returns.desc)}</span>` : ""}
+      </div>` : "";
+
+    const exampleHtml = f.example ? `
+      <div class="section-label">Example</div>
+      <div class="code-block">${escHtml(f.example)}</div>` : "";
+
+    const noteHtml = f.notes ? `<div class="note">${escHtml(f.notes)}</div>` : "";
+
+    const div = document.createElement("div");
+    div.className = "fn-card";
+    div.id = "card-" + f.id;
+    div.innerHTML = `
+      <div class="fn-title">${escHtml(f.name)}</div>
+      <div class="fn-module" style="color:${meta.color}">${escHtml(f.module)}</div>
+      <div class="fn-desc">${escHtml(f.desc)}</div>
+      ${noteHtml}
+      ${paramsHtml}
+      ${retHtml}
+      ${exampleHtml}`;
+
+    container.appendChild(div);
+  });
+}
+
+function showFn(id) {
+  // hide home
+  document.getElementById("home").classList.add("hidden");
+
+  // deactivate all cards
+  document.querySelectorAll(".fn-card").forEach(c => c.classList.remove("visible"));
+  document.querySelectorAll(".nav-item").forEach(i => i.classList.remove("active"));
+
+  const card = document.getElementById("card-" + id);
+  const nav  = document.querySelector(`.nav-item[data-id="${id}"]`);
+
+  if (card) card.classList.add("visible");
+  if (nav)  {
+    nav.classList.add("active");
+    nav.scrollIntoView({ block: "nearest" });
+  }
+
+  document.getElementById("main").scrollTop = 0;
+  location.hash = id;
+}
+
+function showHome() {
+  document.getElementById("home").classList.remove("hidden");
+  document.querySelectorAll(".fn-card").forEach(c => c.classList.remove("visible"));
+  document.querySelectorAll(".nav-item").forEach(i => i.classList.remove("active"));
+  location.hash = "";
+}
+
+// Search
+document.getElementById("search").addEventListener("input", function() {
+  const q = this.value.trim().toLowerCase();
+  document.querySelectorAll(".nav-item").forEach(item => {
+    const name = item.textContent.toLowerCase();
+    item.classList.toggle("hidden", q.length > 0 && !name.includes(q));
+  });
+  document.querySelectorAll(".nav-category").forEach(cat => {
+    const next = cat.nextElementSibling;
+    let hasVisible = false;
+    let el = next;
+    while (el && el.classList.contains("nav-item")) {
+      if (!el.classList.contains("hidden")) hasVisible = true;
+      el = el.nextElementSibling;
+    }
+    cat.classList.toggle("hidden", !hasVisible);
+  });
+});
+
+// Init
+buildNav();
+buildModuleGrid();
+buildCards();
+
+// Handle hash
+if (location.hash) {
+  const id = location.hash.slice(1);
+  if (FUNCTIONS.find(f => f.id === id)) showFn(id);
+}
+</script>
 </body>
 </html>
