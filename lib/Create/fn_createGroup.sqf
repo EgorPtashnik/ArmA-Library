@@ -52,8 +52,8 @@ private _newGroup = [
 private _returnedGroup = grpNull;
 if (_joinGroup) then {
 	// Assign vehicles to existing group
-	{ _x joinSilent _spawnRef } forEach units _newGroup;
 	{ _spawnRef addVehicle _x } forEach ([_newGroup] call BIS_fnc_groupVehicles);
+	(units _newGroup) joinSilent _spawnRef;
 	_returnedGroup = _spawnRef;
 } else {
 	_newGroup deleteGroupWhenEmpty true;
