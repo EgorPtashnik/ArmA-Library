@@ -52,7 +52,7 @@ _ctrl ctrlCommit 0.2;
 	};
 
 	private _subtitles = parseText format [
-		"<t color='%1' font='PuristaSemibold'>%2:</t> <t font='PuristaMedium' color='#FFFFFF'>%3</t>",
+		"<t color='%1' font='RobotoCondensedBold'>%2:</t> <t font='RobotoCondensedBold' color='#FFFFFF'>%3</t>",
 		_colorValue,
 		_speaker, 
 		_text
