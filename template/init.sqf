@@ -1,2 +1,2 @@
-#include "initMission.sqf"
 #include "initBriefing.sqf"
+#include "initMission.sqf"

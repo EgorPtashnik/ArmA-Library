@@ -1,6 +1,12 @@
-/*
- *  Player briefing entries. Runs once at mission start on each client.
- */
+player createDiaryRecord ["Diary", [
+    "Callsigns",
+    "<Describe callsigns here.>"
+]];
+
+player createDiaryRecord ["Diary", [
+    "Execution",
+    "<Describe how mission will be executed here.>"
+]];
 
 player createDiaryRecord ["Diary", [
     "Situation",
@@ -11,3 +17,4 @@ player createDiaryRecord ["Diary", [
     "Mission",
     "<Describe the mission objectives here.>"
 ]];
+
