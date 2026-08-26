@@ -16,7 +16,7 @@ class CfgDebriefing {
         pictureColor[]    = { 0.0, 0.3, 0.6, 1 };
     };
 
-    class FailCasualties {
+    class Fail {
         title             = "Mission Failed";
         subtitle          = "";
         description       = "";
@@ -25,17 +25,6 @@ class CfgDebriefing {
         pictureColor[]    = { 0.0, 0.3, 0.6, 1 };
     };
 };
-
-// ----- Functions -----------------------------------------------------------
-// Includes ep_fnc_* functions declared in lib\functions.hpp.
-class CfgFunctions {
-    #include "lib\functions.hpp"
-    #include "lib\constants.hpp"
-};
-
-class RscTitles {
-    #include "lib\rsc.hpp"
-}
 
 // ----- Support menu (Comm menu) --------------------------------------------
 // To add:  [player, "CustomSupportMenuItem"] call BIS_fnc_addCommMenuItem;
@@ -51,6 +40,17 @@ class RscTitles {
 //         removeAfterExpressionCall = 1;
 //     };
 // };
+
+// ----- Functions -----------------------------------------------------------
+class CfgFunctions {
+    #include "functions\index.hpp"
+};
+
+// ----- UI Resources -----------------------------------------------------------
+class RscTitles {
+    #include "functions\rsc.hpp"
+};
+
 
 // ----- Sounds --------------------------------------------------------------
 class CfgSounds {

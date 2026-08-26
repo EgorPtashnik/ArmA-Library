@@ -1,5 +1,0 @@
-private _group = _this call EP_fnc_getGroup;
-
-_group call CBA_fnc_clearWaypoints;
-
-_group
