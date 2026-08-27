@@ -1,36 +1,58 @@
-class CfgDebriefing {
-	class Fail {
-		title = "Mission Failed";
-		subtitle = "";
-		description = "";
-		pictureBackground = "";
-		picture = "";
-		pictureColor[] = { 0.0, 0.3, 0.6, 1 };
-	};
 
-	class Win {
-		title = "Mission Accomplished";
-		subtitle = "";
-		description = "";
-		pictureBackground = "";
-		picture = "";
-		pictureColor[] = { 0.0, 0.3, 0.6, 1 };
-	};
+// ----- General mission metadata ---------------------------------------------
+onLoadName    = "";
+onLoadMission = "";
+author        = "";
+overviewText  = "";
+
+// ----- Debriefing ----------------------------------------------------------
+class CfgDebriefing {
+    class Win {
+        title             = "Mission Accomplished";
+        subtitle          = "";
+        description       = "";
+        pictureBackground = "";
+        picture           = "";
+        pictureColor[]    = { 0.0, 0.3, 0.6, 1 };
+    };
+
+    class Fail {
+        title             = "Mission Failed";
+        subtitle          = "";
+        description       = "";
+        pictureBackground = "";
+        picture           = "";
+        pictureColor[]    = { 0.0, 0.3, 0.6, 1 };
+    };
 };
 
-//// To add: [player,"CustomSupportMenuItem"] call BIS_fnc_addCommMenuItem;
+// ----- Support menu (Comm menu) --------------------------------------------
+// To add:  [player, "CustomSupportMenuItem"] call BIS_fnc_addCommMenuItem;
+//
 // class CfgCommunicationMenu {
-// 	class CustomSupportMenuItem {
-// 		text = "Custom Support Item";
-// 		submenu = "";
-// 		expression = "custVariable = true;";
-// 		icon = "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\artillery_ca.paa";
-// 		cursor = "\a3\Ui_f\data\IGUI\Cfg\Cursors\iconCursorSupport_ca.paa";
-// 		enable = "1";
-// 		removeAfterExpressionCall = 1;
-// 	}
-// }
+//     class CustomSupportMenuItem {
+//         text                     = "Custom Support Item";
+//         submenu                  = "";
+//         expression               = "custVariable = true;";
+//         icon                     = "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\artillery_ca.paa";
+//         cursor                   = "\a3\Ui_f\data\IGUI\Cfg\Cursors\iconCursorSupport_ca.paa";
+//         enable                   = "1";
+//         removeAfterExpressionCall = 1;
+//     };
+// };
 
+// ----- Functions -----------------------------------------------------------
+class CfgFunctions {
+    #include "functions\index.hpp"
+};
+
+// ----- UI Resources -----------------------------------------------------------
+class RscTitles {
+    #include "functions\rsc.hpp"
+};
+
+
+// ----- Sounds --------------------------------------------------------------
 class CfgSounds {
     sounds[] = {mybeep, myin1, myin2, myin4, myin5, myin6, mynoise1, mynoise2, mynoise3, mynoise4};
     
