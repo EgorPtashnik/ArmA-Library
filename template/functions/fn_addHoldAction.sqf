@@ -1,5 +1,5 @@
 //************************************************************************************************************
-// FUNCTION
+// FUNCTION - Add Gold action to 
 //************************************************************************************************************
 
 params [
@@ -8,12 +8,12 @@ params [
 	"_codeFinish",
 	"_iconStart",
 	["_duration", 3],
-	["_conditionToShow", "true"],
+	["_conditionToShow", { true }],
 	["_arguments", []],
 	["_removeCompleted", true],
 	["_priority", 1000],
 	["_iconProgress", objNull],
-	["_conditionToProgress", "true"],
+	["_conditionToProgress", { true }],
 	["_codeStart", {}],
 	["_codeProgress", {}],
 	["_codeInterupted", {}],
@@ -24,6 +24,9 @@ params [
 if (isNull _iconProgress) then {
 	_iconProgress = _iconStart;
 };
+
+_conditionToShow 		= toString _conditionToShow;
+_conditionToProgress 	= toString _conditionToProgress;
 
 private _actionId = [
 	_attachTo,
