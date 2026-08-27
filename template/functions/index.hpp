@@ -1,6 +1,7 @@
 class EP
 {
     file = "functions";
+    class addHoldAction             {};
     class addWaypoint               {};
     class ambientFlyBy              {};
     class ambientWarfare            {};
