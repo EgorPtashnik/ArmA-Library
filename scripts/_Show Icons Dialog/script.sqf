@@ -597,7 +597,7 @@ private _conditionAll = _conditionActions + _conditionMarkers + _conditionTask;
  { 
   private _files = addonFiles [_x # 0, ".paa"]; 
   { 
-   if ("help" in _x) then 
+   if (_x in _conditionAll) then 
    { 
     _counter = _counter + 1; 
     _status ctrlSetText format ["%1 textures found.", _counter]; 

@@ -63,8 +63,8 @@ private _handle = [_soundList, _condition] spawn {
 	while { call _condition } do {
 		private _dir = round random 360;  
 		private _dis = round random [_minDistance, _midDistance, _maxDistance]; 
-		private _soundPos = _gTarget getRelPos [_dis, _dir]; 
-		private _sound = selectRandom _gSoundList; 
+		private _soundPos = _target getRelPos [_dis, _dir]; 
+		private _sound = selectRandom _soundList; 
 		playSound3D [_sound, _soundObject, false, _soundPos, _volume, _soundPitch, _soundDistance]; 
 		private _sleepRandom = round random _maxSleep; 
 		sleep _sleepRandom; 
