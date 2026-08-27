@@ -3,7 +3,7 @@
 //************************************************************************************************************
 
 private _behaviours 	= [ "CARELESS", "SAFE", "AWARE", "COMBAT", "STEALTH" ];
-private _formations		= [ "COLUMN", "STAG COLUMNS", "WEDGE"< "ECH LEFT", "ECH RIGHT", "VEE", "LINE", "FILE", "DIAMOND" ];
+private _formations		= [ "COLUMN", "STAG COLUMNS", "WEDGE", "ECH LEFT", "ECH RIGHT", "VEE", "LINE", "FILE", "DIAMOND" ];
 private _speedModes		= [ "LIMITED", "NORMAL", "FULL", "UNCHANGED" ];
 private _combatModes 	= [ "BLUE", "GREEN", "WHITE", "YELLOW", "RED" ];
 private _unitPositions	= ["AUTO", "DOWN", "MIDDLE", "UP"];

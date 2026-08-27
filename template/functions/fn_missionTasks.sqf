@@ -10,7 +10,7 @@ private _taskIcons = [
 	"plane", "radio", "rifle", "truck", "whiteboard","a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o",
 	"p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"
 ];
-private _taskStates = ["CREATED", "ASSIGNED", "SUCCEEDED", "FAILED", "CANCELED"]
+private _taskStates = ["CREATED", "ASSIGNED", "SUCCEEDED", "FAILED", "CANCELED"];
 
 //************************************************************************************************************
 // FUNCTION
