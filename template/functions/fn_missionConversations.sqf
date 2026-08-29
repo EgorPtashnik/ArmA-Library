@@ -13,7 +13,7 @@ if !(_this isEqualType []) exitWith {
         waitUntil { scriptDone EP_missionConversationsHandle };
     }; 
 
-    EP_missionConversationsHandle _this spawn BIS_fnc_missionConversations;
+    EP_missionConversationsHandle = _this spawn BIS_fnc_missionConversations;
     EP_missionConversationsHandle
 };
 

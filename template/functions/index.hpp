@@ -22,6 +22,7 @@ class EP
         class cleanupArea               {};
         class showObjects               {};
         class addHoldAction             {};
+        class addAction                 {};
 
         // Extension Functions
         class ext_casualVehicle         {};
