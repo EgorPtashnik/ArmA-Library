@@ -1,7 +1,7 @@
 class EP
 {
     class Functions {
-        file = "functions";
+        file = "_functions";
         // AI Functions
         class addWaypoint               {};
         class clearWaypoints            {};

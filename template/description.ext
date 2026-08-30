@@ -1,14 +1,14 @@
 
 // ----- General mission metadata ---------------------------------------------
-onLoadName    = "";
-onLoadMission = "";
-author        = "";
-overviewText  = "";
+onLoadName    = "<onLoadName>";
+onLoadMission = "<onLoadMission";
+author        = "EP";
+overviewText  = "<MissionOverview>";
 
 // ----- Debriefing ----------------------------------------------------------
 class CfgDebriefing {
     class Win {
-        title             = "Mission Accomplished";
+        title             = "Mission Completed";
         subtitle          = "";
         description       = "";
         pictureBackground = "";
@@ -41,14 +41,27 @@ class CfgDebriefing {
 //     };
 // };
 
+// ----- Identities -----------------------------------------------------------
+class CfgIdentities
+{
+	class PlayerIdentity
+	{
+		face = "PersianHead_A3_02";
+		glasses = "";
+		pitch = 0.96;
+		name = "Khairullah Siddiqi";
+		speaker = "Male03PER";
+	};
+};
+
 // ----- Functions -----------------------------------------------------------
 class CfgFunctions {
-    #include "functions\index.hpp"
+    #include "_functions\index.hpp"
 };
 
 // ----- UI Resources -----------------------------------------------------------
 class RscTitles {
-    #include "functions\rsc.hpp"
+    #include "_functions\rsc.hpp"
 };
 
 
@@ -58,67 +71,67 @@ class CfgSounds {
     
 	class mybeep {
 		name = "mybeep";
-		sound[] = {"sounds\beep.ogg", db+10, 1.0};
+		sound[] = {"_sounds\beep.ogg", db+10, 1.0};
 		titles[] = {0,""};
 	};
 
 	class myin1 {
 		name = "myin1";
-		sound[] = {"sounds\in1.ogg", db+10, 1.0};
+		sound[] = {"_sounds\in1.ogg", db+10, 1.0};
 		titles[] = {0,""};
 	};
 
 	class myin2	{
 		name = "myin2";
-		sound[] = {"sounds\in2.ogg", db+10, 1.0};
+		sound[] = {"_sounds\in2.ogg", db+10, 1.0};
 		titles[] = {0,""};
 	};
 
 	class myin3	{
 		name = "myin3";
-		sound[] = {"sounds\in3.ogg", db+10, 1.0};
+		sound[] = {"_sounds\in3.ogg", db+10, 1.0};
 		titles[] = {0,""};
 	};
 
 	class myin4	{
 		name = "myin4";
-		sound[] = {"sounds\in4.ogg", db+10, 1.0};
+		sound[] = {"_sounds\in4.ogg", db+10, 1.0};
 		titles[] = {0,""};
 	};
 
 	class myin5	{
 		name = "myin5";
-		sound[] = {"sounds\in5.ogg", db+10, 1.0};
+		sound[] = {"_sounds\in5.ogg", db+10, 1.0};
 		titles[] = {0,""};
 	};
 
 	class myin6	{
 		name = "myin6";
-		sound[] = {"sounds\in6.ogg", db+10, 1.0};
+		sound[] = {"_sounds\in6.ogg", db+10, 1.0};
 		titles[] = {0,""};
 	};
 
 	class mynoise1 {
 		name = "mynoise1";
-		sound[] = {"sounds\noise1.ogg", db+10, 1.0};
+		sound[] = {"_sounds\noise1.ogg", db+10, 1.0};
 		titles[] = {0,""};
 	};
 
 	class mynoise2 {
 		name = "mynoise2";
-		sound[] = {"sounds\noise2.ogg", db+10, 1.0};
+		sound[] = {"_sounds\noise2.ogg", db+10, 1.0};
 		titles[] = {0,""};
 	};
 
 	class mynoise3 {
 		name = "mynoise3";
-		sound[] = {"sounds\noise3.ogg", db+10, 1.0};
+		sound[] = {"_sounds\noise3.ogg", db+10, 1.0};
 		titles[] = {0,""};
 	};
 	
 	class mynoise4 {
 		name = "mynoise4";
-		sound[] = {"sounds\noise4.ogg", db+10, 1.0};
+		sound[] = {"_sounds\noise4.ogg", db+10, 1.0};
 		titles[] = {0,""};
 	};
 };

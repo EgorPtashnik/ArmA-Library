@@ -1,4 +1,4 @@
-case "T_1": {
+case "taskID": {
 	[_taskID, "move"] call EP_fnc_missionTasks;
     [
         player,
