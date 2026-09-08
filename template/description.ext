@@ -1,7 +1,7 @@
 
 // ----- General mission metadata ---------------------------------------------
 onLoadName    = "<onLoadName>";
-onLoadMission = "<onLoadMission";
+onLoadMission = "<onLoadMission>";
 author        = "EP";
 overviewText  = "<MissionOverview>";
 
@@ -56,18 +56,18 @@ class CfgIdentities
 
 // ----- Functions -----------------------------------------------------------
 class CfgFunctions {
-    #include "_functions\index.hpp"
+    #include "_lib\index.hpp"
 };
 
 // ----- UI Resources -----------------------------------------------------------
 class RscTitles {
-    #include "_functions\rsc.hpp"
+    #include "_lib\rsc.hpp"
 };
 
 
 // ----- Sounds --------------------------------------------------------------
 class CfgSounds {
-    sounds[] = {mybeep, myin1, myin2, myin4, myin5, myin6, mynoise1, mynoise2, mynoise3, mynoise4};
+    sounds[] = {mybeep, myin1, myin2, myin3, myin4, myin5, myin6, mynoise1, mynoise2, mynoise3, mynoise4};
     
 	class mybeep {
 		name = "mybeep";

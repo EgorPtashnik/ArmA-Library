@@ -1,5 +1,5 @@
 //************************************************************************************************************
-// CONSTANTS
+// CONSTANTS - waypoint types, behaviours, combat modes, formations and speed modes
 //************************************************************************************************************
 
 private _waypointTypes = [
@@ -18,7 +18,7 @@ private _formations		= [ "COLUMN", "STAG COLUMNS", "WEDGE", "ECH LEFT", "ECH RIG
 private _speedModes		= [ "LIMITED", "NORMAL", "FULL", "UNCHANGED" ];
 
 //************************************************************************************************************
-// FUNCTION
+// FUNCTION add waypoint to a group with different parameters
 //************************************************************************************************************
 
 params [

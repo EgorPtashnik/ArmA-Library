@@ -17,7 +17,7 @@
 		(_this # 0) removeAction (_this # 2);
 		private _demoSpec = ([EP_demoSpec_1, EP_demoSpec_2] # _freeDemoSpecIndex);
 		_demoSpec setVariable ["EP_free", false];
-		[[ ["Ten-2", "Plant this vehicle.", 0] ]] call EP_fnc_showSubtitles;
+		[[ ["Ten-2", "Plant this vehicle.", 0] ]] call EP_fnc_missionConversations;
 
 		_demoSpec setCombatBehaviour "CARELESS";
 		_demoSpec doMove (getPos (_this # 0));
