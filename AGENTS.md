@@ -97,12 +97,3 @@ Used by `EP_fnc_missionConversations` via `playSoundUI`.
   `_lib\index.hpp` and `_lib\rsc.hpp`.
 - Header comments in each fn file use `//****...` blocks (CONSTANTS / FUNCTION sections).
 - Indentation: tabs inside function bodies, spaces in `description.ext`.
-
-## Current work-in-progress (as of 2026-09-08)
-
-The repo is mid-migration from `template/_functions/` to `template/_lib/`:
-- `template/_functions/` is deleted; `template/_lib/` is created but not yet committed.
-- `template/description.ext` still includes `_functions\index.hpp` / `_functions\rsc.hpp`
-  and must be updated to `_lib\index.hpp` / `_lib\rsc.hpp`.
-- `deprecated/` was removed; `scripts/Mechanics/Command_AISetupIED.sqf` now calls
-  `EP_fnc_missionConversations` instead of `EP_fnc_showSubtitles`.
