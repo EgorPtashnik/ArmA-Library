@@ -4,8 +4,10 @@ class EP
         file = "_lib\ai";
         class addWaypoint            {};
         class clearWaypoints         {};
+        class isFacingWall           {};
         class setAIMode              {};
         class setAISkill             {};
+        class setInsidePosition      {};
     };
 
     class Tasks {
@@ -14,6 +16,7 @@ class EP
         class taskAttack             {};
         class taskConvoy             {};
         class taskDefend             {};
+        class taskGarrisonBuilding   {};
         class taskPatrol             {};
     };
 
@@ -53,13 +56,14 @@ class EP
 
     class Get {
         file = "_lib\get";
+        class collectMarkers         {};
+        class collectUnits           {};
+        class collectVariables       {};
+        class getBuildingPositions   {};
         class getGroup               {};
         class getPosition            {};
         class getRandomArray         {};
         class getRandomPosition      {};
         class getRandomPositionArea  {};
-        class collectMarkers         {};
-        class collectUnits           {};
-        class collectVariables       {};
     };
 };
