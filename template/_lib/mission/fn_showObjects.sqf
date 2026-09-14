@@ -1,6 +1,21 @@
-//************************************************************************************************************
-// FUNCTION
-//************************************************************************************************************
+/* ----------------------------------------------------------------------------
+Function: EP_fnc_showObjects
+
+Description:
+    Shows or hides object(s) by toggling simulation, visibility, captive state
+    and damage handling.
+
+Parameters:
+    0: _ref (String, Group, Object, or Array) - Mission layer name, group (uses its units),
+        object, or array of objects to show/hide.
+    1: _show (Boolean, optional) - Show (true) or hide (false) the object(s). Default true.
+
+Example:
+    ["HiddenCrates", false] call EP_fnc_showObjects
+
+Returns:
+    Array of Objects - The affected objects.
+---------------------------------------------------------------------------- */
 
 params [
 	"_ref",

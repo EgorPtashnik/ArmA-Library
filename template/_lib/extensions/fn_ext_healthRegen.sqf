@@ -1,6 +1,25 @@
-//************************************************************************************************************
-// FUNCTION
-//************************************************************************************************************
+/* ----------------------------------------------------------------------------
+Function: EP_fnc_ext_healthRegen
+
+Description:
+    Installs a custom damage model on units where damage is applied in fixed
+    increments per hit (with optional headshot kills), and passively regenerates
+    down to a minimum damage level over time.
+
+Parameters:
+    0: _units (Group, Object, or Array) - Units to install the system on. Passed through EP_fnc_collectUnits.
+    1: _damageOnHit (Number, optional) - Damage applied per hit. Default 0.1.
+    2: _headshotKill (Boolean, optional) - Instantly kill on headshot. Default true.
+    3: _stopRegenAt (Number, optional) - Minimum damage level regeneration stops at. Default 0.2.
+    4: _regenValue (Number, optional) - Damage removed per regen tick. 0 disables regeneration. Default 0.05.
+    5: _regenInterval (Number, optional) - Seconds between regen ticks. Default 1.
+
+Example:
+    [opforGroup, 0.15, true, 0.3] call EP_fnc_ext_healthRegen
+
+Returns:
+    Array of Objects - The units the system was installed on.
+---------------------------------------------------------------------------- */
 
 params [
 	"_units",

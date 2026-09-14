@@ -1,6 +1,20 @@
-//************************************************************************************************************
-// FUNCTION
-//************************************************************************************************************
+/* ----------------------------------------------------------------------------
+Function: EP_fnc_collectMarkers
+
+Description:
+    Collects sequentially numbered markers sharing a common prefix
+    ("prefix_1", "prefix_2", ...) until a missing index is found.
+
+Parameters:
+    0: _mrkPrefix (String) - Common marker name prefix.
+    1: _returnPositionArray (Boolean, optional) - Return positions instead of marker names. Default false.
+
+Example:
+    ["mk_route"] call EP_fnc_collectMarkers
+
+Returns:
+    Array - Marker names, or their positions if _returnPositionArray is true.
+---------------------------------------------------------------------------- */
 
 params [
 	"_mrkPrefix",

@@ -1,6 +1,23 @@
-//************************************************************************************************************
-// FUNCTION
-//************************************************************************************************************
+/* ----------------------------------------------------------------------------
+Function: EP_fnc_ext_casualVehicle
+
+Description:
+    Turns vehicles into "casualty transports": when a player gets in, they are
+    moved to the gunner seat while an invulnerable AI agent drives, the camera
+    optionally switches to external view, and a "Get Out" action is added.
+
+Parameters:
+    0: _vehicles (Object or Array) - Vehicle(s) to configure.
+    1: _enableSentences (Boolean, optional) - Enable radio sentences while driving. Default false.
+    2: _getOutText (String, optional) - Text of the added get-out action. Default "Get Out".
+    3: _cameraExternal (Boolean, optional) - Switch to external camera on entry. Default true.
+
+Example:
+    [ambulance] call EP_fnc_ext_casualVehicle
+
+Returns:
+    Object or Array - The vehicle(s) passed in.
+---------------------------------------------------------------------------- */
 
 params [
 	"_vehicles",

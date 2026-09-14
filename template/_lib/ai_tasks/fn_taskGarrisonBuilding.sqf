@@ -1,6 +1,26 @@
-//************************************************************************************************************
-// FUNCTION
-//************************************************************************************************************
+/* ----------------------------------------------------------------------------
+Function: EP_fnc_taskGarrisonBuilding
+
+Description:
+    Garrisons infantry into building positions around a central point. Each
+    unit is sent to a randomly selected position inside nearby buildings and
+    then locked into place.
+
+Parameters:
+    0: _units (Group, Object, or Array) - Units to garrison. Passed through EP_fnc_collectUnits.
+    1: _center (Position, Object, Array or Number, optional) - Centre of the garrison area.
+        If a Number is provided it is interpreted as _radius and the centre defaults to the first unit's position.
+        Default 50 (used as radius fallback).
+    2: _radius (Number, optional) - Search radius for buildings. Default 50.
+    3: _maxPositionsPerBuilding (Number, optional) - Max positions used per building. -1 for no limit. Default -1.
+    4: _customPositionsOnly (Boolean, optional) - If true, only custom building positions are used. Default false.
+
+Example:
+    [garrisonGroup, getMarkerPos "objGarrison", 75] call EP_fnc_taskGarrisonBuilding
+
+Returns:
+    Nothing.
+---------------------------------------------------------------------------- */
 
 params [
     "_units",

@@ -1,6 +1,21 @@
-//************************************************************************************************************
-// FUNCTION
-//************************************************************************************************************
+/* ----------------------------------------------------------------------------
+Function: EP_fnc_ext_nvg
+
+Description:
+    Adds a "VisionModeChanged" event handler to object(s) that creates a set of
+    post-processing effects (radial/dynamic blur, film grain, colour correction)
+    while the player is using night vision goggles, and cleans them up when NVG
+    is switched off.
+
+Parameters:
+    0: _this (Object or Array) - Object(s) to add the NVG effect handler to.
+
+Example:
+    [player] call EP_fnc_ext_nvg
+
+Returns:
+    Boolean - True.
+---------------------------------------------------------------------------- */
 
 if !(_this isEqualType []) then {
 	_this = [_this];

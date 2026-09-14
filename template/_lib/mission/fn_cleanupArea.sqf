@@ -1,6 +1,22 @@
-//************************************************************************************************************
-// FUNCTION
-//************************************************************************************************************
+/* ----------------------------------------------------------------------------
+Function: EP_fnc_cleanupArea
+
+Description:
+    Deletes all objects within a radius of a position. If any deleted object
+    had crew (e.g. was a vehicle that ejected its occupants), the cleanup is
+    retried, up to 10 times, to catch newly-exposed objects.
+
+Parameters:
+    0: _position (Position, Object, Array or Group) - Center of the cleanup area.
+    1: _radius (Number) - Cleanup radius.
+    2: _execCounter (Number, optional) - Internal recursion counter. Default 0.
+
+Example:
+    [getMarkerPos "mk_cleanup", 100] call EP_fnc_cleanupArea
+
+Returns:
+    Nothing.
+---------------------------------------------------------------------------- */
 
 params [
 	"_position",
@@ -8,9 +24,7 @@ params [
 	["_execCounter", 0]
 ];
 
-if (_execCounter > 10) exitWith {
-	systemChat "EP_fnc_cleanupArea: Too many executions";
-};
+if (_execCounter > 10) exitWith {};
 
 _execCounter = _execCounter + 1;
 

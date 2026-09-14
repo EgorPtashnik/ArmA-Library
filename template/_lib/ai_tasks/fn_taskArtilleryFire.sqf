@@ -1,6 +1,23 @@
-//************************************************************************************************************
-// FUNCTION
-//************************************************************************************************************
+/* ----------------------------------------------------------------------------
+Function: EP_fnc_taskArtilleryFire
+
+Description:
+    Orders one or more artillery pieces to fire a salvo at a target position,
+    with a randomised delay between each shot.
+
+Parameters:
+    0: _arti (Group or Array of Objects) - Artillery group or list of artillery vehicles.
+    1: _target (Position, Object, Array or Group) - Target location.
+    2: _rounds (Number) - Number of rounds each artillery piece will fire.
+    3: _magType (String, optional) - Magazine (shell) type. Defaults to the first magazine of the first artillery piece.
+    4: _sleepRange (Array, optional) - [min, mid, max] random delay between shots. Defaults to [0.5, 1, 1.5].
+
+Example:
+    [artyGroup, getPos targetMarker, 3] call EP_fnc_taskArtilleryFire
+
+Returns:
+    Array of Objects - The artillery vehicles that fired, or false if the target is out of range.
+---------------------------------------------------------------------------- */
 
 params [
 	"_arti",

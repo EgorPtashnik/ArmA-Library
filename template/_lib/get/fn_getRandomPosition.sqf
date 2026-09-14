@@ -1,6 +1,22 @@
-//************************************************************************************************************
-// FUNCTION
-//************************************************************************************************************
+/* ----------------------------------------------------------------------------
+Function: EP_fnc_getRandomPosition
+
+Description:
+    Returns a random position around a reference point, within a radius and
+    an optional directional cone.
+
+Parameters:
+    0: _ref (Position, Object, Array or Group) - Reference point.
+    1: _radius (Number, optional) - Maximum distance from the reference. Default 0.
+    2: _direction (Number, optional) - Center direction of the cone. Default 0.
+    3: _angle (Number, optional) - Width of the directional cone. Default 360 (full circle).
+
+Example:
+    [player, 50] call EP_fnc_getRandomPosition
+
+Returns:
+    Array - The random position.
+---------------------------------------------------------------------------- */
 
 params [
     "_ref",

@@ -1,6 +1,23 @@
-//************************************************************************************************************
-// FUNCTION
-//************************************************************************************************************
+/* ----------------------------------------------------------------------------
+Function: EP_fnc_missionConversations
+
+Description:
+    Displays a sequence of subtitles in the EP_Subtitles UI layer, one entry
+    at a time. If called with a non-array parameter it instead spawns
+    BIS_fnc_missionConversations, queuing behind any conversation already running.
+
+Parameters:
+    0: _conversation (Array of Arrays) - Entries in the format [Speaker, Text, Duration, Color, Sound],
+        where Color (Number or String, optional) and Sound (String, optional) default to 0 and "myin1".
+    1: _isRadio (Boolean, optional) - Add 2 seconds to each entry's duration and play radio click sounds. Default true.
+
+Example:
+    [[["Alpha1", "Move to the objective", 4]]] call EP_fnc_missionConversations
+
+Returns:
+    Script Handle - When called with a non-array parameter, the spawned handle
+    (also stored in EP_missionConversationsHandle).
+---------------------------------------------------------------------------- */
 
 params [
 	"_conversation", //Array of arrays in format [ [Title, Subtitles, duration for previous] ]

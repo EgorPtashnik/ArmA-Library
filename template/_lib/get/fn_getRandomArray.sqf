@@ -1,6 +1,22 @@
-//************************************************************************************************************
-// FUNCTION
-//************************************************************************************************************
+/* ----------------------------------------------------------------------------
+Function: EP_fnc_getRandomArray
+
+Description:
+    Selects a number of random elements from an array, optionally without
+    duplication.
+
+Parameters:
+    0: _initArray (Array) - Source array to select from.
+    1: _resultCount (Number) - Number of elements to select.
+    2: _withoutDublication (Boolean, optional) - If true, selected elements are removed from
+        consideration so they cannot be picked twice. Default false.
+
+Example:
+    [["A", "B", "C", "D"], 2, true] call EP_fnc_getRandomArray
+
+Returns:
+    Array - The selected elements.
+---------------------------------------------------------------------------- */
 
 params [
 	"_initArray",

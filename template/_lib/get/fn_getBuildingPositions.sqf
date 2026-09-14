@@ -1,6 +1,22 @@
-//************************************************************************************************************
-// FUNCTION - get building positions (all or only custom with CBA_buildingPos objects
-//************************************************************************************************************
+/* ----------------------------------------------------------------------------
+Function: EP_fnc_getBuildingPositions
+
+Description:
+    Returns available positions inside a building, combining built-in
+    building positions with nearby CBA custom building positions that fall
+    within the building's bounding box.
+
+Parameters:
+    0: _building (Object) - The building to get positions from.
+    1: _customPositionsOnly (Boolean, optional) - Skip built-in buildingPos positions. Default false.
+    2: _max (Number, optional) - Maximum number of positions to return. -1 for no limit. Default -1.
+
+Example:
+    [nearestBuilding player] call EP_fnc_getBuildingPositions
+
+Returns:
+    Array of Positions - The available building positions.
+---------------------------------------------------------------------------- */
 
 params [
     "_building",

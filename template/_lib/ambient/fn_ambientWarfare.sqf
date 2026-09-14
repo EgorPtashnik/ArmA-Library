@@ -1,7 +1,26 @@
-//************************************************************************************************************
-// CONSTANTS
-//************************************************************************************************************
+/* ----------------------------------------------------------------------------
+Function: EP_fnc_ambientWarfare
 
+Description:
+    Loops around the player, playing randomised distant battle sounds
+    (firefights, explosions, helicopters, jets) at random intervals and
+    directions until the given condition becomes false.
+
+Parameters:
+    0: _condition (Code, optional) - Loop continues while this returns true. Default { true }.
+    1: _firefight (Boolean, optional) - Include firefight sounds. Default true.
+    2: _explosions (Boolean, optional) - Include explosion sounds. Default true.
+    3: _helis (Boolean, optional) - Include helicopter sounds. Default false.
+    4: _jets (Boolean, optional) - Include jet sounds. Default false.
+
+Example:
+    [{ true }, true, true, true] call EP_fnc_ambientWarfare
+
+Returns:
+    Nothing. The spawned handle is stored in EP_AmbientWarfareHandle.
+---------------------------------------------------------------------------- */
+
+//Constants
 private _soundsFF = [
 	"A3\Sounds_F\environment\ambient\battlefield\battlefield_firefight1.wss",
 	"A3\Sounds_F\environment\ambient\battlefield\battlefield_firefight2.wss",
@@ -26,10 +45,7 @@ private _soundsJet = [
     "A3\Sounds_F\environment\ambient\battlefield\battlefield_Jet3.wss"
 ];
 
-//************************************************************************************************************
-// FUNCTION
-//************************************************************************************************************
-
+//Function
 params [
 	["_condition", { true }],
 	["_firefight", true],

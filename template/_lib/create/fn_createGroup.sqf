@@ -1,6 +1,29 @@
-//************************************************************************************************************
-// FUNCTION
-//************************************************************************************************************
+/* ----------------------------------------------------------------------------
+Function: EP_fnc_createGroup
+
+Description:
+    Spawns a new AI group (or adds units to an existing group) via
+    BIS_fnc_spawnGroup, then applies skill settings to the spawned units.
+
+Parameters:
+    0: _position (Position, Object, Array or Group, or [Reference, Radius]) - Spawn location, or a
+        [reference, radius] pair to spawn at a random position around the reference.
+    1: _spawnRef (Group or Side) - Group to join units to, or a side to create a new group for.
+    2: _classes (Array) - Unit classes to spawn.
+    3: _skillParams (Array, optional) - Skill settings passed to EP_fnc_setAISkill. Default [].
+    4: _relPositions (Array, optional) - Relative positions for spawned units. Default [].
+    5: _direction (Number, optional) - Spawn direction. Default 0.
+    6: _ranks (Array, optional) - Ranks for spawned units. Default [].
+    7: _ammo (Array, optional) - Ammo range [min, max]. Default [].
+    8: _randControls (Array, optional) - [minUnits, chance per additional unit]. Default [-1, 1].
+    9: _precisePos (Boolean, optional) - Use precise position placement. Default true.
+
+Example:
+    [getMarkerPos "mk_spawn", east, ["O_Soldier_F", "O_Soldier_F"]] call EP_fnc_createGroup
+
+Returns:
+    Group - The resulting group (existing or newly created).
+---------------------------------------------------------------------------- */
 
 params [
 	"_position",

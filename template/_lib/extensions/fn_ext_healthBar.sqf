@@ -1,6 +1,29 @@
-//************************************************************************************************************
-// FUNCTION
-//************************************************************************************************************
+/* ----------------------------------------------------------------------------
+Function: EP_fnc_ext_healthBar
+
+Description:
+    Continuously draws a text-based health bar on screen for a unit (or its
+    vehicle) until the unit dies. Intended to be spawned.
+
+Parameters:
+    0: _targetUnit (Object, optional) - Unit to track. Default player.
+    1: _layerId (Number, optional) - BIS_fnc_dynamicText layer id. Default 1.
+    2: _healthShowVehicle (Boolean, optional) - Show the vehicle's health instead of the unit's when in a vehicle. Default false.
+    3: _healthSymbolsCount (Number, optional) - Number of symbols at full health. Default 66.
+    4: _healthSymbol (String, optional) - Symbol used to draw the bar. Default "I".
+    5: _healthMediumThreshold (Number, optional) - Percent threshold for the medium-damage colour. Default 60.
+    6: _healthHighThreshold (Number, optional) - Percent threshold for the high-damage colour. Default 30.
+    7: _healthPosFromBottomPerc (Number, optional) - Vertical position, as a safe-zone percentage. Default 1.62.
+    8: _healthPosFromRightPerc (Number, optional) - Horizontal position, as a safe-zone percentage. Default 1.616.
+    9: _healthColorMap (Array, optional) - [low, medium, high damage colours]. Default ["#ff6565", "#ffae8e", "#ffffff"].
+    10: _sleep (Number, optional) - Refresh interval in seconds. Default 0.1.
+
+Example:
+    [player] spawn EP_fnc_ext_healthBar
+
+Returns:
+    Nothing.
+---------------------------------------------------------------------------- */
 
 params [
 	["_targetUnit", player],

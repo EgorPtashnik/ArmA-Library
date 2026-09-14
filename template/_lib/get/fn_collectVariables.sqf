@@ -1,6 +1,20 @@
-//************************************************************************************************************
-// FUNCTION
-//************************************************************************************************************
+/* ----------------------------------------------------------------------------
+Function: EP_fnc_collectVariables
+
+Description:
+    Collects sequentially numbered mission namespace variables sharing a
+    common prefix ("prefix_1", "prefix_2", ...) until a nil value is found.
+
+Parameters:
+    0: _varPrefixes (String or Array of Strings) - Variable name prefix(es).
+    1: _reversed (Boolean, optional) - Push values in reverse collection order. Default false.
+
+Example:
+    ["EP_wave"] call EP_fnc_collectVariables
+
+Returns:
+    Array - The collected variable values.
+---------------------------------------------------------------------------- */
 
 params [
 	"_varPrefixes",

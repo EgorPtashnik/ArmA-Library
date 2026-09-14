@@ -1,6 +1,24 @@
-//************************************************************************************************************
-// FUNCTION
-//************************************************************************************************************
+/* ----------------------------------------------------------------------------
+Function: EP_fnc_ambientFlyBy
+
+Description:
+    Spawns an ambient aircraft that flies from a start to an end position at a
+    fixed height, ignoring its surroundings, and deletes itself on arrival.
+
+Parameters:
+    0: _start (Position, Object, Array or Group, optional) - Spawn location. Default [0,0,0].
+    1: _end (Position, Object, Array or Group, optional) - Destination location. Default [100,100,100].
+    2: _class (String, optional) - Vehicle class to spawn. Default "B_Heli_Light_01_F".
+    3: _height (Number, optional) - Flight height. Default 100.
+    4: _speed (String, optional) - Waypoint speed mode. Default "NORMAL".
+    5: _side (Side, optional) - Side of the spawned vehicle. Default blufor.
+
+Example:
+    [markerA, markerB, "B_Plane_CAS_01_F", 300] call EP_fnc_ambientFlyBy
+
+Returns:
+    Object - The spawned vehicle.
+---------------------------------------------------------------------------- */
 
 params [
 	["_start", [0,0,0]],

@@ -1,6 +1,25 @@
-//************************************************************************************************************
-// FUNCTION
-//************************************************************************************************************
+/* ----------------------------------------------------------------------------
+Function: EP_fnc_missionConversationsVO
+
+Description:
+    Displays a sequence of voiced-over subtitles in the EP_Subtitles UI layer.
+    For radio conversations, plays radio in/out sounds and looping background
+    noise for the duration of each entry. If called with a non-array parameter
+    it instead spawns BIS_fnc_missionConversations.
+
+Parameters:
+    0: _conversation (Array of Arrays) - Entries in the format [Speaker, Text, Duration, Color, VO],
+        where Color (Number or String, optional) defaults to 0 and VO (String, optional) defaults to "readoutClick".
+    1: _isRadio (Boolean, optional) - Play radio sounds and background noise. Default true.
+    2: _radioSoundIn (String, optional) - Sound played when the radio starts. Default "myin1".
+    3: _radioSoundOut (String, optional) - Sound played when the radio ends. Default "myin4".
+
+Example:
+    [[["Alpha1", "Move to the objective", 4, 1, "alpha1_move"]]] call EP_fnc_missionConversationsVO
+
+Returns:
+    Script Handle - When called with a non-array parameter, the spawned handle.
+---------------------------------------------------------------------------- */
 
 params [
 	"_conversation", //Array ff arrays in format [ [Title, Subtitles, duration for previous] ]

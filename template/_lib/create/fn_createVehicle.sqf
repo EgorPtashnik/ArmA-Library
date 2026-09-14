@@ -1,6 +1,26 @@
-//************************************************************************************************************
-// FUNCTION
-//************************************************************************************************************
+/* ----------------------------------------------------------------------------
+Function: EP_fnc_createVehicle
+
+Description:
+    Creates a vehicle (or soldier/plane/helicopter, based on its simulation
+    type) at a position, then crews it either automatically or with specific
+    unit classes assigned to cargo/commander/driver/gunner/turret roles.
+
+Parameters:
+    0: _position (Position, Object, Array or Group, or [Reference, Radius]) - Spawn location, or a
+        [reference, radius] pair to spawn at a random position around the reference.
+    1: _spawnRef (Group or Side) - Group to add the vehicle to, or a side to create a new group for.
+    2: _vehSetting (String or Array) - Vehicle class, or [class, crew] where crew is an array of
+        ["CARGO"/"TURRET"/"COMMANDER"/"DRIVER"/"GUNNER", classes] pairs.
+    3: _direction (Number, optional) - Spawn direction. Default 0.
+    4: _precisePosition (Boolean, optional) - Force exact position placement. Default false.
+
+Example:
+    [getMarkerPos "mk_spawn", west, "B_MRAP_01_F"] call EP_fnc_createVehicle
+
+Returns:
+    Object - The created vehicle.
+---------------------------------------------------------------------------- */
 
 params [
 	"_position",

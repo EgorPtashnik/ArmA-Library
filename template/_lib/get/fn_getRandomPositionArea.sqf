@@ -1,6 +1,21 @@
-//************************************************************************************************************
-// FUNCTION
-//************************************************************************************************************
+/* ----------------------------------------------------------------------------
+Function: EP_fnc_getRandomPositionArea
+
+Description:
+    Returns a random position uniformly distributed inside (or, optionally,
+    along the perimeter of) a rectangular or elliptical area/zone/trigger.
+
+Parameters:
+    0: _zoneReference (Array, optional) - Zone reference accepted by BIS_fnc_getArea
+        (e.g. trigger, marker name, or area array). Default [].
+    1: _perimeter (Boolean, optional) - Return a position on the area's perimeter instead of inside it. Default false.
+
+Example:
+    ["mk_area", false] call EP_fnc_getRandomPositionArea
+
+Returns:
+    Array - The random position, or [] if the area reference is invalid.
+---------------------------------------------------------------------------- */
 
 params [
     ["_zoneReference", []],

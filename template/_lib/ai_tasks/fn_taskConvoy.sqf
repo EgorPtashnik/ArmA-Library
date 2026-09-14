@@ -1,6 +1,24 @@
-//************************************************************************************************************
-// FUNCTION
-//************************************************************************************************************
+/* ----------------------------------------------------------------------------
+Function: EP_fnc_taskConvoy
+
+Description:
+    Configures a group as a vehicle convoy: sets column formation, speed and
+    separation, adds waypoints along a marker route, and continuously monitors
+    the convoy to keep stuck vehicles moving.
+
+Parameters:
+    0: _group (Group or Object) - The convoy group.
+    1: _route (Array or String) - Marker name(s) or positions defining the route. Passed through EP_fnc_collectMarkers.
+    2: _limitSpeed (Number, optional) - Max speed for the convoy. Default 50.
+    3: _convoySeparation (Number, optional) - Distance between vehicles. Default 50.
+    4: _pushThrough (Boolean, optional) - If true, convoy will not stop for combat. Default false.
+
+Example:
+    [convoyGroup, ["mk_route1", "mk_route2", "mk_route3"]] call EP_fnc_taskConvoy
+
+Returns:
+    Nothing.
+---------------------------------------------------------------------------- */
 
 params [
 	"_group",

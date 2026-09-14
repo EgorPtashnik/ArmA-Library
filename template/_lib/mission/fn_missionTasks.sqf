@@ -1,7 +1,28 @@
-//************************************************************************************************************
-// CONSTANTS
-//************************************************************************************************************
+/* ----------------------------------------------------------------------------
+Function: EP_fnc_missionTasks
 
+Description:
+    Wrapper around the BIS task functions. Given an array, updates an existing
+    task's type/state/destination based on the type of each trailing argument.
+    Given anything else, forwards the parameter directly to BIS_fnc_missionTasks.
+
+Parameters:
+    0: _this (Array or Anything) - When an Array: [TaskID, ...updates], where each
+        trailing update is one of:
+        - Task icon (String) - Must be a valid task icon name, via BIS_fnc_taskSetType.
+        - Task state (String) - "CREATED", "ASSIGNED", "SUCCEEDED", "FAILED", "CANCELED", via BIS_fnc_taskSetState.
+        - Destination (Array/Position) - via BIS_fnc_taskSetDestination.
+        - Success flag (Boolean) - Sets state to "SUCCEEDED" or "FAILED".
+        When not an Array: forwarded as-is to BIS_fnc_missionTasks.
+
+Example:
+    ["task1", "attack", getMarkerPos "mk_obj", true] call EP_fnc_missionTasks
+
+Returns:
+    String - The task ID.
+---------------------------------------------------------------------------- */
+
+//Constats
 private _taskIcons = [
 	"airdrop", "attack", "danger", "defend", "destroy", "download", "exit", "getin", "getout", "heal", "interact", "kill",
 	"land", "listen", "meet", "move", "move1", "move2", "move3", "move4", "move5", "navigate", "rearm", "refuel", "repair",
@@ -12,10 +33,7 @@ private _taskIcons = [
 ];
 private _taskStates = ["CREATED", "ASSIGNED", "SUCCEEDED", "FAILED", "CANCELED"];
 
-//************************************************************************************************************
-// FUNCTION
-//************************************************************************************************************
-
+//Function
 private _taskID = nil;
 if (_this isEqualType []) then {
 	_taskID = _this deleteAt 0;

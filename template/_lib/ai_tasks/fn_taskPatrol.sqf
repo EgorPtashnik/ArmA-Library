@@ -1,6 +1,31 @@
-//************************************************************************************************************
-// FUNCTION
-//************************************************************************************************************
+/* ----------------------------------------------------------------------------
+Function: EP_fnc_taskPatrol
+
+Description:
+    Assigns a patrol to a group, either along a predefined marker route or as
+    a circular patrol around a destination point. Existing waypoints are
+    cleared by default; pass a Boolean trailing argument (false) to keep them.
+
+Parameters:
+    0: _group (Group or Object) - The group to patrol.
+    1: _destination (Position, Object, Array, String or Number, optional)
+        - When _setOnRoute is false: patrol centre. Defaults to the group's position.
+        - When _setOnRoute is true: marker name (String) or array of positions defining the route.
+    2: _setOnRoute (Boolean, optional) - Patrol along a predefined route when true. Default false.
+    3: _radius (Number, optional) - Patrol radius around the destination. Default 100. Ignored when _setOnRoute is true.
+    4: _count (Number, optional) - Number of patrol waypoints to generate. Default 3. Ignored when _setOnRoute is true.
+    
+    Optional (passed as trailing arguments, forwarded to EP_fnc_addWaypoint):
+    - Boolean - Overrides the default "clear existing waypoints" behaviour (pass false to keep existing waypoints).
+    - Any additional waypoint parameter supported by EP_fnc_addWaypoint.
+
+Example:
+    [patrolGroup, getMarkerPos "objPatrol", false, 150, 5] call EP_fnc_taskPatrol
+    [patrolGroup, "mk_patrolRoute", true] call EP_fnc_taskPatrol
+
+Returns:
+    Nothing.
+---------------------------------------------------------------------------- */
 
 params [
 	"_group",
