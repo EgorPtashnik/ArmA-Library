@@ -52,6 +52,7 @@ class EP
         class createGuidedProjectile {};
         class createTrigger          {};
         class createUnit             {};
+        class createVehicle          {};
     };
 
     class Get {
