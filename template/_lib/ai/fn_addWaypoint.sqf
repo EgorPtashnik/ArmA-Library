@@ -58,10 +58,10 @@ if (_group isEqualType []) then {
 	_group = (_group # 0) call EP_fnc_getGroup;
 } else {
 	_group 	= _group call EP_fnc_getGroup;
-}
+};
 _destination = _destination call EP_fnc_getPosition;
 
-private _waypoint = _group addWaypoint [_destination, -1];
+private _waypoint = _group addWaypoint [_destination, _placementRadius];
 _waypoint setWaypointVisible false;
 
 //Handle additional waypoint parameters
