@@ -1,7 +1,37 @@
-//************************************************************************************************************
-// CONSTANTS - waypoint types, behaviours, combat modes, formations and speed modes
-//************************************************************************************************************
+/* ----------------------------------------------------------------------------
+Function: EP_fnc_addWaypoint
 
+Description:
+    A function used to add a waypoint to a group.
+
+Parameters:
+    - Group (Group or Object)
+    - Position (XYZ, Object, Location or Group)
+
+Optional:
+    - Radius (Scalar)
+    - Waypoint Type (String)
+    - Behaviour (String)
+    - Combat Mode (String)
+    - Speed Mode (String)
+    - Formation (String)
+    - Code To Execute at Each Waypoint (String)
+    - TimeOut at each Waypoint (Array [Min, Med, Max])
+    - Waypoint Completion Radius (Scalar)
+
+Example:
+    (begin example)
+    [this, this, 300, "MOVE", "AWARE", "YELLOW", "FULL", "STAG COLUMN", "this spawn CBA_fnc_searchNearby", [3, 6, 9]] call CBA_fnc_addWaypoint
+    (end)
+
+Returns:
+    Waypoint [Group, Waypoint Index] <ARRAY>
+
+Author:
+    Rommel
+---------------------------------------------------------------------------- */
+
+//Constants
 private _waypointTypes = [
 	"MOVE", "HOLD", "CYCLE",
 	"DESTROY", "SAD",
@@ -17,10 +47,7 @@ private _combatModes 	= [ "BLUE", "GREEN", "WHITE", "YELLOW", "RED" ];
 private _formations		= [ "COLUMN", "STAG COLUMNS", "WEDGE", "ECH LEFT", "ECH RIGHT", "VEE", "LINE", "FILE", "DIAMOND" ];
 private _speedModes		= [ "LIMITED", "NORMAL", "FULL", "UNCHANGED" ];
 
-//************************************************************************************************************
-// FUNCTION add waypoint to a group with different parameters
-//************************************************************************************************************
-
+//Function
 params [
 	"_group",
 	"_destination"

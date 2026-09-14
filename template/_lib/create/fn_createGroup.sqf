@@ -15,14 +15,17 @@ params [
 	["_precisePos", true]
 ];
 
-if !(_spawnRef isEqualType grpNull || _spawnRef isEqualType sideUnknown) exitWith {
-	systemChat (format ["EP_fnc_createGroup: %1 is not a valid parameter! Expected side or group.", _spawnRef]);
-};
+//Validate parameter count
+if ((count _this) < 3) exitWith { debugLog "EP_fnc_createGroup: Function requires at least 3 parameters!"; grpNull };
+
+// Validate spawn reference parameters
+if !(_spawnRef isEqualType grpNull || _spawnRef isEqualType sideUnknown) exitWith { debugLog "EP_fnc_createGroup: Spawn reference (1) must be a side or a group."; grpNull };
 
 private _pos = [];
 private _side = sideUnknown;
 private _joinGroup = false;
 
+//Get position
 if (_position isEqualType [] && (count _position) == 2) then {
 	private _ref = _position # 0;
 	private _radius = _position # 1;
@@ -31,6 +34,7 @@ if (_position isEqualType [] && (count _position) == 2) then {
 	_pos = _position call EP_fnc_getPosition;
 };
 
+//Determine to join group or create a new one
 if (_spawnRef isEqualType grpNull) then {
 	_side = side _spawnRef;
 	_joinGroup = true;
