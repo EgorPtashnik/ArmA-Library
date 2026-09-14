@@ -39,7 +39,7 @@ private _side = sideUnknown;
 private _grp = grpNull;
 
 //Get position
-if (_pos isEqualType [] && (count _position) == 2) then {
+if (_pos isEqualType [] && { (count _position) == 2 }) then {
 	private _ref = _position # 0;
 	private _radius = _position # 1;
 	_pos = [_ref, _radius] call EP_fnc_getRandomPosition;
