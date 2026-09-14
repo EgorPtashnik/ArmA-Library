@@ -2,33 +2,28 @@
 Function: EP_fnc_addWaypoint
 
 Description:
-    A function used to add a waypoint to a group.
+    Adds a waypoint to a group with extended configuration options.
 
 Parameters:
-    - Group (Group or Object)
-    - Position (XYZ, Object, Location or Group)
-
-Optional:
-    - Radius (Scalar)
-    - Waypoint Type (String)
-    - Behaviour (String)
-    - Combat Mode (String)
-    - Speed Mode (String)
-    - Formation (String)
-    - Code To Execute at Each Waypoint (String)
-    - TimeOut at each Waypoint (Array [Min, Med, Max])
-    - Waypoint Completion Radius (Scalar)
+    0: _group (Group or Objecto or Array [GroupReference, wpPlacementRadius]) - The group to add the waypoint to.
+    1: _destination (Position, Object, Array or Group) - Target location for the waypoint.
+    
+    Optional (passed as trailing arguments in any order):
+    - Waypoint Type (String) - e.g., "MOVE", "SAD", "HOLD"
+    - Behaviour (String) - e.g., "COMBAT", "SAFE"
+    - Combat Mode (String) - e.g., "YELLOW", "RED"
+    - Speed Mode (String) - e.g., "FULL", "LIMITED"
+    - Formation (String) - e.g., "WEDGE", "COLUMN"
+    - Code (Array of Strings) - [condition, statement] to execute at waypoint
+    - Timeout (Array of 3 Numbers) - [min, mid, max]
+    - Completion Radius (Numbers) - Distance to trigger waypoint completion
+    - Visible (Boolean) - Whether the waypoint is visible on the map
 
 Example:
-    (begin example)
-    [this, this, 300, "MOVE", "AWARE", "YELLOW", "FULL", "STAG COLUMN", "this spawn CBA_fnc_searchNearby", [3, 6, 9]] call CBA_fnc_addWaypoint
-    (end)
+    [group player, getPos myMarker, "MOVE", "AWARE", "YELLOW", "NORMAL", "WEDGE"] call EP_fnc_addWaypoint
 
 Returns:
-    Waypoint [Group, Waypoint Index] <ARRAY>
-
-Author:
-    Rommel
+    Waypoint (Array) - [Group, Waypoint Index]
 ---------------------------------------------------------------------------- */
 
 //Constants
@@ -53,14 +48,23 @@ params [
 	"_destination"
 ];
 
+//Retreive waypoint args from function parameters
+private _placementRadius = -1;
 private _args = _this - [_group, _destination];
 
-_group 	= _group call EP_fnc_getGroup;
+//Check for waypoint placement radius in first parameter
+if (_group isEqualType []) then {
+	_placementRadius = (_group # 1);
+	_group = (_group # 0) call EP_fnc_getGroup;
+} else {
+	_group 	= _group call EP_fnc_getGroup;
+}
 _destination = _destination call EP_fnc_getPosition;
 
 private _waypoint = _group addWaypoint [_destination, -1];
 _waypoint setWaypointVisible false;
 
+//Handle additional waypoint parameters
 {
 	if (_x isEqualType "string") then {
 		_x = toUpper _x;

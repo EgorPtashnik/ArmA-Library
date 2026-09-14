@@ -1,7 +1,21 @@
-//************************************************************************************************************
-// CONSTANTS
-//************************************************************************************************************
+/* ----------------------------------------------------------------------------
+Function: EP_fnc_setAISkill
 
+Description:
+    Applies custom skill settings to a group or unit(s).
+
+Parameters:
+    0: _ref (Group, Object, or Array) - Target to modify.
+    1: _skillParams (Array) - Array of key-value pairs (e.g., [["AIM", 0.5], ["SPOT", 0.8]]).
+
+Example:
+    [_group, [["AIM", 0.4], ["FLEEING", 0]]] call EP_fnc_setAISkill
+
+Returns:
+    Array of Objects - Group units.
+---------------------------------------------------------------------------- */
+
+//Constants
 private _defaultSkill	 	= 0.5;
 private _defaultAim			= 0.2;
 private _defaultAimShake	= 0.2;
@@ -13,10 +27,7 @@ private _defaultReload		= 0.5;
 private _defaultCommanding	= 0.5;
 private _defaultFleeing		= 0;
 
-//************************************************************************************************************
-// FUNCTION
-//************************************************************************************************************
-
+//Function
 params [
 	"_ref",
 	["_skillParams", []]
@@ -47,4 +58,4 @@ private _params = createHashMapFromArray _skillParams;
 	_x allowFleeing 				(_params getOrDefault ["FLEEING", _defaultFleeing]);
 } forEach _units;
 
-_ref
+_units

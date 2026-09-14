@@ -1,3 +1,30 @@
+/* ----------------------------------------------------------------------------
+Function: EP_fnc_setAIMode
+
+Description:
+    Sets various AI behaviours, formations, and combat modes for a group or unit.
+
+Parameters:
+    0: _target (Group, Object, or Array) - Group or unit(s) to configure.
+    
+    Optional (trailing arguments):
+    - Behaviour (String) - "CARELESS", "SAFE", "AWARE", "COMBAT", "STEALTH"
+    - Formation (String) - "COLUMN", "WEDGE", etc.
+    - Speed (String) - "LIMITED", "NORMAL", "FULL"
+    - Combat Mode (String) - "BLUE", "RED", etc.
+    - Unit Position (String) - "AUTO", "DOWN", "MIDDLE", "UP" (Units only)
+    - Group ID (Array) - [String] (Groups only)
+    - Delete When Empty (Boolean) - true/false (Groups only)
+    - Limit Speed (Scalar) - Max speed (Units only)
+    - AI Feature (Array) - [String, Boolean] e.g., ["ANIM", false]
+
+Example:
+    [group player, "COMBAT", "WEDGE", "RED"] call EP_fnc_setAIMode
+
+Returns:
+    Array of Objects or Group - Target which received update.
+---------------------------------------------------------------------------- */
+
 //************************************************************************************************************
 // CONSTANTS
 //************************************************************************************************************

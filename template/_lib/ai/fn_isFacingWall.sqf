@@ -1,29 +1,21 @@
-/* ws_fnc_isWallInDir
-By Wolfenswan [FA]: wolfenswanarps@gmail.com | folkarps.com
+/* ----------------------------------------------------------------------------
+Function: EP_fnc_isFacingWall
 
-FEATURE
-Checks if object is facing a building wall in given direction, distance and height
+Description:
+    Checks if an object is facing a wall within a given direction, distance, and height.
 
-USAGE
-Minimal
-[Object,direction] call ws_fnc_isWallInDir
+Parameters:
+    0: _object (Object) - Unit or object to check.
+    1: _direction (Scalar) - Direction (0-360).
+    2: _distance (Scalar, optional) - Detection distance (default: 15m).
+    3: _height (Scalar, optional) - Height offset (default: 0m).
 
-Full
-[Object,direction,distance,height] call ws_fnc_isWallInDir
+Example:
+    [_unit, getDir _unit] call EP_fnc_isFacingWall
 
-PARAMETERS
-1. Unit or Object	| Mandatory - any object, uses eyepos for "CAMANBASE"
-2. Direction		| Mandatory	- 0 - 360
-3. Distance			| Optional	- default 15m
-4. Height			| Optional	- default 0m
-
-RETURNS
-bool - true if unit is facing a wall, false if unit is outside or facing a window
-
-EXAMPLES
-[TestUnit,GetDir TestUnit] ws_fnc_isWallInDir - returns true if TestUnit is facing a wall
-[TestUnit,0,0,25] ws_fnc_isWallInDir - returns true if TestUnit is under a roof
-*/
+Returns:
+    Boolean - True if facing a wall, false otherwise.
+---------------------------------------------------------------------------- */
 
 private ["_pos","_dis","_count","_intersects"];
 

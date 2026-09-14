@@ -1,6 +1,18 @@
-//************************************************************************************************************
-// FUNCTION - Positions an AI inside the building it's in. Unit will face windows (if possible) and go to kneel when on roof
-//************************************************************************************************************
+/* ----------------------------------------------------------------------------
+Function: EP_fnc_setInsidePosition
+
+Description:
+    Positions an AI unit inside a nearby building. The unit will attempt to face windows (if possible) and kneel if on a roof.
+
+Parameters:
+    _unit (Object) - The unit to position.
+
+Example:
+    [myUnit] call EP_fnc_setInsidePosition
+
+Returns:
+    Boolean - True if executed.
+---------------------------------------------------------------------------- */
 private ["_u","_b","_udir","_inside","_facingwall","_dirtob","_dir"];
 
 _u = _this;
