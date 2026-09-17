@@ -62,7 +62,7 @@ class CfgFunctions {
             file="functions";
             class activateUnits {};
             class deactivateUnits {};
-            class getUnits {};
+            class collectUnits {};
             class missionConversations {};
         }
     };
