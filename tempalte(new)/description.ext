@@ -1,0 +1,146 @@
+
+// ----- General mission metadata ---------------------------------------------
+onLoadName    = "Mountain Rage";
+onLoadMission = "USA forces prepare an attack on Takistani support base...";
+author        = "EP";
+briefingName="Mountain Rage"
+overviewText  = "USA forces prepare an attack on Takistani support base...";
+
+// ----- Debriefing ----------------------------------------------------------
+class CfgDebriefing {
+    class Win {
+        title             = "Mission Accomplished";
+        subtitle          = "";
+        description       = "";
+        pictureBackground = "";
+        picture           = "";
+        pictureColor[]    = { 0.0, 0.3, 0.6, 1 };
+    };
+
+    class Fail {
+        title             = "Mission Failed";
+        subtitle          = "";
+        description       = "";
+        pictureBackground = "";
+        picture           = "";
+        pictureColor[]    = { 0.0, 0.3, 0.6, 1 };
+    };
+};
+
+// ----- Support menu (Comm menu) --------------------------------------------
+// To add:  [player, "CustomSupportMenuItem"] call BIS_fnc_addCommMenuItem;
+//
+// class CfgCommunicationMenu {
+//     class CustomSupportMenuItem {
+//         text                     = "Custom Support Item";
+//         submenu                  = "";
+//         expression               = "custVariable = true;";
+//         icon                     = "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\artillery_ca.paa";
+//         cursor                   = "\a3\Ui_f\data\IGUI\Cfg\Cursors\iconCursorSupport_ca.paa";
+//         enable                   = "1";
+//         removeAfterExpressionCall = 1;
+//     };
+// };
+
+// ----- Identities -----------------------------------------------------------
+class CfgIdentities
+{
+	// class PlayerIdentity
+	// {
+	// 	face = "PersianHead_A3_02";
+	// 	glasses = "";
+	// 	pitch = 0.96;
+	// 	name = "Khairullah Siddiqi";
+	// 	speaker = "Male03PER";
+	// };
+};
+
+// ----- Functions -----------------------------------------------------------
+class CfgFunctions {
+    class EP {
+        class fnc {
+            file="functions";
+            class activateUnits {};
+            class deactivateUnits {};
+            class getUnits {};
+            class missionConversations {};
+        }
+    };
+};
+
+// ----- UI Resources -----------------------------------------------------------
+class RscTitles {
+    #include "functions\rsc.hpp"
+};
+
+
+// ----- Sounds --------------------------------------------------------------
+class CfgSounds {
+    sounds[] = {mybeep, myin1, myin2, myin3, myin4, myin5, myin6, mynoise1, mynoise2, mynoise3, mynoise4};
+    
+	class mybeep {
+		name = "mybeep";
+		sound[] = {"_sounds\beep.ogg", db+10, 1.0};
+		titles[] = {0,""};
+	};
+
+	class myin1 {
+		name = "myin1";
+		sound[] = {"_sounds\in1.ogg", db+10, 1.0};
+		titles[] = {0,""};
+	};
+
+	class myin2	{
+		name = "myin2";
+		sound[] = {"_sounds\in2.ogg", db+10, 1.0};
+		titles[] = {0,""};
+	};
+
+	class myin3	{
+		name = "myin3";
+		sound[] = {"_sounds\in3.ogg", db+10, 1.0};
+		titles[] = {0,""};
+	};
+
+	class myin4	{
+		name = "myin4";
+		sound[] = {"_sounds\in4.ogg", db+10, 1.0};
+		titles[] = {0,""};
+	};
+
+	class myin5	{
+		name = "myin5";
+		sound[] = {"_sounds\in5.ogg", db+10, 1.0};
+		titles[] = {0,""};
+	};
+
+	class myin6	{
+		name = "myin6";
+		sound[] = {"_sounds\in6.ogg", db+10, 1.0};
+		titles[] = {0,""};
+	};
+
+	class mynoise1 {
+		name = "mynoise1";
+		sound[] = {"_sounds\noise1.ogg", db+10, 1.0};
+		titles[] = {0,""};
+	};
+
+	class mynoise2 {
+		name = "mynoise2";
+		sound[] = {"_sounds\noise2.ogg", db+10, 1.0};
+		titles[] = {0,""};
+	};
+
+	class mynoise3 {
+		name = "mynoise3";
+		sound[] = {"_sounds\noise3.ogg", db+10, 1.0};
+		titles[] = {0,""};
+	};
+	
+	class mynoise4 {
+		name = "mynoise4";
+		sound[] = {"_sounds\noise4.ogg", db+10, 1.0};
+		titles[] = {0,""};
+	};
+};

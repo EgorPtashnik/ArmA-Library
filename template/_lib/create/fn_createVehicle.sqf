@@ -31,7 +31,7 @@ params [
 ];
 
 //Validate parameter count
-if ((count _this) < 4) exitWith { debugLog "EP_fnc_createVehicle: Function requires at least 4 parameters!"; [] };
+if ((count _this) < 3) exitWith { debugLog "EP_fnc_createVehicle: Function requires at least 3 parameters!"; [] };
 if !(_spawnRef isEqualType grpNull || _spawnRef isEqualType sideUnknown) exitWith { debugLog "EP_fnc_createGroup: Spawn reference (1) must be a side or a group."; grpNull };
 
 private _pos = [];
@@ -51,13 +51,13 @@ if (_pos isEqualType [] && { (count _position) == 2 }) then {
 if (_spawnRef isEqualType grpNull) then {
 	_grp = _spawnRef;
 } else {
-	_grp = createGroup (side _spawnRef);
+	_grp = createGroup _spawnRef;
 };
 
 //Create vehicle
-private _sim = getText(configFile >> "CfgVehicles" >> _type >> "simulation");
 private _veh = objNull;
 private _class = _vehSetting;
+private _sim = getText(configFile >> "CfgVehicles" >> _class >> "simulation");
 private _crew = [];
 
 //Get special settings if vehSetting is array (1 - vehicle class, 2 - crew settings)
@@ -80,7 +80,7 @@ switch (toLower _sim) do {
 	};
 
 	default {
-		_veh = createVehicle [_type, _pos, [], 0, "NONE"];
+		_veh = createVehicle [_class, _pos, [], 0, "NONE"];
 	};
 };
 

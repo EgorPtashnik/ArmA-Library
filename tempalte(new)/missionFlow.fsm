@@ -1,0 +1,87 @@
+/*%FSM<COMPILE "D:\steam\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, Showcase Combined Arms Mission Flow">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"start",0,250,-75.000000,-425.000000,25.000000,-375.000000,0.000000,"start"};
+item1[] = {"Dismounted",4,218,-75.000000,-300.000000,25.000000,-250.000000,0.000000,"Dismounted"};
+item2[] = {"Start_attack",2,250,-75.000000,-200.000000,25.000000,-150.000000,0.000000,"Start attack"};
+item3[] = {"Base_Siezed",4,218,-75.000000,-100.000000,25.000000,-50.000000,0.000000,"Base Siezed"};
+item4[] = {"____FAKE____",9,0,0.000000,0.000000,0.000000,0.000000,0.000000,"____FAKE____"};
+link0[] = {0,1};
+link1[] = {1,2};
+link2[] = {2,3};
+link3[] = {3,4};
+globals[] = {0.000000,0,0,0,0,640,480,1,106,6316128,1,-218.309540,175.084442,311.497498,-546.816528,858,1872,1};
+window[] = {2,-1,-1,-1,-1,1268,418,1858,418,3,885};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "Showcase Combined Arms Mission Flow";
+        class States
+        {
+                /*%FSM<STATE "start">*/
+                class start
+                {
+                        name = "start";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/"execVM ""scripts\start.sqf"""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Dismounted">*/
+                                class Dismounted
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="Start_attack";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""EP_InPosition"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Start_attack">*/
+                class Start_attack
+                {
+                        name = "Start_attack";
+                        itemno = 2;
+                        init = /*%FSM<STATEINIT""">*/"savegame;" \n
+                         "" \n
+                         "execVM ""scripts\attackBase.sqf"";"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Base_Siezed">*/
+                                class Base_Siezed
+                                {
+                                        itemno = 3;
+                                        priority = 0.000000;
+                                        to="____FAKE____";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"triggerActivated trg_BaseSiezed"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "____FAKE____">*/
+                class ____FAKE____
+                {
+                        name = "____FAKE____";
+                        itemno = 4;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="start";
+        finalStates[] =
+        {
+        };
+};
+/*%FSM</COMPILE>*/
