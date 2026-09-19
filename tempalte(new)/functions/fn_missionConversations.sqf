@@ -67,7 +67,7 @@ _ctrl ctrlCommit 0.2;
 		"_text",
 		"_duration",
 		["_color", 0],
-        ["_sound", "myin1"]
+        ["_sound", "myin2"]
 	];
 
 	private _colorValue = nil;
