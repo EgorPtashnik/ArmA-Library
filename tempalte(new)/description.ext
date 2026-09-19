@@ -59,7 +59,7 @@ class CfgIdentities
 class CfgFunctions {
     class EP {
         class fnc {
-            file="_functions";
+            file="functions";
             class activateUnits {};
             class deactivateUnits {};
             class collectUnits {};
