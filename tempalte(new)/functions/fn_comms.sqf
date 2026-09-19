@@ -1,75 +1,99 @@
-#define EP_SOUNDS_NOISES ["mynoise1", "mynoise2", "mynoise3"]
-#define EP_SOUNDS_TYPING ["gm_rtty_stroke_01", "gm_rtty_stroke_02", "gm_rtty_stroke_03"]
-#define EP_SOUNDS_TYPING_TIMINGS [0.06, 0.06, 0.06, 0.1, 0.3, 0.5]
-#define EP_DEFAULT_SOUND_IN "myin1"
-#define EP_DEFAULT_SOUND_OUT "myin4"
-
 params [
-	"_subtitles", //Array if array in format [ [Title, Subtitles, duration] ]
-	["_lastTiming", 5],
+	"_lines",
 	["_isRadio", true],
-	["_radioSoundIn", EP_DEFAULT_SOUND_IN],
-	["_radioSoundOut", EP_DEFAULT_SOUND_OUT]
+	["_notRadioSound", "readoutClick"]
 ];
 
-if !(_this isEqualType []) exitWith { _this spawn BIS_fnc_missionConversations };
-
-private _subsCount = (count _subtitles) - 1;
-private _subsTiming = _subtitles apply {_x # 2};
-private _soundsTiming = [];
-
-private _nextIndex = 0;
-for "_i" from 0 to _subsCount do {
-	if (_i != _subsCount) then {
-		_nextIndex = _i + 1;
-		_timing = (_subsTiming # _nextIndex) - (_subsTiming # _i);
-		_soundsTiming pushBack _timing;
-	} else {
-		_soundsTiming pushBack _lastTiming;
+//Spawn missionConversations _this is just string
+if !(_this isEqualType []) exitWith {
+	if !(isNil "EP_commsHandler") then {
+		waitUntil {scriptDone EP_commsHandler};
 	};
+
+	EP_commsHandler = _this spawn BIS_fnc_missionConversations;
+	EP_commsHandler
 };
 
-//In case this is radio enhance timing for each with 2 seconds
+//Check default variables
+if (isNil "EP_commsSoundIn") then {EP_commsSoundIn = ["epin1", "epin1b", "epin1c"]};
+if (isNil "EP_commsSoundOut") then {EP_commsSoundOut = ["epout1", "epout2", "epout3"]};
+if (isNil "EP_commsColor") then {EP_commsColor = 0};
+
+//for radio transmition increase timing for each line with 2 seconds
 if (_isRadio) then {
-	{
-		if (_forEachIndex != 0) then {
-			_timing = (_x # 2) + (2 * _forEachIndex);
-			_x set [2, _timing];
-		}
-	} forEach _subtitles;
+	_lines apply {_x set [2, (_x # 2) + 2]};
 };
 
-_subtitles spawn BIS_fnc_EXP_camp_playSubtitles;
+private _display = (uiNamespace getVariable "EP_Subtitles");
+if (isNil "_display") then {
+	"EP_Subtitles" cutRsc ["EP_Subtitles", "PLAIN"]; 
+	_display = (uiNamespace getVariable "EP_Subtitles");
+};
+private _ctrl = _display displayCtrl 101;
 
+//Example colors: #0000cc - синий, #FF0000 – красный, #ffff00 – жёлтый цвет, #ffffff – белый, #00FF00 - зелёный
+private _colorMap = [
+	"#FFFFFF", 	//WHITE 		0
+	"#3399FF", 	//BLUE			1
+	"#33FF33", 	//GREEN			2
+	"#FFFF0000", 	//RED			3
+	"#EEEE00",  	//YELLOW		4
+	"#FF004C99", 	//BLUFOR 		5
+	"#FF800000", 	//OPFOR			6
+	"#FF008000", 	//Independent	7
+	"#FF660080" 	//Civilian		8
+];
+
+//Show subtitles
+_ctrl ctrlSetFade 0;
+_ctrl ctrlCommit 0.2;
 {
+	//Extract variables
+	_x params ["_speaker", "_text", "_duration", ["_color", EP_commsColor], ["_soundIn", EP_commsSoundIn], ["_soundOut", EP_commsSoundOut]];
+
+	//Handle color
+	private ["_colorValue"];
+	if (_color isEqualType 0) then {
+		_colorValue = (_colorMap # _color);
+	} else {
+		_colorValue = _color;
+	};
+
+	//Set subtitles
+	private _subtitles = parseText format [
+		"<t color='%1' font='RobotoCondensedBold'>%2:<br/></t> <t font='RobotoCondensedBold' color='#FFFFFF'>%3</t>",
+		_colorValue, _speaker, _text
+	];
+	_ctrl ctrlSetStructuredText _subtitles;
+
 	if (_isRadio) then {
-		playSoundUI [_radioSoundIn];
+		playSoundUI [selectRandom _soundIn];
 
-		[_x, EP_SOUNDS_NOISES] spawn {
+		[_duration, ["noise5_1", "noise5_2", "noise5_3"]] spawn {
+			params ["_duration", "_noises"];
 			private _time = time;
-			while {time < (_time + _this # 0)} do {
-				ep_subs_noise = playSoundUI [(selectRandom (_this # 1))];
+			while {time < ((_time + _duration))} do {
+				EP_commsNoise = playSoundUI [(selectRandom _noises)];
 				sleep 5;
-			}
-		};
-
-		_x spawn {
-			sleep 0.5;
-			private _time = time;
-			while {time < _time + _this - 1.5} do {
-				playSoundUI [selectRandom EP_SOUNDS_TYPING];
-				sleep selectRandom EP_SOUNDS_TYPING_TIMINGS;
 			};
 		};
 
-		sleep _x;
+		sleep 0.4;
+		EP_commsTyping = playSoundUI ["morseCode", 1, 1, false, random 0.9];
 
-		stopSound ep_subs_noise;
-		playSoundUI [_radioSoundOut];
+		sleep _duration;
+
+		stopSound EP_commsNoise;
+		stopSound EP_commsTyping;
+
+		playSoundUI [selectRandom _soundOut];
 		sleep 2;
 	} else {
-		playSoundUI ["mybeep"];
-		sleep _x;
-	}
+		playSoundUI ["_notRadioSound"];
+		sleep _duration;
+	};
 
-} forEach _soundsTiming;
+} forEach _lines;
+
+_ctrl ctrlSetFade 1;
+_ctrl ctrlCommit 0.2;

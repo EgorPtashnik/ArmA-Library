@@ -1,4 +1,4 @@
-sounds[] = {epbeep, typeSound, morseCode, epclick, epin1, epin2, epin3, epin4, epout, noise1_1, noise5_1, noise5_2, noise5_3};
+sounds[] = {epbeep, typeSound, morseCode, epclick, epin1, epin1b, epin1c, epin2, epin3, epin4, epout1, epout2, epout3, noise1_1, noise5_1, noise5_2, noise5_3};
     
 class epbeep {
     name = "epbeep";
@@ -30,6 +30,18 @@ class epin1 {
     titles[] = {0,""};
 };
 
+class epin1b {
+    name = "epin1b";
+    sound[] = {"sounds\in1b.ogg", db+10, 1.0};
+    titles[] = {0,""};
+};
+
+class epin1c {
+    name = "epin1c";
+    sound[] = {"sounds\in1c.ogg", db+10, 1.0};
+    titles[] = {0,""};
+};
+
 class epin2	{
     name = "epin2";
     sound[] = {"sounds\in2.ogg", db+10, 1.0};
@@ -48,9 +60,21 @@ class epin4	{
     titles[] = {0,""};
 };
 
-class epout	{
-    name = "epout";
+class epout1	{
+    name = "epout1";
     sound[] = {"sounds\out1.ogg", db+10, 1.0};
+    titles[] = {0,""};
+};
+
+class epout2	{
+    name = "epout2";
+    sound[] = {"sounds\out2.ogg", db+10, 1.0};
+    titles[] = {0,""};
+};
+
+class epout3	{
+    name = "epout3";
+    sound[] = {"sounds\out3.ogg", db+10, 1.0};
     titles[] = {0,""};
 };
 
