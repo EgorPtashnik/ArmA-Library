@@ -42,6 +42,9 @@ private _colorMap = [
 //Show subtitles
 _ctrl ctrlSetFade 0;
 _ctrl ctrlCommit 0.2;
+
+//Loop through lines
+private ["_colorValue", "_char", "_characters", "_charArray", "_subtitles"];
 {
 	//Extract variables
 	_x params [
@@ -54,7 +57,6 @@ _ctrl ctrlCommit 0.2;
 	];
 
 	//Handle color
-	private ["_colorValue"];
 	if (_color isEqualType 0) then {
 		_colorValue = (_colorMap # _color);
 	} else {
@@ -80,7 +82,6 @@ _ctrl ctrlCommit 0.2;
 
 	sleep 0.5;
 
-	private ["_char", "_characters", "_charArray", "_subtitles"];
 	_charArray = _text splitString "";
 	_characters = "";
 
