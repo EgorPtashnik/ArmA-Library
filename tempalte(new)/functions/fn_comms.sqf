@@ -44,6 +44,7 @@ _ctrl ctrlSetFade 0;
 _ctrl ctrlCommit 0.2;
 
 //Loop through lines
+private _log = [];
 private ["_colorValue", "_char", "_characters", "_charArray", "_subtitles"];
 {
 	//Extract variables
@@ -78,6 +79,7 @@ private ["_colorValue", "_char", "_characters", "_charArray", "_subtitles"];
 		"<t color='%1' font='RobotoCondensedBold'>%2:<br/></t> <t font='RobotoCondensedBold' color='#FFFFFF'>%3</t>",
 		_colorValue, _speaker, ""
 	];
+
 	_ctrl ctrlSetStructuredText _subtitles;
 
 	sleep 0.5;
@@ -114,9 +116,28 @@ private ["_colorValue", "_char", "_characters", "_charArray", "_subtitles"];
 		playSoundUI [selectRandom _soundOut];
 	};
 
+	_log pushBack format [
+		"<t color='%1' font='RobotoCondensedBold'>%2:<br/></t><t font='RobotoCondensedBold' color='#D0D0D0'>%3</t><br/><br/>",
+		_colorValue, toUpper _speaker, _characters
+	];
 	sleep _pause;
 
 } forEach _lines;
+
+//Add to LOG diary
+if (!(player diarySubjectExists "log")) then {
+	player createDiarySubject ["log", "LOG"];
+};
+
+private _logTypeText = "Радиопереговоры";
+if !(_isRadio) then {_logTypeText = "Диалог"};
+player createDiaryRecord [
+	"log", 
+	[
+		format ["%1: %2", [dayTime, "HH:MM"] call BIS_fnc_timeToString, _logTypeText],
+		_log joinString ""
+	]
+];
 
 _ctrl ctrlSetFade 1;
 _ctrl ctrlCommit 0.2;
