@@ -19,11 +19,6 @@ if (isNil "EP_commsSoundIn") then {EP_commsSoundIn = ["epin1", "epin1b", "epin1c
 if (isNil "EP_commsSoundOut") then {EP_commsSoundOut = ["epout1", "epout2", "epout3"]};
 if (isNil "EP_commsColor") then {EP_commsColor = 0};
 
-//for radio transmition increase timing for each line with 2 seconds
-if (_isRadio) then {
-	_lines apply {_x set [2, (_x # 2) + 2]};
-};
-
 private _display = (uiNamespace getVariable "EP_Subtitles");
 if (isNil "_display") then {
 	"EP_Subtitles" cutRsc ["EP_Subtitles", "PLAIN"]; 
@@ -49,7 +44,14 @@ _ctrl ctrlSetFade 0;
 _ctrl ctrlCommit 0.2;
 {
 	//Extract variables
-	_x params ["_speaker", "_text", "_duration", ["_color", EP_commsColor], ["_soundIn", EP_commsSoundIn], ["_soundOut", EP_commsSoundOut]];
+	_x params [
+		"_speaker",
+		"_text",
+		["_pause", 2],
+		["_color", EP_commsColor],
+		["_soundIn", EP_commsSoundIn],
+		["_soundOut", EP_commsSoundOut]
+	];
 
 	//Handle color
 	private ["_colorValue"];
@@ -59,39 +61,59 @@ _ctrl ctrlCommit 0.2;
 		_colorValue = _color;
 	};
 
-	//Set subtitles
-	private _subtitles = parseText format [
-		"<t color='%1' font='RobotoCondensedBold'>%2:<br/></t> <t font='RobotoCondensedBold' color='#FFFFFF'>%3</t>",
-		_colorValue, _speaker, _text
-	];
-	_ctrl ctrlSetStructuredText _subtitles;
-
 	if (_isRadio) then {
 		playSoundUI [selectRandom _soundIn];
 
-		[_duration, ["noise5_1", "noise5_2", "noise5_3"]] spawn {
-			params ["_duration", "_noises"];
-			private _time = time;
-			while {time < ((_time + _duration))} do {
-				EP_commsNoise = playSoundUI [(selectRandom _noises)];
-				sleep 5;
-			};
+		EP_commsNoiseScript = ["noise5_1", "noise5_2", "noise5_3"] spawn {
+			while {true} do {EP_commsNoise = playSoundUI [(selectRandom _this)]; sleep 5};
 		};
-
-		sleep 0.4;
-		EP_commsTyping = playSoundUI ["morseCode", 1, 1, false, random 0.9];
-
-		sleep _duration;
-
-		stopSound EP_commsNoise;
-		stopSound EP_commsTyping;
-
-		playSoundUI [selectRandom _soundOut];
-		sleep 2;
+		// spawn {sleep 0.4; EP_commsTyping = playSoundUI ["morseCode", 1, 1, false, random 0.9]};
 	} else {
-		playSoundUI ["_notRadioSound"];
-		sleep _duration;
+		playSoundUI [_notRadioSound];
 	};
+
+	_subtitles = parseText format [
+		"<t color='%1' font='RobotoCondensedBold'>%2:<br/></t> <t font='RobotoCondensedBold' color='#FFFFFF'>%3</t>",
+		_colorValue, _speaker, ""
+	];
+	_ctrl ctrlSetStructuredText _subtitles;
+
+	sleep 0.5;
+
+	private ["_char", "_characters", "_charArray", "_subtitles"];
+	_charArray = _text splitString "";
+	_characters = "";
+
+	for "_i" from 0 to (count _charArray - 1) do {
+		_char = _charArray # _i;
+		_characters = _characters + _char;
+
+		playSoundUI ["typeSound", 0.8];
+		
+		_subtitles = parseText format [
+			"<t color='%1' font='RobotoCondensedBold'>%2:<br/></t> <t font='RobotoCondensedBold' color='#FFFFFF'>%3</t>",
+			_colorValue, _speaker, _characters
+		];
+		_ctrl ctrlSetStructuredText _subtitles;
+
+		switch _char do {
+			case " ": {sleep 0.1};
+			case ",": {sleep 0.3};
+			case ".": {sleep 0.5};
+			case "!": {sleep 0.5};
+			case "?": {sleep 0.5};
+			default {sleep 0.06};
+		};
+	};
+
+	if (_isRadio) then {
+		terminate EP_commsNoiseScript;
+		stopSound EP_commsNoise;
+		// stopSound EP_commsTyping;
+		playSoundUI [selectRandom _soundOut];
+	};
+
+	sleep _pause;
 
 } forEach _lines;
 
