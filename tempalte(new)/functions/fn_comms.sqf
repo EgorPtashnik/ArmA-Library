@@ -56,6 +56,11 @@ private ["_colorValue", "_char", "_characters", "_charArray", "_subtitles"];
 		["_soundIn", EP_commsSoundIn],
 		["_soundOut", EP_commsSoundOut]
 	];
+	private _unitSpeaking = objNull;
+	if (_speaker isEqualType []) then {
+		_unitSpeaking = _speaker # 1;
+		_speaker = _speaker # 0;
+	};
 
 	//Handle color
 	if (_color isEqualType 0) then {
@@ -87,6 +92,10 @@ private ["_colorValue", "_char", "_characters", "_charArray", "_subtitles"];
 	_charArray = _text splitString "";
 	_characters = "";
 
+	if !(isNull _unitSpeaking) then {
+		_unitSpeaking setRandomLip true;
+	};
+
 	for "_i" from 0 to (count _charArray - 1) do {
 		_char = _charArray # _i;
 		_characters = _characters + _char;
@@ -101,10 +110,19 @@ private ["_colorValue", "_char", "_characters", "_charArray", "_subtitles"];
 
 		switch _char do {
 			case " ": {sleep 0.1};
+
 			case ",": {sleep 0.3};
-			case ".": {sleep 0.5};
-			case "!": {sleep 0.5};
-			case "?": {sleep 0.5};
+			case ".": {
+				private _nextChar = _charArray select (_i + 1);
+				if (_nextChar != " ") then {sleep 0.06} else {sleep 0.5};
+			};
+
+			case "!";
+			case "?": {
+				private _nextChar = _charArray select (_i + 1);
+				if (_nextChar != " ") then {sleep 0.06} else {sleep 0.5};
+			};
+
 			default {sleep 0.06};
 		};
 	};
@@ -114,6 +132,10 @@ private ["_colorValue", "_char", "_characters", "_charArray", "_subtitles"];
 		stopSound EP_commsNoise;
 		// stopSound EP_commsTyping;
 		playSoundUI [selectRandom _soundOut];
+	};
+
+	if !(isNull _unitSpeaking) then {
+		_unitSpeaking setRandomLip false;
 	};
 
 	_log pushBack format [
