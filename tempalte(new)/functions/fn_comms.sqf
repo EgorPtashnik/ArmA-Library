@@ -1,3 +1,44 @@
+/* ----------------------------------------------------------------------------
+Function: EP_fnc_comms
+
+Description:
+    Before doing anything waits for global variable EP_commsRunning as FALSE
+	While doing anything set EP_commsRunning as TRUE 
+
+	Display subtitils sequence on a screen with radio effect or simple sound depending if conversation should be as Radios comms or simple dialog
+	For each line a color of speaker can be selected (using predefinged 0-8 color range or HEX color value as #FFFFFF.
+	For each line a pause can be set before showing next line
+	For each line a sound effect can be set (dialog in, radio in, radio out) depending on _isRadio parameter
+
+	Lines are displayed character by character. For each character a sound of typing machine is played with extra small delay depending on character (bigger delay for ". , ! ? space")
+
+	If speaker is set as array (second parameter is speaker's unit) then during subtitles his lips will be randomely moved
+
+Parameters:
+    1: Lines: [<STRING> or [<STRING>, <OBJECT], <STRING>, <NUMBER>, <NUMBER> or <HEX>, <STRING>, <STRING>]
+		- Speaker's name or [Speaker's name, Speaker's variable]: <STRING> or [<STRING>, <OBJECT>]
+		- Subtititles: <STRING>
+		- (2): Pause: <NUMBER>
+		- (0): Speaker's name display color from color map or HEX Color: <NUMBER> or <HEX>
+		- (["epin1", "epin2", "epin3"]) Sounds array for radio in SFX: [<STRING>]
+		- (["epout1", "epout2", "epout3"]) Sounds array for radio in SFX: [<STRING>]
+
+Optional:
+    2: (true) Is radio communications: <BOOL>
+	3. ("readoutClick") SFX for not radio subtitles: [<STRING>]
+
+Returns:
+	<NOTHING>
+
+Example:
+    [[
+		["SPEAKER 1", "SUBTITLES 1", 6],
+		["SPEAKER 2", "SUBTITLES 2", 2, 5]
+	], true] call EP_fnc_comms;
+
+Author:
+	EP
+---------------------------------------------------------------------------- */
 params [
 	"_lines",
 	["_isRadio", true],

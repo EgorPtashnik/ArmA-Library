@@ -2,20 +2,24 @@
 Function: EP_fnc_collectVariables
 
 Description:
-    Collects sequentially numbered mission namespace variables sharing a
-    common prefix ("prefix_1", "prefix_2", ...) until a nil value is found.
+    Collects sequentially variable values by their previx (e.g. EP_Unit_1, EP_Unit_2, EP_Unit_3).
+	Can collect in reversed order 
 
 Parameters:
-    0: _varPrefixes (String or Array of Strings) - Variable name prefix(es).
-    1: _reversed (Boolean, optional) - Push values in reverse collection order. Default false.
+    1: Variables prefix: <STRING>, [<STRING>...]
 
-Example:
-    ["EP_wave"] call EP_fnc_collectVariables
+Optional:
+    2: (true) Return in revered order: <BOOL>
 
 Returns:
-    Array - The collected variable values.
----------------------------------------------------------------------------- */
+	[<VAR>...] : Array of collected variable values
 
+Example:
+    ["EP_Unit"] call EP_fnc_collectVariables
+
+Author:
+	EP
+---------------------------------------------------------------------------- */
 params [
 	"_varPrefixes",
 	["_reversed", false]
@@ -23,6 +27,7 @@ params [
 
 // Params check
 if !(_this isEqualType "" || _this isEqualType []) exitWith {
+    systemChat format ["[LOG] %1(%2): %3", __FILE__, __LINE__, "EP_fnc_collectVariables: Cannot get variables! Parameter must be <STRING> or <STRING>[]!"]}
 	systemChat "EP_fnc_collectVariables: Must give variable prefix as String or Array!";
 };
 
