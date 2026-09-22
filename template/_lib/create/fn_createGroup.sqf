@@ -24,7 +24,6 @@ Example:
 Returns:
     Group - The resulting group (existing or newly created).
 ---------------------------------------------------------------------------- */
-
 params [
 	"_position",
 	"_spawnRef",

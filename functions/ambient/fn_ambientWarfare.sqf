@@ -6,21 +6,32 @@ Description:
     (firefights, explosions, helicopters, jets) at random intervals and
     directions until the given condition becomes false.
 
-Parameters:
-    0: _condition (Code, optional) - Loop continues while this returns true. Default { true }.
-    1: _firefight (Boolean, optional) - Include firefight sounds. Default true.
-    2: _explosions (Boolean, optional) - Include explosion sounds. Default true.
-    3: _helis (Boolean, optional) - Include helicopter sounds. Default false.
-    4: _jets (Boolean, optional) - Include jet sounds. Default false.
-
-Example:
-    [{ true }, true, true, true] call EP_fnc_ambientWarfare
+Optional:
+    1. ({true}) Condition to stop: <CODE>, must return <BOOL> value
+    2. (true) Play firefight sounds: <BOOL>
+    3. (true) Play explosion sounds: <BOOL>
+    4. (false) Play helicopter sounds: <BOOL>
+    5. (false) Play plane sounds: <BOOL>
 
 Returns:
-    Nothing. The spawned handle is stored in EP_AmbientWarfareHandle.
----------------------------------------------------------------------------- */
+    <NOTHING> : The spawned handle is stored in EP_AmbientWarfareHandle.
 
-//Constants
+Example:
+    [{ true }, true, true, true, false] call EP_fnc_ambientWarfare
+
+Author:
+	EP
+---------------------------------------------------------------------------- */
+if !(isNil "EP_AmbientWarfareHandle" || {scriptDone EP_AmbientWarfareHandle}) exitWith {};
+
+params [
+	["_condition", { true }],
+	["_firefight", true],
+	["_explosions", true],
+	["_helis", false],
+	["_jets", false]
+];
+
 private _soundsFF = [
 	"A3\Sounds_F\environment\ambient\battlefield\battlefield_firefight1.wss",
 	"A3\Sounds_F\environment\ambient\battlefield\battlefield_firefight2.wss",
@@ -45,14 +56,6 @@ private _soundsJet = [
     "A3\Sounds_F\environment\ambient\battlefield\battlefield_Jet3.wss"
 ];
 
-//Function
-params [
-	["_condition", { true }],
-	["_firefight", true],
-	["_explosions", true],
-	["_helis", false],
-	["_jets", false]
-];
 
 private _soundList = [];
 
@@ -62,7 +65,7 @@ if (_helis) 		then { _soundList append _soundsHeli };
 if (_jets) 			then { _soundList append _soundsJet };
 
 if (count _soundList == 0) exitWith {
-	systemChat "EP_fnc_ambientWarfase: at least one sound parameter must be true!";
+    systemChat format ["[LOG] %1(%2): %3", __FILE__, __LINE__, "EP_fnc_ambientWarfase: At least one sound flag must be true!"];
 };
 
 private _handle = [_soundList, _condition] spawn {
@@ -76,6 +79,8 @@ private _handle = [_soundList, _condition] spawn {
 	private _midDistance = 500;
 	private _maxDistance = 800;
 	private _maxSleep = 45;
+
+	private ["_dir", "_dis", "_soundPos", "_sound", "_sleepRandom"];
 	while { call _condition } do {
 		private _dir = round random 360;  
 		private _dis = round random [_minDistance, _midDistance, _maxDistance]; 

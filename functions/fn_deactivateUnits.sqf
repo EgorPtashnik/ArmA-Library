@@ -19,6 +19,7 @@ Author:
 	EP
 ------------------------------------------------------------------------------------------*/
 private _units = _this call EP_fnc_collectUnits;
+
 private "_veh";
 {
     _veh = vehicle _x;

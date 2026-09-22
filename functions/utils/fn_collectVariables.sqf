@@ -5,6 +5,8 @@ Description:
     Collects sequentially variable values by their previx (e.g. EP_Unit_1, EP_Unit_2, EP_Unit_3).
 	Can collect in reversed order 
 
+	Filters out null variables
+
 Parameters:
     1: Variables prefix: <STRING>, [<STRING>...]
 
@@ -25,10 +27,8 @@ params [
 	["_reversed", false]
 ];
 
-// Params check
 if !(_this isEqualType "" || _this isEqualType []) exitWith {
-    systemChat format ["[LOG] %1(%2): %3", __FILE__, __LINE__, "EP_fnc_collectVariables: Cannot get variables! Parameter must be <STRING> or <STRING>[]!"]}
-	systemChat "EP_fnc_collectVariables: Must give variable prefix as String or Array!";
+    systemChat format ["[LOG] %1(%2): %3", __FILE__, __LINE__, "EP_fnc_collectVariables: Cannot get variables! Parameter must be <STRING> or [<STRING>...]!"];
 };
 
 if (_this isEqualType "") then {
@@ -37,20 +37,21 @@ if (_this isEqualType "") then {
 
 
 // Collect variable values
-private _array = [];
+private ["_array", "_varName", "_VarValue"];
+_array = [];
 {
 	for "_i" from 1 to 128 do {
-		private _varName = format["%1_%2", _x, _i];
-		private _varValue = missionNamespace getVariable _varName;
+		_varName = format["%1_%2", _x, _i];
+		_varValue = missionNamespace getVariable _varName;
 
-		if (isNil "_varValue") exitWith {};
+		if (isNil "_varValue" || {isNull _varValue}) exitWith {};
 
-		if (_reversed) then {
-			_array pushBack _varValue;
-		} else {
-			_array append [_varValue];
-		};
+		_array pushBack _varValue;
 	};
 } forEach _this;
 
-(_array select {!isNull _x})
+if (_reversed) then {
+	reverse _array;
+};
+
+_array

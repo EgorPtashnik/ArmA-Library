@@ -6,31 +6,29 @@ Description:
     fixed height, ignoring its surroundings, and deletes itself on arrival.
 
 Parameters:
-    0: _start (Position, Object, Array or Group, optional) - Spawn location. Default [0,0,0].
-    1: _end (Position, Object, Array or Group, optional) - Destination location. Default [100,100,100].
-    2: _class (String, optional) - Vehicle class to spawn. Default "B_Heli_Light_01_F".
-    3: _height (Number, optional) - Flight height. Default 100.
-    4: _speed (String, optional) - Waypoint speed mode. Default "NORMAL".
-    5: _side (Side, optional) - Side of the spawned vehicle. Default blufor.
+    1. ([0,0,0]) Spawn location: <POSITION>
+    2. ([100, 100, 100]) End location: <POSITION>.
+    3. (BLUFOR) Aircraft side: <SIDE>
+    4. ("B_Heli_Light_01_F") Aircraft class: <STRING>
+    5. (100) Flying height: <NUMBER>
+    6. ("NORMAL") Waypoint speed mode: <STRING>
+
+Returns:
+    <OBJECT> : Spawned aircraft
 
 Example:
     [markerA, markerB, "B_Plane_CAS_01_F", 300] call EP_fnc_ambientFlyBy
 
-Returns:
-    Object - The spawned vehicle.
 ---------------------------------------------------------------------------- */
 
 params [
 	["_start", [0,0,0]],
-	["_end", [100,100,100]],
+	["_end", [100,100,100]],,
+	["_side", BLUFOR],
 	["_class", "B_Heli_Light_01_F"],
 	["_height", 100],
-	["_speed", "NORMAL"],
-	["_side", blufor]
+	["_speed", "NORMAL"]
 ];
-
-_start = _start call EP_fnc_getPosition;
-_end = _end call EP_fnc_getPosition;
 
 //Set spawn height
 _start set [2, _height];
@@ -45,7 +43,8 @@ private _vehicleCrew		= _vehicleContainer # 1;
 private _vehicleGroup		= _vehicleContainer # 2;
 
 //The vehicle/group should ignore it's surroundings
-[_vehicle, ["TARGET", false], ["AUTOTARGET", false] ] call EP_fnc_setAIMode;
+_vehicle disableAI "TARGET";
+_vehicle disableAI "AUTOTARGET"
 _vehicle setCaptive true;
 _vehicleGroup allowFleeing 0;
 
@@ -53,16 +52,19 @@ _vehicleGroup allowFleeing 0;
 _vehicle flyInHeight _height;
 
 //Add waypoint
-[_vehicle, _end, "MOVE", "CARELESS", "BLUE", _speed, [
-	{ true },
-	{
-		private _group = group this;
-		private _vehicle = vehicle this;
+private _wp = _vehicleGroup addWaypoint [_end, 0];
+_wp setWaypointBehaviour "CARELESS";
+_wp setWaypointCombatMode "BLUE";
+_wp setWaypointSpeed _speed;
+_wp setWaypointStatements [
+	"true",
+	toString {
+		private _group = group _this;
+		private _vehicle = vehicle _this;
 		deleteVehicleCrew _vehicle;
 		deleteVehicle _vehicle;
-		{ deleteVehicle _x } forEach units _group;
-		deleteGroup _group;
+		{deleteVehicle _x} forEach units _group;
 	}
-]] call EP_fnc_addWaypoint;
+];
 
 _vehicle

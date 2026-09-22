@@ -20,19 +20,20 @@ Example:
 Author:
 	EP
 ------------------------------------------------------------------------------------------*/
-private _units = [];
 
 if !(_this isEqualType []) then {
     _this = [_this];
 };
 
+//Collect units
+private _units = [];
 {
     switch true do {
         case (_x isEqualType ""): {_units append (getMissionLayerEntities _x # 0)};
         case (_x isEqualType grpNull): {_units append (units _x)};
         case (_x isEqualType []): {_units append _x};
         case (_x isEqualType objNull): {_units append [_x]};
-        default {systemChat format ["[LOG] %1(%2): %3", __FILE__, __LINE__, "EP_fnc_collectUnits: Cannot get units! Wrong parameter type!"]}
+        default {systemChat format ["[LOG] %1(%2): %3", __FILE__, __LINE__, "EP_fnc_collectUnits: Cannot get units! Parameter must be <GROUP>, <STRING>, [<OBJECT>...], <OBJECT>"]}
     };
 } forEach _this;
 
