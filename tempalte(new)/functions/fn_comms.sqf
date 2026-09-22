@@ -5,14 +5,10 @@ params [
 ];
 
 //Spawn missionConversations _this is just string
-if !(_this isEqualType []) exitWith {
-	if !(isNil "EP_commsHandler") then {
-		waitUntil {scriptDone EP_commsHandler};
-	};
+waitUntil {missionNamespace getVariable ["EP_commsRunning", false]};
 
-	EP_commsHandler = _this spawn BIS_fnc_missionConversations;
-	EP_commsHandler
-};
+//Set variable check to wait for current comms to complete
+missionNamespace setVariable ["EP_commsRunning", true];
 
 //Check default variables
 if (isNil "EP_commsSoundIn") then {EP_commsSoundIn = ["epin1", "epin1b", "epin1c"]};
@@ -163,3 +159,4 @@ player createDiaryRecord [
 
 _ctrl ctrlSetFade 1;
 _ctrl ctrlCommit 0.2;
+missionNamespace setVariable ["EP_commsRunning", false];
